@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Avilar Revendedor | IPTV Premium - RushPlay & wplay</title>
+<meta name="description" content="Avilar Revendedor — A melhor experiência em TV por streaming. RushPlay e wplay em um só lugar. Canais, filmes e séries com qualidade 4K. Teste grátis!">
+<meta name="keywords" content="Avilar Revendedor, IPTV, RushPlay, wplay, streaming, canais ao vivo, filmes, séries">
+
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<style>
+/* ==================================================
+   PALETA AVILAR (vermelho RushPlay + verde wplay)
+================================================== */
+:root{
+    --preto:#000000;
+    --preto-sec:#0a0a0a;
+    --preto-card:#0e0e10;
+
+    /* Vermelho/laranja RushPlay */
+    --vermelho:#ff2a2a;
+    --vermelho-claro:#ff5a3c;
+    --laranja:#ff7a18;
+
+    /* Verde wplay */
+    --verde:#1ad07a;
+    --verde-claro:#2bff8a;
+    --verde-escuro:#0aa860;
+
+    /* Branco / texto */
+    --texto:#ffffff;
+    --texto-sec:#d2d2d2;
+    --texto-terciario:#8d8d8d;
+
+    /* WhatsApp */
+    --verde-whats:#25d366;
+    --verde-whats-hover:#1ebe5d;
+
+    /* Borda gradiente */
+    --grad-marca:linear-gradient(135deg,var(--vermelho) 0%,var(--laranja) 50%,var(--verde) 100%);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--preto)}
+body{
+    background:#000000;
+    color:var(--texto);
+    line-height:1.6;
+    overflow-x:hidden;
+    position:relative;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+}
+/* Enfeites sutis nas cores das marcas (RushPlay vermelho / wplay verde) */
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:520px;
+    height:520px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.16;
+    pointer-events:none;
+    z-index:0;
+}
+body::before{
+    top:-160px;
+    left:-160px;
+    background:#ff2a2a;
+}
+body::after{
+    bottom:-160px;
+    right:-160px;
+    background:#1ad07a;
+}
+section, .hero, .tabs-nav, footer{position:relative;z-index:1}
+
+section{width:100%;padding:60px 16px;position:relative}
+.container{max-width:1200px;margin:auto;text-align:center}
+
+/* ==================================================
+   ANIMAÇÕES
+================================================== */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes pulseWhatsapp{
+    0%,100%{transform:scale(1);box-shadow:0 6px 25px rgba(37,211,102,.5),0 12px 50px rgba(37,211,102,.3)}
+    50%{transform:scale(1.05);box-shadow:0 8px 30px rgba(37,211,102,.6),0 15px 60px rgba(37,211,102,.4)}
+}
+@keyframes glowDual{
+    0%,100%{filter:drop-shadow(0 0 18px rgba(255,42,42,.55)) drop-shadow(0 0 18px rgba(26,208,122,.55))}
+    50%{filter:drop-shadow(0 0 32px rgba(255,42,42,.85)) drop-shadow(0 0 32px rgba(26,208,122,.85))}
+}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+/* ==================================================
+   HERO / LOGO
+================================================== */
+.hero{
+    padding:50px 16px 24px;
+    background:transparent;
+    text-align:center;
+    animation:fadeIn 1s ease;
+}
+.hero-logo{
+    max-width:460px;
+    width:88%;
+    height:auto;
+    display:block;
+    margin:0 auto;
+    filter:drop-shadow(0 0 28px rgba(255,42,42,.45)) drop-shadow(0 0 28px rgba(26,208,122,.45));
+    animation:glowDual 4s ease-in-out infinite;
+    transition:transform .3s ease;
+}
+.hero-logo:hover{transform:scale(1.04)}
+
+/* ==================================================
+   TABS NAV
+================================================== */
+.tabs-nav{
+    position:sticky;top:0;z-index:500;
+    display:flex;justify-content:center;gap:10px;
+    padding:14px 12px;
+    background:rgba(0,0,0,.92);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+.tab-btn{
+    background:#0a0a0a;
+    border:1px solid rgba(255,255,255,.12);
+    color:var(--texto-sec);
+    padding:11px 22px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:.95rem;
+    line-height:1;
+    text-transform:none;
+    letter-spacing:.2px;
+    cursor:pointer;
+    font-family:inherit;
+    transition:all .25s ease;
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:140px;
+    text-align:center;
+}
+.tab-btn:hover{
+    transform:translateY(-1px);
+    border-color:rgba(255,255,255,.25);
+    color:#fff;
+    background:#111;
+}
+.tab-btn.active{
+    background:#0a0a0a;
+    color:#fff;
+    border-color:transparent;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.04),
+        0 0 18px rgba(255,42,42,.35),
+        0 0 18px rgba(26,208,122,.35);
+    position:relative;
+}
+.tab-btn.active::before{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    border-radius:11px;
+    padding:1px;
+    background:linear-gradient(135deg,#ff2a2a 0%,#1ad07a 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+            mask-composite:exclude;
+    pointer-events:none;
+}
+.tab-content{display:none;animation:fadeIn .4s ease}
+.tab-content.active{display:block}
+@media(max-width:600px){
+    .tab-btn{padding:10px 16px;font-size:.85rem;min-width:0;flex:1 1 auto}
+    .tabs-nav{gap:6px;padding:10px 8px}
+}
+.brand-row{
+    margin-top:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:32px;
+    flex-wrap:wrap;
+}
+.brand-row img{
+    height:70px;
+    width:auto;
+    border-radius:14px;
+    object-fit:contain;
+    background:#000;
+    padding:6px 10px;
+    transition:transform .3s ease, filter .3s ease;
+}
+.brand-row img.rush{filter:drop-shadow(0 0 14px rgba(255,42,42,.55))}
+.brand-row img.wp{filter:drop-shadow(0 0 14px rgba(26,208,122,.55))}
+.brand-row img:hover{transform:translateY(-4px) scale(1.06)}
+.brand-sep{
+    color:var(--texto-terciario);
+    font-size:1.4rem;
+    font-weight:700;
+}
+
+/* ==================================================
+   TIPOGRAFIA
+================================================== */
+.titulo{
+    font-size:clamp(1.9rem,4.5vw,2.8rem);
+    margin-bottom:18px;
+    font-weight:800;
+    letter-spacing:-.5px;
+    animation:fadeInUp .8s ease;
+}
+.titulo .grad{
+    background:var(--grad-marca);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    background-size:200% 100%;
+    animation:shimmer 6s linear infinite;
+}
+.titulo .red{color:var(--vermelho-claro)}
+.titulo .green{color:var(--verde-claro)}
+.subtexto{
+    max-width:900px;
+    margin:0 auto;
+    font-size:clamp(1rem,2.3vw,1.1rem);
+    color:var(--texto-sec);
+    animation:fadeInUp .8s ease .2s both;
+}
+.subtexto strong{color:#fff;font-weight:700}
+
+/* ==================================================
+   DESTAQUES (3 ícones)
+================================================== */
+.destaques{padding:30px 16px 10px}
+.destaques-grid{
+    max-width:1000px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.destaque-item{
+    background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));
+    border:1.5px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:22px 14px;
+    transition:all .3s ease;
+}
+.destaque-item:hover{transform:translateY(-4px);border-color:var(--laranja);box-shadow:0 8px 25px rgba(255,122,24,.25)}
+.destaque-item .ico{font-size:2rem;display:block;margin-bottom:8px}
+.destaque-item .ico.r{color:var(--vermelho-claro)}
+.destaque-item .ico.o{color:var(--laranja)}
+.destaque-item .ico.g{color:var(--verde-claro)}
+.destaque-item h4{font-size:1rem;font-weight:700;color:#fff}
+
+/* ==================================================
+   STATS
+================================================== */
+.stats-container{
+    display:flex;justify-content:center;gap:40px;flex-wrap:wrap;
+    margin:30px auto 0;max-width:1000px;
+}
+.stat-item{text-align:center;min-width:140px}
+.stat-number{
+    font-size:clamp(2rem,5vw,3rem);
+    font-weight:800;
+    background:var(--grad-marca);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    display:block;
+    text-shadow:0 0 20px rgba(255,122,24,.25);
+}
+.stat-label{font-size:.95rem;color:var(--texto-sec);margin-top:6px}
+
+/* ==================================================
+   CATEGORIAS
+================================================== */
+.cards-categorias{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+    max-width:1200px;margin:40px auto 0;
+}
+.card-categoria{
+    background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));
+    border:2px solid rgba(255,255,255,.08);
+    border-radius:18px;padding:30px 22px;text-align:center;
+    transition:all .35s cubic-bezier(.25,.46,.45,.94);
+    position:relative;overflow:hidden;
+}
+.card-categoria::before{
+    content:'';position:absolute;inset:0;
+    background:var(--grad-marca);
+    opacity:0;transition:opacity .3s ease;
+    z-index:-1;
+}
+.card-categoria.r{border-color:rgba(255,42,42,.4)}
+.card-categoria.o{border-color:rgba(255,122,24,.4)}
+.card-categoria.g{border-color:rgba(26,208,122,.4)}
+.card-categoria:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 12px 35px rgba(0,0,0,.5)}
+.card-categoria.r:hover{border-color:var(--vermelho);box-shadow:0 12px 35px rgba(255,42,42,.35)}
+.card-categoria.o:hover{border-color:var(--laranja);box-shadow:0 12px 35px rgba(255,122,24,.35)}
+.card-categoria.g:hover{border-color:var(--verde-claro);box-shadow:0 12px 35px rgba(26,208,122,.35)}
+.card-categoria h3{font-size:1.5rem;margin-bottom:10px}
+.card-categoria.r h3{color:var(--vermelho-claro)}
+.card-categoria.o h3{color:var(--laranja)}
+.card-categoria.g h3{color:var(--verde-claro)}
+.card-categoria .quantidade{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:18px}
+.card-categoria ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:.93rem;color:var(--texto-sec);text-align:left;padding:0 8px}
+.card-categoria li.lock{color:var(--verde-claro);font-weight:600}
+
+/* ==================================================
+   SISTEMAS (RushPlay + wplay)
+================================================== */
+.sistemas-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+    max-width:1000px;margin:40px auto 0;
+}
+.sistema-card{
+    background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));
+    border:2px solid;border-radius:20px;padding:28px;text-align:center;
+    transition:all .35s ease;
+}
+.sistema-card.rush{border-color:rgba(255,42,42,.45)}
+.sistema-card.wp{border-color:rgba(26,208,122,.45)}
+.sistema-card.rush:hover{transform:translateY(-6px);border-color:var(--vermelho);box-shadow:0 12px 40px rgba(255,42,42,.35)}
+.sistema-card.wp:hover{transform:translateY(-6px);border-color:var(--verde-claro);box-shadow:0 12px 40px rgba(26,208,122,.35)}
+.sistema-card img{height:90px;width:auto;margin:0 auto 14px;display:block;border-radius:12px}
+.sistema-card h3{font-size:1.4rem;margin-bottom:8px}
+.sistema-card.rush h3{color:var(--vermelho-claro)}
+.sistema-card.wp h3{color:var(--verde-claro)}
+.sistema-card p{color:var(--texto-sec);font-size:.95rem}
+
+/* ==================================================
+   PLANOS
+================================================== */
+.planos-grid{
+    max-width:1400px;margin:40px auto 0;
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+    gap:24px;padding:0 8px;
+}
+.plano-item{
+    background:linear-gradient(180deg,#0f0f10,#050505);
+    border:2px solid rgba(255,255,255,.08);
+    border-radius:20px;padding:0;text-align:center;
+    transition:all .4s cubic-bezier(.25,.46,.45,.94);
+    display:flex;flex-direction:column;overflow:hidden;position:relative;
+}
+.plano-item.d1{border-color:rgba(255,42,42,.4)}
+.plano-item.d2{border-color:rgba(26,208,122,.4)}
+.plano-item.d1:hover{transform:translateY(-8px);border-color:var(--vermelho);box-shadow:0 14px 45px rgba(255,42,42,.4)}
+.plano-item.d2:hover{transform:translateY(-8px);border-color:var(--verde-claro);box-shadow:0 14px 45px rgba(26,208,122,.4)}
+.plano-badge{
+    color:#000;padding:12px 18px;font-weight:800;font-size:.85rem;
+    text-align:center;letter-spacing:.5px;text-transform:uppercase;
+}
+.plano-item.d1 .plano-badge{background:linear-gradient(135deg,var(--vermelho),var(--laranja))}
+.plano-item.d2 .plano-badge{background:linear-gradient(135deg,var(--verde-escuro),var(--verde-claro))}
+.plano-header{padding:28px 24px 20px}
+.plano-duracao{font-size:1.4rem;font-weight:800;margin-bottom:14px;letter-spacing:-.3px}
+.plano-item.d1 .plano-duracao{color:var(--vermelho-claro)}
+.plano-item.d2 .plano-duracao{color:var(--verde-claro)}
+.plano-preco{font-size:2.4rem;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-1px}
+.plano-preco-mensal{font-size:.92rem;color:var(--texto-terciario);margin-bottom:14px}
+.plano-preco-avista{
+    border-radius:12px;padding:14px 14px;margin:14px 0;
+}
+.plano-item.d1 .plano-preco-avista{background:rgba(255,42,42,.08);border:2px solid var(--vermelho)}
+.plano-item.d2 .plano-preco-avista{background:rgba(26,208,122,.08);border:2px solid var(--verde)}
+.plano-preco-avista .label{font-size:.82rem;display:block;margin-bottom:6px;font-weight:700}
+.plano-item.d1 .plano-preco-avista .label{color:var(--vermelho-claro)}
+.plano-item.d2 .plano-preco-avista .label{color:var(--verde-claro)}
+.plano-preco-avista .valor{font-size:1.7rem;font-weight:800;color:#fff;letter-spacing:-.5px}
+.plano-economia{font-size:.92rem;font-weight:700;margin-top:10px}
+.plano-item.d1 .plano-economia{color:var(--vermelho-claro)}
+.plano-item.d2 .plano-economia{color:var(--verde-claro)}
+.plano-beneficios{list-style:none;padding:0 24px 20px;margin:0;text-align:left;flex-grow:1}
+.plano-beneficios li{margin-bottom:10px;color:var(--texto-sec);font-size:.92rem;line-height:1.5;padding-left:6px}
+.plano-beneficios li::before{content:"✓ ";font-weight:bold;margin-right:6px}
+.plano-item.d1 .plano-beneficios li::before{color:var(--vermelho-claro)}
+.plano-item.d2 .plano-beneficios li::before{color:var(--verde-claro)}
+.btn-assinar{
+    width:calc(100% - 48px);margin:0 24px 24px;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    color:#000 !important;padding:16px 28px;border-radius:12px;
+    font-weight:800;font-size:.98rem;text-decoration:none !important;
+    text-transform:uppercase;letter-spacing:.5px;border:none;cursor:pointer;
+    transition:all .3s ease;
+}
+.plano-item.d1 .btn-assinar{background:linear-gradient(135deg,var(--vermelho),var(--laranja));box-shadow:0 6px 18px rgba(255,42,42,.4)}
+.plano-item.d2 .btn-assinar{background:linear-gradient(135deg,var(--verde-escuro),var(--verde-claro));box-shadow:0 6px 18px rgba(26,208,122,.4)}
+.plano-item.d1 .btn-assinar:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,42,42,.6)}
+.plano-item.d2 .btn-assinar:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(26,208,122,.6)}
+
+/* ==================================================
+   APLICATIVOS
+================================================== */
+.apps-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:30px;max-width:1000px;margin:40px auto 0;
+}
+.app-icon-item{display:flex;flex-direction:column;align-items:center;transition:transform .3s ease}
+.app-icon-item:hover{transform:translateY(-8px)}
+.icon-box{
+    width:88px;height:88px;margin:0 auto 12px;
+    background:linear-gradient(180deg,#1a1a1a,#050505);
+    border-radius:50%;border:2px solid;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .3s ease;font-size:2.4rem;
+}
+.app-icon-item:nth-child(1) .icon-box{border-color:rgba(255,42,42,.5)}
+.app-icon-item:nth-child(2) .icon-box{border-color:rgba(255,255,255,.4)}
+.app-icon-item:nth-child(3) .icon-box{border-color:rgba(255,122,24,.5)}
+.app-icon-item:nth-child(4) .icon-box{border-color:rgba(26,208,122,.5)}
+.app-icon-item:nth-child(5) .icon-box{border-color:rgba(255,42,42,.5)}
+.app-icon-item:nth-child(6) .icon-box{border-color:rgba(26,208,122,.5)}
+.app-icon-item:hover .icon-box{transform:scale(1.1);box-shadow:0 8px 25px rgba(255,255,255,.15)}
+.app-icon-item h3{font-size:.95rem;margin-top:6px;color:var(--texto)}
+
+/* ==================================================
+   AVALIAÇÕES
+================================================== */
+.avaliacoes-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;max-width:1100px;margin:40px auto 0;
+}
+.avaliacao{
+    background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));
+    border:2px solid rgba(255,255,255,.08);
+    border-radius:18px;padding:24px 22px;text-align:left;
+    transition:all .3s ease;
+}
+.avaliacao:hover{transform:translateY(-5px);border-color:var(--laranja);box-shadow:0 8px 25px rgba(255,122,24,.25)}
+.avaliacao strong{
+    background:var(--grad-marca);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    font-size:1.05rem;
+}
+.avaliacao .stars{margin:4px 0;font-size:1.05rem;color:#ffd700}
+.avaliacao p{margin-top:10px;color:var(--texto-sec);line-height:1.6;font-size:.93rem}
+
+/* ==================================================
+   FAQ
+================================================== */
+.faq-container{max-width:900px;margin:40px auto 0}
+.faq-item{
+    background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));
+    border:2px solid rgba(255,255,255,.08);
+    border-radius:14px;margin-bottom:14px;overflow:hidden;
+    transition:all .3s ease;
+}
+.faq-item:hover{border-color:var(--laranja)}
+.faq-question{
+    width:100%;background:none;border:none;color:var(--texto);
+    padding:20px 24px;text-align:left;font-size:1.05rem;font-weight:600;
+    cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+    transition:color .3s ease;font-family:inherit;
+}
+.faq-question:hover{color:var(--laranja)}
+.faq-question .icon{
+    font-size:1.5rem;transition:transform .3s ease;
+    background:var(--grad-marca);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.faq-item.active .faq-question .icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 24px}
+.faq-item.active .faq-answer{max-height:500px;padding:0 24px 20px}
+.faq-answer p{color:var(--texto-sec);line-height:1.7}
+
+/* ==================================================
+   COMISSÃO
+================================================== */
+.comissao-section{
+    background:
+        radial-gradient(ellipse at left, rgba(255,42,42,.18), transparent 60%),
+        radial-gradient(ellipse at right, rgba(26,208,122,.18), transparent 60%),
+        linear-gradient(135deg,#1a0000 0%,#001a0d 100%);
+    padding:80px 16px;
+    border-top:3px solid;
+    border-bottom:3px solid;
+    border-image:var(--grad-marca) 1;
+    box-shadow:0 0 50px rgba(255,122,24,.15) inset;
+}
+.comissao-container{max-width:720px;margin:0 auto;text-align:center}
+.comissao-badge{
+    display:inline-block;
+    background:var(--grad-marca);
+    color:#000;padding:10px 24px;border-radius:30px;
+    font-weight:800;font-size:.9rem;margin-bottom:18px;
+    box-shadow:0 0 30px rgba(255,122,24,.6);
+    animation:pulse 2s ease infinite;
+}
+.comissao-destaque{
+    background:rgba(0,0,0,.5);
+    border:2px solid;
+    border-image:var(--grad-marca) 1;
+    border-radius:16px;padding:24px;margin:26px 0;
+    box-shadow:0 0 30px rgba(255,122,24,.18);
+}
+.comissao-destaque h3{
+    background:var(--grad-marca);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    font-size:2rem;margin-bottom:10px;font-weight:800;
+}
+.comissao-destaque p{color:#fff;font-size:1.05rem;line-height:1.8}
+.comissao-form{
+    background:rgba(0,0,0,.7);
+    border:2px solid rgba(255,255,255,.1);
+    border-radius:20px;padding:36px 26px;margin-top:30px;text-align:left;
+}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;color:var(--laranja);font-weight:700;margin-bottom:8px;font-size:.95rem}
+.form-group input,.form-group select{
+    width:100%;padding:14px 16px;
+    border:2px solid rgba(255,255,255,.15);
+    border-radius:10px;background:rgba(0,0,0,.5);
+    color:#fff;font-size:1rem;transition:all .3s ease;font-family:inherit;
+}
+.form-group input:focus,.form-group select:focus{
+    outline:none;border-color:var(--laranja);
+    box-shadow:0 0 18px rgba(255,122,24,.3);
+    background:rgba(0,0,0,.7);
+}
+.form-group input::placeholder{color:rgba(255,255,255,.4)}
+.btn-submit{
+    width:100%;
+    background:var(--grad-marca);
+    color:#000;padding:18px 32px;border:none;border-radius:12px;
+    font-size:1.1rem;font-weight:800;cursor:pointer;
+    transition:all .3s ease;
+    box-shadow:0 6px 28px rgba(255,122,24,.4);
+    text-transform:uppercase;letter-spacing:1px;font-family:inherit;
+}
+.btn-submit:hover{transform:translateY(-3px);box-shadow:0 10px 38px rgba(255,122,24,.6)}
+
+/* ==================================================
+   WHATSAPP FLOAT
+================================================== */
+.whatsapp-float{
+    position:fixed;bottom:25px;right:25px;
+    width:62px;height:62px;
+    background:linear-gradient(135deg,var(--verde-whats),var(--verde-whats-hover));
+    border-radius:50%;
+    box-shadow:0 4px 20px rgba(37,211,102,.5),0 8px 40px rgba(37,211,102,.3);
+    display:flex;align-items:center;justify-content:center;
+    z-index:9999;text-decoration:none;
+    transition:all .3s ease;
+    animation:pulseWhatsapp 2s ease-in-out infinite;
+}
+.whatsapp-float:hover{transform:scale(1.1) translateY(-3px);animation:none}
+.whatsapp-icon{font-size:32px;color:#fff;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+
+/* ==================================================
+   CTA TESTE GRÁTIS
+================================================== */
+.cta-teste{
+    background:
+        radial-gradient(ellipse at center, rgba(255,122,24,.2), transparent 70%),
+        linear-gradient(135deg,#0a0a0a,#000);
+    border-top:2px solid;border-bottom:2px solid;
+    border-image:var(--grad-marca) 1;
+    padding:60px 16px;text-align:center;
+}
+.btn-cta-teste{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--grad-marca);
+    color:#000;padding:18px 36px;border-radius:14px;
+    font-weight:800;font-size:1.1rem;text-decoration:none;
+    text-transform:uppercase;letter-spacing:.5px;
+    box-shadow:0 6px 28px rgba(255,122,24,.5);
+    transition:all .3s ease;margin-top:22px;
+}
+.btn-cta-teste:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(255,122,24,.7)}
+
+/* ==================================================
+   FOOTER
+================================================== */
+footer{
+    background:var(--preto);padding:36px 16px;text-align:center;
+    color:var(--texto-terciario);font-size:.9rem;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+footer p{margin:6px 0}
+footer .brand-line{
+    background:var(--grad-marca);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    font-weight:800;font-size:1rem;
+}
+
+/* ==================================================
+   CHATBOT INSTALAÇÃO
+================================================== */
+.chatbot{
+    max-width:980px;margin:36px auto 0;
+    background:linear-gradient(180deg,#0e0e10,#050505);
+    border:2px solid rgba(255,255,255,.1);
+    border-radius:22px;overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(255,122,24,.08);
+    display:flex;flex-direction:column;
+    height:min(88vh, 900px);
+    min-height:680px;
+}
+.chat-header{
+    display:flex;align-items:center;gap:14px;
+    padding:16px 20px;
+    background:linear-gradient(135deg,rgba(255,42,42,.15),rgba(26,208,122,.15));
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+.chat-header-avatar{position:relative;flex-shrink:0}
+.chat-header-avatar img{
+    width:46px;height:46px;border-radius:50%;
+    border:2px solid rgba(255,255,255,.2);object-fit:cover;background:#000;
+}
+.chat-status{
+    position:absolute;bottom:0;right:0;
+    width:14px;height:14px;border-radius:50%;
+    background:var(--verde-claro);border:2px solid #050505;
+    box-shadow:0 0 10px var(--verde-claro);
+    animation:pulse 2s ease infinite;
+}
+.chat-header-name{font-weight:800;color:#fff;font-size:1.02rem}
+.chat-header-sub{font-size:.8rem;color:var(--texto-terciario);display:flex;align-items:center;gap:6px;margin-top:2px}
+.chat-status-dot{
+    width:8px;height:8px;border-radius:50%;background:var(--verde-claro);
+    box-shadow:0 0 6px var(--verde-claro);
+}
+.chat-body{
+    flex:1;overflow-y:auto;
+    padding:22px 18px;
+    display:flex;flex-direction:column;gap:14px;
+    scroll-behavior:smooth;
+    background:
+        radial-gradient(ellipse at top, rgba(255,42,42,.04), transparent 60%),
+        radial-gradient(ellipse at bottom, rgba(26,208,122,.04), transparent 60%);
+}
+.chat-body::-webkit-scrollbar{width:6px}
+.chat-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:6px}
+
+.msg{
+    display:flex;gap:10px;max-width:88%;
+    animation:msgIn .35s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.msg.bot{align-self:flex-start}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.msg-avatar{
+    width:36px;height:36px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(135deg,var(--vermelho),var(--verde));
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;font-size:18px;
+    border:1.5px solid rgba(255,255,255,.15);
+}
+.msg-avatar img{width:100%;height:100%;object-fit:cover}
+.msg-bubble{
+    padding:12px 16px;border-radius:16px;
+    font-size:.94rem;line-height:1.5;color:#fff;
+    word-wrap:break-word;
+}
+.msg.bot .msg-bubble{
+    background:linear-gradient(180deg,#1a1a1d,#111114);
+    border:1px solid rgba(255,255,255,.08);
+    border-bottom-left-radius:4px;
+}
+.msg.user .msg-bubble{
+    background:linear-gradient(135deg,var(--verde-whats),var(--verde-whats-hover));
+    color:#fff;border-bottom-right-radius:4px;
+    box-shadow:0 4px 14px rgba(37,211,102,.3);
+}
+.msg-bubble strong{color:var(--laranja);font-weight:800}
+
+/* Typing indicator */
+.typing .msg-bubble{padding:14px 18px;display:flex;gap:5px;align-items:center}
+.typing .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--texto-terciario);
+    animation:typingBounce 1.2s infinite;
+}
+.typing .dot:nth-child(2){animation-delay:.15s}
+.typing .dot:nth-child(3){animation-delay:.3s}
+@keyframes typingBounce{
+    0%,60%,100%{transform:translateY(0);opacity:.4}
+    30%{transform:translateY(-6px);opacity:1}
+}
+
+/* Options block */
+.chat-options{
+    display:flex;flex-direction:column;gap:8px;
+    margin:4px 0 0 46px;max-width:88%;
+    animation:msgIn .35s cubic-bezier(.2,.8,.2,1) both;
+}
+.chat-options.grid{flex-direction:row;flex-wrap:wrap;gap:8px}
+.chat-opt{
+    background:linear-gradient(180deg,#1a1a1d,#0c0c0e);
+    border:1.5px solid rgba(255,255,255,.12);
+    color:#fff;
+    padding:12px 18px;border-radius:12px;
+    font-weight:700;font-size:.92rem;font-family:inherit;
+    cursor:pointer;text-align:left;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:all .25s ease;
+}
+.chat-opt:hover{transform:translateY(-2px);border-color:var(--laranja);background:linear-gradient(180deg,#222,#111);box-shadow:0 6px 20px rgba(255,122,24,.2)}
+.chat-opt img{width:24px;height:24px;border-radius:6px;object-fit:cover}
+.chat-opt.rush:hover{border-color:var(--vermelho);box-shadow:0 6px 20px rgba(255,42,42,.3)}
+.chat-opt.wp:hover{border-color:var(--verde-claro);box-shadow:0 6px 20px rgba(26,208,122,.3)}
+
+/* Tutorial inside chat */
+.chat-tutorial{
+    background:linear-gradient(180deg,#15151a,#0a0a0c);
+    border:1.5px solid rgba(255,122,24,.3);
+    border-radius:16px;padding:18px;margin-top:6px;
+    max-width:100%;
+}
+.chat-tutorial.rush{border-color:rgba(255,42,42,.4)}
+.chat-tutorial.wp{border-color:rgba(26,208,122,.4)}
+.chat-tutorial-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed rgba(255,255,255,.1)}
+.chat-tutorial-head img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:#000}
+.chat-tutorial-head .ct-title{font-weight:800;color:#fff;font-size:1.05rem;line-height:1.2}
+.chat-tutorial-head .ct-sub{font-size:.75rem;color:var(--texto-terciario);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.chat-tut-step{
+    background:rgba(255,255,255,.03);
+    border-left:3px solid var(--laranja);
+    border-radius:8px;
+    padding:9px 12px;margin-bottom:8px;
+    color:var(--texto-sec);font-size:.88rem;line-height:1.55;
+    animation:msgIn .3s ease both;
+}
+.chat-tutorial.rush .chat-tut-step{border-left-color:var(--vermelho)}
+.chat-tutorial.wp .chat-tut-step{border-left-color:var(--verde-claro)}
+.chat-tut-step strong{color:#fff}
+.chat-tut-step .code{
+    display:inline-block;background:#000;color:var(--laranja);
+    padding:2px 10px;border-radius:6px;font-family:monospace;font-weight:800;
+    border:1px solid rgba(255,122,24,.45);margin:0 2px;
+}
+.chat-tut-step .warn{color:#ffd86b}
+.chat-tut-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.chat-tut-actions a{
+    flex:1;min-width:130px;
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    padding:11px 12px;border-radius:10px;
+    font-weight:800;font-size:.82rem;text-decoration:none !important;
+    text-transform:uppercase;letter-spacing:.3px;
+    transition:all .3s ease;text-align:center;
+}
+.chat-tut-actions .ct-dl{
+    background:linear-gradient(135deg,#222,#111);
+    color:#fff !important;border:1.5px solid rgba(255,255,255,.18);
+}
+.chat-tut-actions .ct-dl:hover{transform:translateY(-2px);border-color:var(--laranja)}
+.chat-tut-actions .ct-wa{
+    background:linear-gradient(135deg,var(--verde-whats),var(--verde-whats-hover));
+    color:#fff !important;
+    box-shadow:0 4px 14px rgba(37,211,102,.4);
+}
+.chat-tut-actions .ct-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.6)}
+
+.chat-footer{
+    padding:12px 18px;
+    background:rgba(0,0,0,.4);
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;justify-content:center;
+}
+.chat-reset{
+    background:transparent;
+    border:1.5px solid rgba(255,255,255,.15);
+    color:var(--texto-sec);
+    padding:9px 18px;border-radius:10px;
+    font-weight:700;font-size:.85rem;font-family:inherit;
+    cursor:pointer;transition:all .25s ease;
+}
+.chat-reset:hover{border-color:var(--laranja);color:#fff;background:rgba(255,122,24,.1)}
+
+@media(max-width:600px){
+    .chatbot{height:min(82vh, 720px);min-height:560px;border-radius:16px}
+    .chat-body{padding:16px 12px}
+    .msg{max-width:92%}
+    .chat-options{margin-left:42px}
+    .chat-opt{padding:10px 14px;font-size:.88rem}
+}
+
+/* ==================================================
+   INSTALAÇÃO
+================================================== */
+.sys-selector{
+    display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
+    max-width:720px;margin:30px auto 10px;
+}
+.sys-btn{
+    background:linear-gradient(180deg,#161616,#0a0a0a);
+    border:2px solid rgba(255,255,255,.1);
+    color:var(--texto-sec);
+    padding:14px 26px;border-radius:14px;
+    font-weight:800;font-size:.95rem;text-transform:uppercase;letter-spacing:.5px;
+    cursor:pointer;font-family:inherit;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:all .3s ease;
+}
+.sys-btn img{height:28px;width:auto;border-radius:6px}
+.sys-btn:hover{transform:translateY(-2px);border-color:var(--laranja);color:#fff}
+.sys-btn.active.rush{background:linear-gradient(135deg,var(--vermelho),var(--laranja));color:#000;border-color:transparent;box-shadow:0 6px 22px rgba(255,42,42,.45)}
+.sys-btn.active.wp{background:linear-gradient(135deg,var(--verde-escuro),var(--verde-claro));color:#000;border-color:transparent;box-shadow:0 6px 22px rgba(26,208,122,.45)}
+
+.dev-selector{
+    display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
+    max-width:1000px;margin:24px auto 10px;
+}
+.dev-btn{
+    background:rgba(255,255,255,.04);
+    border:1.5px solid rgba(255,255,255,.12);
+    color:var(--texto-sec);
+    padding:10px 18px;border-radius:12px;
+    font-weight:700;font-size:.88rem;
+    cursor:pointer;font-family:inherit;
+    transition:all .3s ease;
+    display:inline-flex;align-items:center;gap:8px;
+}
+.dev-btn:hover{border-color:var(--laranja);color:#fff;transform:translateY(-2px)}
+.dev-btn.active{background:var(--grad-marca);color:#000;border-color:transparent;box-shadow:0 4px 16px rgba(255,122,24,.35)}
+
+.tutorial-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:22px;max-width:1200px;margin:34px auto 0;
+}
+.tutorial-card{
+    background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));
+    border:2px solid rgba(255,255,255,.08);
+    border-radius:18px;padding:24px;text-align:left;
+    display:flex;flex-direction:column;
+    transition:all .3s ease;
+}
+.tutorial-card.rush{border-color:rgba(255,42,42,.35)}
+.tutorial-card.wp{border-color:rgba(26,208,122,.35)}
+.tutorial-card.rush:hover{transform:translateY(-5px);border-color:var(--vermelho);box-shadow:0 12px 35px rgba(255,42,42,.25)}
+.tutorial-card.wp:hover{transform:translateY(-5px);border-color:var(--verde-claro);box-shadow:0 12px 35px rgba(26,208,122,.25)}
+.tutorial-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.tutorial-head img{
+    width:56px;height:56px;border-radius:12px;object-fit:cover;
+    background:#000;flex-shrink:0;
+}
+.tutorial-head .app-title{font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2}
+.tutorial-head .app-sub{font-size:.8rem;color:var(--texto-terciario);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+.tutorial-step{
+    background:rgba(255,255,255,.03);
+    border-left:3px solid var(--laranja);
+    border-radius:8px;
+    padding:10px 14px;margin-bottom:10px;
+    color:var(--texto-sec);font-size:.92rem;line-height:1.55;
+}
+.tutorial-card.rush .tutorial-step{border-left-color:var(--vermelho)}
+.tutorial-card.wp .tutorial-step{border-left-color:var(--verde-claro)}
+.tutorial-step strong{color:#fff}
+.tutorial-step .code{
+    display:inline-block;background:#000;color:var(--laranja);
+    padding:2px 10px;border-radius:6px;font-family:monospace;font-weight:800;
+    border:1px solid rgba(255,122,24,.45);margin:0 2px;
+}
+.tutorial-step .warn{color:#ffd86b}
+.tutorial-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.btn-download,.btn-whatsapp{
+    flex:1;min-width:140px;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 14px;border-radius:10px;
+    font-weight:800;font-size:.88rem;text-decoration:none !important;
+    text-transform:uppercase;letter-spacing:.4px;
+    border:none;cursor:pointer;font-family:inherit;
+    transition:all .3s ease;text-align:center;
+}
+.btn-download{
+    background:linear-gradient(135deg,#222,#111);
+    color:#fff !important;border:1.5px solid rgba(255,255,255,.18);
+}
+.btn-download:hover{transform:translateY(-2px);border-color:var(--laranja);box-shadow:0 8px 22px rgba(255,122,24,.25)}
+.btn-whatsapp{
+    background:linear-gradient(135deg,var(--verde-whats),var(--verde-whats-hover));
+    color:#fff !important;
+    box-shadow:0 6px 18px rgba(37,211,102,.4);
+}
+.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.6)}
+
+/* ==================================================
+   RESPONSIVO
+================================================== */
+@media(max-width:900px){
+    .cards-categorias{grid-template-columns:1fr;max-width:520px}
+    .sistemas-grid{grid-template-columns:1fr;max-width:480px}
+    .destaques-grid{grid-template-columns:repeat(3,1fr);gap:10px}
+    .destaque-item{padding:16px 8px}
+    .destaque-item .ico{font-size:1.6rem}
+    .destaque-item h4{font-size:.85rem}
+    section{padding:50px 16px}
+    .comissao-section{padding:60px 16px}
+    .comissao-form{padding:28px 18px}
+    .brand-row img{height:50px}
+}
+@media(max-width:600px){
+    .stats-container{gap:24px}
+    .planos-grid{grid-template-columns:1fr;padding:0}
+    .stat-item{min-width:120px}
+    .brand-row{gap:18px}
+    .brand-row img{height:44px}
+    .hero{padding:24px 12px 20px}
+}
+/* ==================================================
+   SOLICITAR CONTEÚDO
+================================================== */
+.solicitar-form-wrap{
+    max-width:680px;margin:40px auto 0;
+    background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));
+    border:2px solid rgba(255,255,255,.08);
+    border-radius:20px;padding:36px 30px;text-align:left;
+}
+.solicitar-info-box{
+    background:rgba(255,122,24,.08);
+    border-left:3px solid var(--laranja);
+    border-radius:10px;padding:14px 16px;
+    margin-bottom:26px;
+    color:var(--texto-sec);font-size:.9rem;line-height:1.6;
+}
+.solicitar-info-box strong{color:#fff}
+.solicitar-form-wrap .form-group textarea{
+    width:100%;padding:14px 16px;
+    border:2px solid rgba(255,255,255,.15);
+    border-radius:10px;background:rgba(0,0,0,.5);
+    color:#fff;font-size:1rem;transition:all .3s ease;font-family:inherit;
+    resize:vertical;min-height:110px;
+}
+.solicitar-form-wrap .form-group textarea:focus{
+    outline:none;border-color:var(--laranja);
+    box-shadow:0 0 18px rgba(255,122,24,.3);
+    background:rgba(0,0,0,.7);
+}
+.solicitar-form-wrap .form-group textarea::placeholder{color:rgba(255,255,255,.4)}
+.sol-categoria-toggle{
+    display:flex;gap:12px;margin-top:4px;
+}
+.sol-cat-btn{
+    flex:1;padding:13px 10px;
+    background:linear-gradient(180deg,#161616,#0a0a0a);
+    border:2px solid rgba(255,255,255,.12);
+    color:var(--texto-sec);border-radius:12px;
+    font-weight:800;font-size:1rem;font-family:inherit;
+    cursor:pointer;transition:all .3s ease;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.sol-cat-btn:hover{border-color:var(--laranja);color:#fff;transform:translateY(-2px)}
+.sol-cat-btn.active{
+    background:var(--grad-marca);
+    color:#000;border-color:transparent;
+    box-shadow:0 6px 22px rgba(255,122,24,.4);
+}
+.btn-solicitar-wa{
+    width:100%;margin-top:10px;
+    background:linear-gradient(135deg,var(--verde-whats),var(--verde-whats-hover));
+    color:#fff;padding:18px 28px;border:none;border-radius:12px;
+    font-size:1.05rem;font-weight:800;cursor:pointer;
+    transition:all .3s ease;
+    box-shadow:0 6px 28px rgba(37,211,102,.45);
+    text-transform:uppercase;letter-spacing:.8px;font-family:inherit;
+    display:inline-flex;align-items:center;justify-content:center;gap:12px;
+}
+.btn-solicitar-wa:hover{transform:translateY(-3px);box-shadow:0 10px 38px rgba(37,211,102,.65)}
+@media(max-width:600px){
+    .solicitar-form-wrap{padding:24px 16px}
+    .sol-categoria-toggle{flex-direction:column;gap:10px}
+}
+</style>
+
+<body>
+
+<!-- ============= HERO / LOGO ============= -->
+<section class="hero" id="topo">
+    <img src="assets/logo.png" alt="Avilar Revendedor" class="hero-logo">
+</section>
+
+<!-- ============= TABS NAVIGATION ============= -->
+<nav class="tabs-nav" id="tabs-nav">
+    <button class="tab-btn active" data-tab="inicio" onclick="switchTab('inicio')">Início</button>
+    <button class="tab-btn" data-tab="renovar" onclick="switchTab('renovar')">Renovar</button>
+    <button class="tab-btn" data-tab="instalacao" onclick="switchTab('instalacao')">Instalação</button>
+    <button class="tab-btn" data-tab="indicacao" onclick="switchTab('indicacao')">Indicação</button>
+    <button class="tab-btn" data-tab="solicitacao" onclick="switchTab('solicitacao')">Solicitar Conteúdo</button>
+</nav>
+
+<!-- ============= TAB: INÍCIO ============= -->
+<div class="tab-content active" id="tab-inicio">
+
+<!-- ============= INTRO ============= -->
+<section id="inicio" style="padding-top:20px">
+<div class="container">
+    <h1 class="titulo">
+        A melhor experiência em <span class="grad">TV por Streaming</span>
+    </h1>
+    <p class="subtexto">
+        A <strong>Avilar Revendedor</strong> traz para você os <strong>2 melhores sistemas IPTV</strong> do mercado:
+        <span class="red"><strong>RushPlay</strong></span> e <span class="green"><strong>wplay</strong></span>.
+        Canais, séries e filmes em <strong>qualidade 4K</strong>, com estabilidade total e atualização semanal.
+    </p>
+
+    <div class="stats-container">
+        <div class="stat-item"><span class="stat-number">10.000+</span><span class="stat-label">Clientes ativos</span></div>
+        <div class="stat-item"><span class="stat-number">27.703</span><span class="stat-label">Filmes</span></div>
+        <div class="stat-item"><span class="stat-number">5.431</span><span class="stat-label">Séries</span></div>
+        <div class="stat-item"><span class="stat-number">2.384</span><span class="stat-label">Canais ao vivo</span></div>
+    </div>
+</div>
+</section>
+
+<!-- ============= DESTAQUES ============= -->
+<section class="destaques">
+<div class="container">
+    <div class="destaques-grid">
+        <div class="destaque-item"><span class="ico r">🛡️</span><h4>Estável e Confiável</h4></div>
+        <div class="destaque-item"><span class="ico o">⭐</span><h4>Qualidade Premium 4K</h4></div>
+        <div class="destaque-item"><span class="ico g">🎧</span><h4>Suporte Especializado</h4></div>
+    </div>
+</div>
+</section>
+
+<!-- ============= SISTEMAS DISPONÍVEIS ============= -->
+<section id="sistemas">
+<div class="container">
+    <h2 class="titulo">2 Sistemas <span class="grad">em um só lugar</span></h2>
+    <p class="subtexto">Escolha o sistema que mais combina com você ou aproveite os dois.</p>
+
+    <div class="sistemas-grid">
+        <div class="sistema-card rush">
+            <img src="assets/logo_rushplay.jpeg" alt="RushPlay">
+            <h3>RushPlay</h3>
+            <p>Plataforma rápida e moderna com catálogo gigante de filmes, séries e canais ao vivo. Interface intuitiva e atualização constante.</p>
+        </div>
+        <div class="sistema-card wp">
+            <img src="assets/logo_wplay.jpeg" alt="wplay">
+            <h3>wplay TV</h3>
+            <p>Streaming premium com foco em estabilidade total e qualidade 4K. Funciona em qualquer dispositivo, em qualquer lugar.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- ============= CATEGORIAS ============= -->
+<section id="categorias">
+<div class="container">
+    <h2 class="titulo">Categorias de <span class="grad">Conteúdo</span></h2>
+    <p class="subtexto">Um dos maiores catálogos do Brasil, organizado para a sua família.</p>
+
+    <div class="cards-categorias">
+        <div class="card-categoria r">
+            <h3>📺 Canais</h3>
+            <div class="quantidade">2.384 canais ao vivo</div>
+            <ul>
+                <li>✓ Abertos e regionais</li>
+                <li>✓ Canais internacionais</li>
+                <li>✓ Esportes e PPV</li>
+                <li>✓ Filmes e séries 24h</li>
+                <li>✓ Infantil e documentários</li>
+                <li class="lock">🔓 Liberado conteúdo adulto</li>
+            </ul>
+        </div>
+
+        <div class="card-categoria o">
+            <h3>🎬 Séries</h3>
+            <div class="quantidade">5.431 séries completas</div>
+            <ul>
+                <li>✓ Séries nacionais e internacionais</li>
+                <li>✓ Novelas, doramas e turcas</li>
+                <li>✓ Animes (dublado e legendado)</li>
+                <li>✓ Animações e clássicos</li>
+                <li>✓ Netflix, Prime, HBO, Disney+</li>
+                <li class="lock">🔓 Liberado conteúdo adulto</li>
+            </ul>
+        </div>
+
+        <div class="card-categoria g">
+            <h3>🎥 Filmes</h3>
+            <div class="quantidade">27.703 filmes disponíveis</div>
+            <ul>
+                <li>✓ Lançamentos atualizados</li>
+                <li>✓ Ação, comédia e drama</li>
+                <li>✓ Terror, suspense e romance</li>
+                <li>✓ Clássicos e filmes 4K</li>
+                <li>✓ Marvel, DC e universos</li>
+                <li class="lock">🔓 Liberado conteúdo adulto</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- ============= CTA TESTE GRÁTIS ============= -->
+<section class="cta-teste">
+    <h2 class="titulo">Faça um <span class="grad">Teste Grátis</span></h2>
+    <p class="subtexto">Experimente <strong>4 horas grátis</strong> sem compromisso. Atendimento humanizado pelo WhatsApp.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px">
+        <button onclick="switchTab('instalacao')" class="btn-cta-teste" style="margin-top:0;border:none;cursor:pointer;font-family:inherit">
+            💬 SOLICITAR TESTE GRÁTIS
+        </button>
+        <button onclick="switchTab('renovar')" class="btn-cta-teste" style="margin-top:0;border:none;cursor:pointer;font-family:inherit">
+            🔄 RENOVAR ASSINATURA
+        </button>
+    </div>
+</section>
+
+<!-- ============= APLICATIVOS ============= -->
+<section id="aplicativos">
+<div class="container">
+    <h2 class="titulo">Aplicativos <span class="grad">Compatíveis</span></h2>
+    <p class="subtexto">Funciona nas principais plataformas do mercado.</p>
+
+    <div class="apps-grid">
+        <div class="app-icon-item"><div class="icon-box">🤖</div><h3>Android</h3></div>
+        <div class="app-icon-item"><div class="icon-box">🍎</div><h3>iOS</h3></div>
+        <div class="app-icon-item"><div class="icon-box">💻</div><h3>Computador</h3></div>
+        <div class="app-icon-item"><div class="icon-box">📺</div><h3>Smart TV</h3></div>
+        <div class="app-icon-item"><div class="icon-box">📦</div><h3>TV Box</h3></div>
+        <div class="app-icon-item"><div class="icon-box">🔥</div><h3>Fire Stick</h3></div>
+    </div>
+</div>
+</section>
+
+<!-- ============= AVALIAÇÕES ============= -->
+<section id="avaliacoes">
+<div class="container">
+    <h2 class="titulo">Avaliações de <span class="grad">Clientes Reais</span></h2>
+    <p class="subtexto">Veja o que dizem quem já usa nosso serviço todos os dias.</p>
+
+    <div class="avaliacoes-grid">
+        <div class="avaliacao"><strong>Carlos M.</strong><div class="stars">⭐⭐⭐⭐⭐</div><p>Qualidade excelente nos canais e nos filmes. Uso diariamente e nunca tive travamentos. Acima da média.</p></div>
+        <div class="avaliacao"><strong>Fernanda R.</strong><div class="stars">⭐⭐⭐⭐⭐</div><p>Testei outros IPTV antes, mas esse foi o único realmente estável. Funciona perfeitamente na Smart TV e no celular.</p></div>
+        <div class="avaliacao"><strong>Lucas A.</strong><div class="stars">⭐⭐⭐⭐⭐</div><p>Catálogo enorme de filmes e séries. Sempre tem conteúdo novo e atualizado. Vale muito a pena.</p></div>
+        <div class="avaliacao"><strong>Patrícia S.</strong><div class="stars">⭐⭐⭐⭐⭐</div><p>Uso em dois dispositivos ao mesmo tempo e a qualidade continua perfeita. Preço justo pelo que entrega.</p></div>
+        <div class="avaliacao"><strong>Ricardo L.</strong><div class="stars">⭐⭐⭐⭐⭐</div><p>Organização dos canais é excelente. Fácil de usar, rápido e muito estável. Recomendo sem medo.</p></div>
+        <div class="avaliacao"><strong>Juliana P.</strong><div class="stars">⭐⭐⭐⭐⭐</div><p>A imagem em HD e 4K é impressionante. Atendimento rápido e teste grátis ajudou muito na decisão.</p></div>
+        <div class="avaliacao"><strong>Eduardo F.</strong><div class="stars">⭐⭐⭐⭐⭐</div><p>Funciona muito bem em todos os aplicativos que testei. Conteúdo completo e sem quedas.</p></div>
+        <div class="avaliacao"><strong>Mariana C.</strong><div class="stars">⭐⭐⭐⭐⭐</div><p>Serviço confiável e sempre atualizado. Depois que comecei a usar, não troco mais.</p></div>
+    </div>
+</div>
+</section>
+
+<!-- ============= COMISSÃO (movido para aba Indicação) =============
+     Conteúdo abaixo agora vive em <div id="tab-indicacao"> -->
+
+<!-- ============= FAQ ============= -->
+<section id="faq">
+<div class="container">
+    <h2 class="titulo">Perguntas <span class="grad">Frequentes</span></h2>
+    <p class="subtexto">Tire suas dúvidas sobre a Avilar Revendedor.</p>
+
+    <div class="faq-container">
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Como funciona o teste grátis?<span class="icon">+</span></button><div class="faq-answer"><p>Você recebe 4 horas de acesso completo e sem compromisso para testar toda a plataforma — canais, filmes e séries. Basta solicitar pelo WhatsApp.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Qual a diferença entre RushPlay e wplay?<span class="icon">+</span></button><div class="faq-answer"><p>Ambos são sistemas premium com catálogo similar. RushPlay tem foco em performance e interface moderna; wplay é referência em estabilidade e qualidade 4K. Você pode usar o sistema que preferir.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Posso usar em mais de um dispositivo?<span class="icon">+</span></button><div class="faq-answer"><p>Sim! Temos planos para 1 ou 2 dispositivos simultâneos. Você pode assistir em celular, tablet, Smart TV, computador e TV Box.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Qual a qualidade dos vídeos?<span class="icon">+</span></button><div class="faq-answer"><p>Oferecemos conteúdo em HD e 4K com máxima estabilidade. A qualidade se adapta automaticamente à sua conexão.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Como funciona o sistema de comissão?<span class="icon">+</span></button><div class="faq-answer"><p>Cadastre-se gratuitamente, compartilhe seu link com amigos e ganhe R$ 7,00 via PIX para cada ativação. Pagamentos garantidos.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Preciso de internet rápida?<span class="icon">+</span></button><div class="faq-answer"><p>Recomendamos pelo menos 10 Mbps para HD e 25 Mbps para 4K. Mas o sistema se adapta à velocidade disponível.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Como faço para assinar?<span class="icon">+</span></button><div class="faq-answer"><p>Escolha seu plano e clique em "Assinar Agora", ou solicite o teste grátis pelo WhatsApp. Nossa equipe te guia em todo o processo.</p></div></div>
+    </div>
+</div>
+</section>
+
+</div><!-- /tab-inicio -->
+
+<!-- ============= TAB: RENOVAR ============= -->
+<div class="tab-content" id="tab-renovar">
+
+<section id="planos" style="padding-top:40px">
+<div class="container">
+    <div style="display:inline-block;background:var(--grad-marca);color:#000;padding:8px 22px;border-radius:30px;font-weight:800;font-size:.85rem;margin-bottom:14px;letter-spacing:.5px;text-transform:uppercase">
+        🔄 Página de Renovação
+    </div>
+    <h2 class="titulo">Renove sua <span class="grad">Assinatura</span></h2>
+    <p class="subtexto">
+        Esta é a área exclusiva para <strong>clientes ativos</strong> renovarem o serviço.
+        Escolha o período e a quantidade de dispositivos que deseja renovar. <strong>Pagamento via PIX com desconto.</strong>
+    </p>
+
+    <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:28px auto 0;max-width:720px">
+        <div style="background:rgba(255,42,42,.1);border:1.5px solid rgba(255,42,42,.4);padding:10px 18px;border-radius:12px;color:var(--vermelho-claro);font-weight:700;font-size:.9rem">📱 1 Dispositivo</div>
+        <div style="background:rgba(26,208,122,.1);border:1.5px solid rgba(26,208,122,.4);padding:10px 18px;border-radius:12px;color:var(--verde-claro);font-weight:700;font-size:.9rem">📱📱 2 Dispositivos</div>
+        <div style="background:rgba(255,122,24,.1);border:1.5px solid rgba(255,122,24,.4);padding:10px 18px;border-radius:12px;color:var(--laranja);font-weight:700;font-size:.9rem">💰 PIX com desconto</div>
+    </div>
+
+    <div style="margin:22px auto 0;max-width:720px;background:rgba(255,122,24,.08);border:1.5px solid rgba(255,122,24,.45);border-left:4px solid var(--laranja);border-radius:12px;padding:14px 18px;text-align:left;display:flex;align-items:center;gap:12px">
+        <span style="font-size:1.6rem">💳</span>
+        <p style="margin:0;color:#fff;font-size:.95rem;line-height:1.5">
+            Para garantir o <strong style="color:var(--laranja)">desconto</strong>, o pagamento precisa ser <strong style="color:var(--laranja)">à vista</strong> (PIX).
+        </p>
+    </div>
+
+    <div class="planos-grid" id="planos-container" style="margin-top:30px"></div>
+
+    <div style="margin-top:50px;padding:30px 20px;background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));border:2px solid rgba(255,255,255,.08);border-radius:18px;max-width:700px;margin-left:auto;margin-right:auto">
+        <h3 style="background:var(--grad-marca);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:1.4rem;font-weight:800;margin-bottom:10px">Precisa de ajuda para renovar?</h3>
+        <p style="color:var(--texto-sec);margin-bottom:18px">Fale com nossa equipe pelo WhatsApp — atendimento humanizado e suporte completo durante a renovação.</p>
+        <a href="https://wa.me/5541997043607?text=Olá!%20Sou%20cliente%20ativo%20e%20quero%20renovar%20minha%20assinatura%20da%20Avilar%20Revendedor."
+           target="_blank" rel="noopener" class="btn-cta-teste" style="margin-top:0">
+            💬 FALAR NO WHATSAPP
+        </a>
+    </div>
+</div>
+</section>
+
+</div><!-- /tab-renovar -->
+
+<!-- ============= TAB: INDICAÇÃO ============= -->
+<div class="tab-content" id="tab-indicacao">
+
+<section class="comissao-section" id="comissao" style="padding-top:40px">
+<div class="comissao-container">
+    <div class="comissao-badge">💰 GANHE DINHEIRO INDICANDO</div>
+    <h2 class="titulo">Sistema de <span class="grad">Comissão Avilar</span></h2>
+    <p class="subtexto" style="color:#fff;margin-top:14px">
+        Indique amigos e ganhe <strong style="color:var(--laranja)">R$ 7,00</strong> por cada ativação realizada.
+        Ao se cadastrar, você recebe um <strong style="color:var(--verde-claro)">ID único</strong>
+        e um <strong style="color:var(--vermelho-claro)">link de indicação</strong> personalizado.
+    </p>
+
+    <div class="comissao-destaque">
+        <h3>R$ 7,00 por indicação</h3>
+        <p>
+            ✅ Cadastre-se gratuitamente<br>
+            ✅ Receba seu ID único de 6 dígitos<br>
+            ✅ Compartilhe seu link personalizado<br>
+            ✅ Receba R$ 7,00 via PIX a cada ativação<br>
+            ✅ Pagamentos rápidos e garantidos
+        </p>
+    </div>
+
+    <div class="comissao-form">
+        <h3 style="background:var(--grad-marca);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;text-align:center;font-size:1.5rem;font-weight:800">Cadastre-se Agora</h3>
+
+        <div style="background:rgba(255,122,24,.08);border-left:3px solid var(--laranja);padding:14px;margin-bottom:24px;border-radius:8px">
+            <p style="color:#fff;font-size:.9rem;line-height:1.6;margin:0">
+                💡 <strong>Como funciona:</strong><br>
+                Após o cadastro, você recebe um <strong>ID único de 6 dígitos</strong> e um <strong>link de indicação</strong>.
+                Compartilhe com amigos — quando alguém ativar o serviço pelo seu link, você ganha!
+            </p>
+        </div>
+
+        <form id="formComissao" onsubmit="enviarParaWhatsApp(event)">
+            <div class="form-group">
+                <label for="nomeCompleto">Nome Completo *</label>
+                <input type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Digite seu nome completo" required>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp (com DDD) *</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(41) 99999-9999" required>
+            </div>
+            <div class="form-group">
+                <label for="tipoChavePix">Tipo de Chave PIX *</label>
+                <select id="tipoChavePix" name="tipoChavePix" required>
+                    <option value="">Selecione o tipo de chave</option>
+                    <option value="CPF">CPF</option>
+                    <option value="CNPJ">CNPJ</option>
+                    <option value="Email">E-mail</option>
+                    <option value="Telefone">Telefone</option>
+                    <option value="Aleatoria">Chave Aleatória</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="chavePix">Chave PIX *</label>
+                <input type="text" id="chavePix" name="chavePix" placeholder="Digite sua chave PIX" required>
+            </div>
+            <button type="submit" class="btn-submit">📤 Enviar Cadastro</button>
+        </form>
+    </div>
+</div>
+</section>
+
+</div><!-- /tab-indicacao -->
+
+<!-- ============= TAB: INSTALAÇÃO ============= -->
+<div class="tab-content" id="tab-instalacao">
+
+<section id="instalacao" style="padding-top:40px">
+<div class="container">
+    <div style="display:inline-block;background:var(--grad-marca);color:#000;padding:8px 22px;border-radius:30px;font-weight:800;font-size:.85rem;margin-bottom:14px;letter-spacing:.5px;text-transform:uppercase">
+        📲 Tutoriais de Instalação
+    </div>
+    <h2 class="titulo">Instale seu <span class="grad">Aplicativo</span></h2>
+    <p class="subtexto">
+        Escolha o <strong>sistema</strong> e em seguida o <strong>dispositivo</strong>.
+        Ao final do tutorial, clique no botão do WhatsApp para solicitar seu <strong>teste grátis</strong>.
+    </p>
+
+    <!-- Chat Bot Container -->
+    <div class="chatbot" id="chatbot">
+        <div class="chat-header">
+            <div class="chat-header-avatar">
+                <img src="assets/logo.png" alt="Avilar Bot">
+                <span class="chat-status"></span>
+            </div>
+            <div>
+                <div class="chat-header-name">Avilar Assistente</div>
+                <div class="chat-header-sub"><span class="chat-status-dot"></span> Online agora</div>
+            </div>
+        </div>
+        <div class="chat-body" id="chat-body"></div>
+        <div class="chat-footer">
+            <button class="chat-reset" onclick="resetChat()">🔄 Reiniciar conversa</button>
+        </div>
+    </div>
+
+    <div style="margin-top:50px;padding:30px 20px;background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));border:2px solid rgba(255,255,255,.08);border-radius:18px;max-width:700px;margin-left:auto;margin-right:auto">
+        <h3 style="background:var(--grad-marca);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:1.4rem;font-weight:800;margin-bottom:10px">Precisa de ajuda na instalação?</h3>
+        <p style="color:var(--texto-sec);margin-bottom:18px">Nossa equipe te orienta passo a passo pelo WhatsApp em qualquer dispositivo.</p>
+        <a href="https://wa.me/5541997043607?text=Olá!%20Preciso%20de%20ajuda%20para%20instalar%20o%20aplicativo%20da%20Avilar%20Revendedor."
+           target="_blank" rel="noopener" class="btn-cta-teste" style="margin-top:0">
+            💬 SUPORTE NO WHATSAPP
+        </a>
+    </div>
+</div>
+</section>
+
+</div><!-- /tab-instalacao -->
+
+<!-- ============= TAB: SOLICITAR CONTEÚDO ============= -->
+<div class="tab-content" id="tab-solicitacao">
+<section style="padding-top:40px;padding-bottom:60px">
+<div class="container">
+    <h2 class="titulo">Solicitar <span class="grad">Conteúdo</span></h2>
+    <p class="subtexto">Não encontrou um filme ou série? Solicite aqui e nossa equipe verifica a adição ou ajuste no catálogo.</p>
+
+    <div class="solicitar-form-wrap">
+
+        <div class="solicitar-info-box">
+            💡 <strong>Como funciona:</strong> Preencha os dados abaixo e clique em <strong>Enviar pelo WhatsApp</strong>. Nossa equipe receberá sua solicitação e retornará em breve.
+        </div>
+
+        <div class="form-group">
+            <label for="sol-nome">Nome do Cliente *</label>
+            <input type="text" id="sol-nome" placeholder="Digite seu nome completo">
+        </div>
+
+        <div class="form-group">
+            <label for="sol-telefone">Telefone / WhatsApp *</label>
+            <input type="tel" id="sol-telefone" placeholder="(41) 99999-9999">
+        </div>
+
+        <div class="form-group">
+            <label for="sol-plataforma">Plataforma *</label>
+            <select id="sol-plataforma">
+                <option value="">Selecione a plataforma</option>
+                <option value="WPlay">WPlay</option>
+                <option value="RushPlay">RushPlay</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Categoria *</label>
+            <div class="sol-categoria-toggle">
+                <button type="button" class="sol-cat-btn active" id="btn-filme" onclick="selecionarCategoria('Filme')">🎬 Filme</button>
+                <button type="button" class="sol-cat-btn" id="btn-serie" onclick="selecionarCategoria('Série')">📺 Série</button>
+            </div>
+            <input type="hidden" id="sol-categoria" value="Filme">
+        </div>
+
+        <div class="form-group">
+            <label for="sol-conteudo">Descreva o conteúdo desejado *</label>
+            <textarea id="sol-conteudo" rows="5" placeholder="Ex: Filme 'O Gladiador 2' (2024) em português, ou Série 'The Last of Us' Temporada 2..."></textarea>
+        </div>
+
+        <button class="btn-solicitar-wa" onclick="enviarSolicitacao()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enviar pelo WhatsApp
+        </button>
+    </div>
+</div>
+</section>
+</div><!-- /tab-solicitacao -->
+
+<!-- ============= WHATSAPP FLOAT ============= -->
+<a href="https://wa.me/5541997043607?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20a%20Avilar%20Revendedor."
+   target="_blank" rel="noopener noreferrer"
+   class="whatsapp-float" aria-label="Contato via WhatsApp">
+    <span class="whatsapp-icon">💬</span>
+</a>
+
+<!-- ============= FOOTER ============= -->
+<footer>
+    <p class="brand-line">AVILAR REVENDEDOR</p>
+    <p>© 2026 • Todos os direitos reservados</p>
+    <p style="margin-top:6px;font-size:.85rem">IPTV Premium com RushPlay & wplay — mais de 10.000 clientes satisfeitos</p>
+    <p style="margin-top:6px;font-size:.85rem">📱 WhatsApp: (41) 99704-3607</p>
+</footer>
+
+<script>
+// ============= PLANOS =============
+const todosOsPlanos = [
+    {duracao:"30 Dias",dias:30,dispositivos:1,preco:29.99,precoAvista:null,economia:null,link:"https://ggcheckout.app/checkout/v2/Pis4HsvYCsHZC00Ewfy7"},
+    {duracao:"30 Dias",dias:30,dispositivos:2,preco:49.99,precoAvista:null,economia:null,link:"https://ggcheckout.app/checkout/v2/v7DUPxVfvvMxBYTx0BKM"},
+    {duracao:"90 Dias",dias:90,dispositivos:1,preco:89.97,precoAvista:85.47,economia:"5% OFF",link:"https://ggcheckout.app/checkout/v2/4sSJinT0no9N6JRoPewd"},
+    {duracao:"90 Dias",dias:90,dispositivos:2,preco:149.97,precoAvista:139.47,economia:"7% OFF",link:"https://ggcheckout.app/checkout/v2/9RDOqNeO95bnkgxELf6G"},
+    {duracao:"180 Dias",dias:180,dispositivos:1,preco:179.94,precoAvista:165.54,economia:"8% OFF",link:"https://ggcheckout.app/checkout/v2/iUVsV2w3ru7Y1NM5rcyc"},
+    {duracao:"180 Dias",dias:180,dispositivos:2,preco:299.94,precoAvista:269.95,economia:"10% OFF",link:"https://ggcheckout.app/checkout/v2/Ar76hWe0TSyENUlighUI"},
+    {duracao:"270 Dias",dias:270,dispositivos:1,preco:269.91,precoAvista:240.22,economia:"11% OFF",link:"https://ggcheckout.app/checkout/v2/5s3XekSreE3BSjaaSdNE"},
+    {duracao:"270 Dias",dias:270,dispositivos:2,preco:449.91,precoAvista:391.42,economia:"13% OFF",link:"https://ggcheckout.app/checkout/v2/Lo91WEsvoxeOAf9ZRW59"},
+    {duracao:"360 Dias",dias:360,dispositivos:1,preco:359.88,precoAvista:305.90,economia:"15% OFF",link:"https://ggcheckout.app/checkout/v2/q6SXzFz4AVOE9gTbme7z"},
+    {duracao:"360 Dias",dias:360,dispositivos:2,preco:599.88,precoAvista:503.90,economia:"16% OFF",link:"https://ggcheckout.app/checkout/v2/TRlqpA2IuE89Bltbdaxh"}
+];
+
+function formatPreco(v){return v.toFixed(2).replace('.',',');}
+function calcMensal(p,d){return p/(d/30);}
+function mesesLabel(d){
+    const m=Math.round(d/30);
+    return m===1?'1 mês':m+' meses';
+}
+
+function renderPlanos(){
+    const c=document.getElementById('planos-container');
+    todosOsPlanos.forEach(p=>{
+        const mensal=calcMensal(p.preco,p.dias);
+        const economiaValor=p.precoAvista?p.preco-p.precoAvista:0;
+        const cls=p.dispositivos===1?'d1':'d2';
+        const el=document.createElement('div');
+        el.className='plano-item '+cls;
+        let h=`
+            <div class="plano-badge">${p.dispositivos===1?'📱 1 Dispositivo':'📱📱 2 Dispositivos'}</div>
+            <div class="plano-header">
+                <div class="plano-duracao">${p.duracao} <span style="font-size:.85rem;color:var(--texto-terciario);font-weight:600;letter-spacing:0">(${mesesLabel(p.dias)})</span></div>
+                <div class="plano-preco">R$ ${formatPreco(p.preco)}</div>
+                <div class="plano-preco-mensal">R$ ${formatPreco(mensal)}/mês</div>`;
+        if(p.precoAvista){
+            h+=`<div class="plano-preco-avista">
+                    <span class="label">💰 À vista no PIX</span>
+                    <div class="valor">R$ ${formatPreco(p.precoAvista)}</div>
+                </div>
+                <div class="plano-economia">Economize R$ ${formatPreco(economiaValor)} • ${p.economia}</div>`;
+        }
+        h+=`</div>
+            <ul class="plano-beneficios">
+                <li>Acesso RushPlay + wplay</li>
+                <li>${p.dispositivos} dispositivo${p.dispositivos>1?'s':''} simultâneo${p.dispositivos>1?'s':''}</li>
+                <li>Qualidade HD e 4K</li>
+                <li>Suporte técnico incluído</li>
+                <li>Sem fidelidade</li>
+            </ul>
+            <a href="${p.link}" class="btn-assinar" target="_blank" rel="noopener noreferrer">🛒 Assinar Agora</a>`;
+        el.innerHTML=h;
+        c.appendChild(el);
+    });
+}
+
+// ============= FAQ =============
+function toggleFAQ(btn){
+    const item=btn.parentElement;
+    const wasActive=item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));
+    if(!wasActive) item.classList.add('active');
+}
+
+// ============= COMISSÃO =============
+function gerarIDIndicacao(){return Math.floor(100000+Math.random()*900000).toString();}
+function enviarParaWhatsApp(e){
+    e.preventDefault();
+    const id=gerarIDIndicacao();
+    const nome=document.getElementById('nomeCompleto').value;
+    const wp=document.getElementById('whatsapp').value;
+    const tipo=document.getElementById('tipoChavePix').value;
+    const chave=document.getElementById('chavePix').value;
+    const msgInd=`Olá, fui indicado pelo ${id}, quero realizar um teste grátis na Avilar Revendedor!`;
+    const linkInd=`https://wa.me/5541997043607?text=${encodeURIComponent(msgInd)}`;
+    const m=`🎯 *CADASTRO COMISSÃO AVILAR REVENDEDOR*\n\n`+
+            `👤 *Nome:* ${nome}\n📱 *WhatsApp:* ${wp}\n`+
+            `💳 *Tipo Chave PIX:* ${tipo}\n🔑 *Chave PIX:* ${chave}\n\n`+
+            `🆔 *SEU ID DE INDICAÇÃO:* ${id}\n\n`+
+            `🔗 *Link de Indicação:*\n${linkInd}\n\n`+
+            `📢 *Como usar:* Compartilhe seu link! A cada ativação você ganha R$ 7,00 via PIX.\n\n`+
+            `✅ Aguardando aprovação!`;
+    window.open(`https://wa.me/5541997043607?text=${encodeURIComponent(m)}`,'_blank');
+    document.getElementById('formComissao').reset();
+    alert(`✅ Cadastro enviado!\n\n🆔 Seu ID: ${id}\n\nSeu link de indicação foi enviado junto com seus dados!`);
+}
+
+// ============= TABS =============
+function switchTab(tab){
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    const content=document.getElementById('tab-'+tab);
+    const btn=document.querySelector('.tab-btn[data-tab="'+tab+'"]');
+    if(content) content.classList.add('active');
+    if(btn) btn.classList.add('active');
+    // Start chatbot on first open of installation tab
+    if(tab === 'instalacao'){
+        const cb = document.getElementById('chat-body');
+        if(cb && cb.children.length === 0) startChat();
+    }
+    // Scroll to tabs nav so user sees the new tab content
+    const nav=document.getElementById('tabs-nav');
+    if(nav){
+        const y=nav.getBoundingClientRect().top + window.pageYOffset - 4;
+        window.scrollTo({top:y, behavior:'smooth'});
+    }
+}
+
+// ============= INSTALAÇÃO =============
+const WHATSAPP_NUM = '5541997043607';
+
+const tutoriais = {
+    rush: {
+        nome: 'RushPlay',
+        dispositivos: {
+            android: {
+                label: '📱 Celular/Tablet Android',
+                apps: [
+                    {nome:'RushPlay', tipo:'Link Direto', img:'aplicativo_rushplay.jpeg', dl:'https://download.rushplayoficial.com/RUSHPLAY.apk', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão abaixo, o app irá baixar automaticamente.',
+                        '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
+                        '<span class="warn">⚠️ Conceda permissão para instalar de <strong>Fontes Desconhecidas</strong>.</span>',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]},
+                    {nome:'RushPlay Pro', tipo:'Link Direto', img:'aplicativo_rushplay.jpeg', dl:'https://download.rushplayoficial.com/RUSHPRO.apk', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão abaixo, o app irá baixar automaticamente.',
+                        '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
+                        '<span class="warn">⚠️ Conceda permissão para instalar de <strong>Fontes Desconhecidas</strong>.</span>',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]},
+                    {nome:'XCloud Mobile', tipo:'Link Direto', img:'aplicativo_xcloud.png', dl:'https://download.wareztvonline.com/XCLOUDTV.apk', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão abaixo, o app irá baixar automaticamente.',
+                        '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
+                        '<span class="warn">⚠️ Conceda permissão para instalar de <strong>Fontes Desconhecidas</strong>.</span>',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]},
+                    {nome:'ntDown + RushPlay', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'https://play.google.com/store/apps/details?id=link.ntdev.ntdw&pcampaignid=web_share', steps:[
+                        '📥 Baixe o app <strong>ntDown</strong> na loja de aplicativos.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">15629</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o app RushPlay.</span>',
+                        '🛠️ Após o download, instale o RushPlay no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]},
+                    {nome:'ntDown + RushPlay Pro', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'https://play.google.com/store/apps/details?id=com.esaba.downloader&hl=pt_BR', steps:[
+                        '📥 Baixe o app <strong>ntDown</strong> na loja de aplicativos.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">83982</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o app RushPlay Pro.</span>',
+                        '🛠️ Após o download, instale o RushPlay Pro no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]},
+                    {nome:'ntDown + XCloud', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'https://play.google.com/store/apps/details?id=com.esaba.downloader&hl=pt_BR', steps:[
+                        '📥 Baixe o app <strong>ntDown</strong> na loja de aplicativos.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">17695</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o app XCloud.</span>',
+                        '🛠️ Após o download, instale o XCloud no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]}
+                ]
+            },
+            ios: {
+                label: '🍎 iPhone/iPad',
+                apps: [
+                    {nome:'XCloud Mobile', tipo:'App Store', img:'aplicativo_xcloud.png', dl:'https://apps.apple.com/br/app/xcloud-mobile/id6471106231', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão para abrir na App Store.',
+                        '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]}
+                ]
+            },
+            pc: {
+                label: '💻 Computador',
+                apps: [
+                    {nome:'RushPlay Web', tipo:'Navegador (sem canais de TV)', img:'aplicativo_rushplay.jpeg', dl:'https://www.rushplayoficial.com/player/login', steps:[
+                        '🌐 Acesse o link no seu navegador.',
+                        '🔐 Faça login com seus dados de acesso.',
+                        '▶️ Aproveite filmes e séries direto pelo navegador.'
+                    ]}
+                ]
+            },
+            tvbox: {
+                label: '📦 TV Box / SmartTV Android / Mi Stick / Fire Stick',
+                apps: [
+                    {nome:'ntDown + RushPlay', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'', steps:[
+                        '📥 Acesse a loja de aplicativos da TV Box e baixe o app <strong>ntDown</strong>.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">15629</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o RushPlay.</span>',
+                        '🛠️ Após o download, instale o RushPlay no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]},
+                    {nome:'ntDown + RushPlay Pro', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'', steps:[
+                        '📥 Acesse a loja de aplicativos da TV Box e baixe o app <strong>ntDown</strong>.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">83982</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o RushPlay Pro.</span>',
+                        '🛠️ Após o download, instale o RushPlay Pro no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]},
+                    {nome:'ntDown + XCloud', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'', steps:[
+                        '📥 Acesse a loja de aplicativos da TV Box e baixe o app <strong>ntDown</strong>.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">17695</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o XCloud.</span>',
+                        '🛠️ Após o download, instale o XCloud no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]}
+                ]
+            },
+            smarttv: {
+                label: '📺 SmartTV LG / Samsung / RokuTV',
+                apps: [
+                    {nome:'XCloud', tipo:'Loja da SmartTV', img:'aplicativo_xcloud.png', dl:'', steps:[
+                        '📥 Acesse a loja de aplicativos da sua SmartTV.',
+                        '🔎 Procure por <strong>XCloud</strong> e faça o download.',
+                        '🛠️ Instale o aplicativo após o download.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]}
+                ]
+            }
+        }
+    },
+    wp: {
+        nome: 'WPlay',
+        dispositivos: {
+            android: {
+                label: '📱 Celular/Tablet Android',
+                apps: [
+                    {nome:'WPlay', tipo:'Link Direto', img:'aplicativo_wplay.jpeg', dl:'https://download.wareztvonline.com/WPLAY.apk', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão abaixo, o app irá baixar automaticamente.',
+                        '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
+                        '<span class="warn">⚠️ Conceda permissão para instalar de <strong>Fontes Desconhecidas</strong>.</span>',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]},
+                    {nome:'WPlay Pro', tipo:'Link Direto', img:'aplicativo_wplay.jpeg', dl:'https://download.wareztvonline.com/WPLAYPRO.apk', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão abaixo, o app irá baixar automaticamente.',
+                        '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
+                        '<span class="warn">⚠️ Conceda permissão para instalar de <strong>Fontes Desconhecidas</strong>.</span>',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]},
+                    {nome:'XCloud Mobile', tipo:'Link Direto', img:'aplicativo_xcloud.png', dl:'https://download.wareztvonline.com/XCLOUDTV.apk', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão abaixo, o app irá baixar automaticamente.',
+                        '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
+                        '<span class="warn">⚠️ Conceda permissão para instalar de <strong>Fontes Desconhecidas</strong>.</span>',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]},
+                    {nome:'ntDown + WPlay', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'https://play.google.com/store/apps/details?id=link.ntdev.ntdw&pcampaignid=web_share', steps:[
+                        '📥 Baixe o app <strong>ntDown</strong> na loja de aplicativos.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">44892</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o app WPlay.</span>',
+                        '🛠️ Após o download, instale o WPlay no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]},
+                    {nome:'ntDown + WPlay Pro', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'https://play.google.com/store/apps/details?id=com.esaba.downloader&hl=pt_BR', steps:[
+                        '📥 Baixe o app <strong>ntDown</strong> na loja de aplicativos.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">21241</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o app WPlay Pro.</span>',
+                        '🛠️ Após o download, instale o WPlay Pro no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]},
+                    {nome:'ntDown + XCloud', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'https://play.google.com/store/apps/details?id=com.esaba.downloader&hl=pt_BR', steps:[
+                        '📥 Baixe o app <strong>ntDown</strong> na loja de aplicativos.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">17695</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o app XCloud.</span>',
+                        '🛠️ Após o download, instale o XCloud no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]}
+                ]
+            },
+            ios: {
+                label: '🍎 iPhone/iPad',
+                apps: [
+                    {nome:'WPlay', tipo:'App Store', img:'aplicativo_wplay.jpeg', dl:'https://apps.apple.com/br/app/wplay-mobile/id6471241842', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão para abrir na App Store.',
+                        '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]},
+                    {nome:'XCloud Mobile', tipo:'App Store', img:'aplicativo_xcloud.png', dl:'https://apps.apple.com/br/app/xcloud-mobile/id6471106231', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão para abrir na App Store.',
+                        '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]}
+                ]
+            },
+            pc: {
+                label: '💻 Computador',
+                apps: [
+                    {nome:'WPlay', tipo:'Windows (.exe)', img:'aplicativo_wplay.jpeg', dl:'https://download.wareztvonline.com/WPLAYWINDOWS.exe', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão para baixar o instalador.',
+                        '🛠️ <strong>Instalação:</strong> Execute o arquivo após o download.',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]},
+                    {nome:'Wapp', tipo:'Windows (.exe)', img:'aplicativo_wapp.png', dl:'https://download.wareztvonline.com/WAPPWINDOWS.exe', steps:[
+                        '📥 <strong>Download:</strong> Clique no botão para baixar o instalador.',
+                        '🛠️ <strong>Instalação:</strong> Execute o arquivo após o download.',
+                        '✅ Após a instalação concluída, abra o aplicativo.'
+                    ]},
+                    {nome:'WPlay Web', tipo:'Navegador (sem canais de TV)', img:'aplicativo_wplay.jpeg', dl:'https://wareztvonline.com/player/login', steps:[
+                        '🌐 Acesse o link no seu navegador.',
+                        '🔐 Faça login com seus dados de acesso.',
+                        '▶️ Aproveite filmes e séries direto pelo navegador.'
+                    ]}
+                ]
+            },
+            tvbox: {
+                label: '📦 TV Box / SmartTV Android / Mi Stick / Fire Stick',
+                apps: [
+                    {nome:'ntDown + WPlay', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'', steps:[
+                        '📥 Acesse a loja de aplicativos da TV Box e baixe o app <strong>ntDown</strong>.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">44892</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o WPlay.</span>',
+                        '🛠️ Após o download, instale o WPlay no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]},
+                    {nome:'ntDown + WPlay Pro', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'', steps:[
+                        '📥 Acesse a loja de aplicativos da TV Box e baixe o app <strong>ntDown</strong>.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">21241</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o WPlay Pro.</span>',
+                        '🛠️ Após o download, instale o WPlay Pro no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]},
+                    {nome:'ntDown + XCloud', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'', steps:[
+                        '📥 Acesse a loja de aplicativos da TV Box e baixe o app <strong>ntDown</strong>.',
+                        '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">17695</span>',
+                        '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o XCloud.</span>',
+                        '🛠️ Após o download, instale o XCloud no dispositivo.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]}
+                ]
+            },
+            smarttv: {
+                label: '📺 SmartTV LG / Samsung / RokuTV',
+                apps: [
+                    {nome:'XCloud', tipo:'Loja da SmartTV', img:'aplicativo_xcloud.png', dl:'', steps:[
+                        '📥 Acesse a loja de aplicativos da sua SmartTV.',
+                        '🔎 Procure por <strong>XCloud</strong> e faça o download.',
+                        '🛠️ Instale o aplicativo após o download.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]},
+                    {nome:'WPlay', tipo:'Loja da SmartTV', img:'aplicativo_wplay.jpeg', dl:'', steps:[
+                        '📥 Acesse a loja de aplicativos da sua SmartTV.',
+                        '🔎 Procure por <strong>WPlay</strong> e faça o download.',
+                        '🛠️ Instale o aplicativo após o download.',
+                        '✅ Abra o aplicativo após a instalação.'
+                    ]}
+                ]
+            }
+        }
+    }
+};
+
+let currentSys = null;
+let currentDev = null;
+
+// ====== CHATBOT ======
+const chatBody = () => document.getElementById('chat-body');
+
+function scrollChat(){
+    const cb = chatBody();
+    if(cb) cb.scrollTop = cb.scrollHeight;
+}
+
+function addBotMessage(html, delay=600){
+    return new Promise(resolve=>{
+        const cb = chatBody();
+        if(!cb){ resolve(); return; }
+        // Typing indicator
+        const typing = document.createElement('div');
+        typing.className = 'msg bot typing';
+        typing.innerHTML = `
+            <div class="msg-avatar"><img src="assets/logo.png" alt="Bot"></div>
+            <div class="msg-bubble"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
+        cb.appendChild(typing);
+        scrollChat();
+        setTimeout(()=>{
+            typing.remove();
+            const msg = document.createElement('div');
+            msg.className = 'msg bot';
+            msg.innerHTML = `
+                <div class="msg-avatar"><img src="assets/logo.png" alt="Bot"></div>
+                <div class="msg-bubble">${html}</div>`;
+            cb.appendChild(msg);
+            scrollChat();
+            resolve();
+        }, delay);
+    });
+}
+
+function addUserMessage(text){
+    const cb = chatBody();
+    if(!cb) return;
+    const msg = document.createElement('div');
+    msg.className = 'msg user';
+    msg.innerHTML = `
+        <div class="msg-avatar">🧑</div>
+        <div class="msg-bubble">${text}</div>`;
+    cb.appendChild(msg);
+    scrollChat();
+}
+
+function addOptions(options, gridLayout=false){
+    const cb = chatBody();
+    if(!cb) return;
+    const box = document.createElement('div');
+    box.className = 'chat-options' + (gridLayout ? ' grid' : '');
+    options.forEach(opt=>{
+        const b = document.createElement('button');
+        b.className = 'chat-opt' + (opt.cls ? ' '+opt.cls : '');
+        b.innerHTML = (opt.img ? `<img src="assets/${opt.img}" alt="">` : '') + opt.label;
+        b.onclick = ()=>{
+            // Remove all option groups (one selection at a time)
+            box.remove();
+            opt.onClick();
+        };
+        box.appendChild(b);
+    });
+    cb.appendChild(box);
+    scrollChat();
+}
+
+function addChatTutorial(app, sysKey, devLabel){
+    const cb = chatBody();
+    if(!cb) return;
+    const cls = sysKey === 'rush' ? 'rush' : 'wp';
+    const sysName = tutoriais[sysKey].nome;
+    const wrap = document.createElement('div');
+    wrap.className = 'msg bot';
+    const stepsHTML = app.steps.map(s=>`<div class="chat-tut-step">${s}</div>`).join('');
+    const dlBtn = app.dl
+        ? `<a href="${app.dl}" target="_blank" rel="noopener noreferrer" class="ct-dl">⬇️ Baixar App</a>`
+        : `<a href="https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent('Olá! Onde encontro o app ' + app.nome + ' do sistema ' + sysName + ' para o meu dispositivo?')}" target="_blank" rel="noopener" class="ct-dl">📖 Como Baixar</a>`;
+    const cleanDev = devLabel.replace(/[📱🍎💻📦📺]/g,'').trim();
+    const waMsg = `Olá 👋, já instalei o aplicativo, quero gerar um teste grátis!\n\n📚 *Sistema*: ${sysName}\n📁 *Plataforma*: ${cleanDev}\n📂 *Aplicativo*: ${app.nome}`;
+    const waLink = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(waMsg)}`;
+    wrap.innerHTML = `
+        <div class="msg-avatar"><img src="assets/logo.png" alt="Bot"></div>
+        <div class="chat-tutorial ${cls}" style="flex:1">
+            <div class="chat-tutorial-head">
+                <img src="assets/${app.img}" alt="${app.nome}">
+                <div>
+                    <div class="ct-title">${app.nome}</div>
+                    <div class="ct-sub">${app.tipo}</div>
+                </div>
+            </div>
+            ${stepsHTML}
+            <div class="chat-tut-actions">
+                ${dlBtn}
+                <a href="${waLink}" target="_blank" rel="noopener" class="ct-wa">💬 Solicitar Teste Grátis</a>
+            </div>
+        </div>`;
+    cb.appendChild(wrap);
+    scrollChat();
+}
+
+async function startChat(){
+    const cb = chatBody();
+    if(!cb) return;
+    cb.innerHTML = '';
+    currentSys = null;
+    currentDev = null;
+    await addBotMessage('👋 Olá! Eu sou o <strong>Avilar Assistente</strong>. Vou te ajudar a instalar seu aplicativo.', 700);
+    await addBotMessage('Primeiro, qual <strong>sistema</strong> você quer fazer o teste?', 900);
+    addOptions([
+        {label:'RushPlay', img:'logo_rushplay.jpeg', cls:'rush', onClick:()=>onSysChosen('rush')},
+        {label:'WPlay', img:'logo_wplay.jpeg', cls:'wp', onClick:()=>onSysChosen('wp')}
+    ], true);
+}
+
+async function onSysChosen(sys){
+    currentSys = sys;
+    addUserMessage(tutoriais[sys].nome);
+    await addBotMessage(`Ótima escolha! 🎯 Agora me conta: em qual <strong>plataforma</strong> você vai instalar o <strong>${tutoriais[sys].nome}</strong>?`, 900);
+    const devs = tutoriais[sys].dispositivos;
+    const opts = Object.keys(devs).map(key=>({
+        label: devs[key].label,
+        cls: sys,
+        onClick: ()=>onDevChosen(key)
+    }));
+    addOptions(opts);
+}
+
+async function onDevChosen(dev){
+    currentDev = dev;
+    const devData = tutoriais[currentSys].dispositivos[dev];
+    addUserMessage(devData.label);
+    await addBotMessage(`Perfeito! 📲 Agora selecione qual <strong>aplicativo</strong> você quer instalar:`, 800);
+    const opts = devData.apps.map((app,i)=>({
+        label: app.nome + ' <span style="color:var(--texto-terciario);font-size:.78rem;font-weight:600;margin-left:6px">('+app.tipo+')</span>',
+        img: app.img,
+        cls: currentSys,
+        onClick: ()=>onAppChosen(i)
+    }));
+    addOptions(opts);
+}
+
+async function onAppChosen(idx){
+    const devData = tutoriais[currentSys].dispositivos[currentDev];
+    const app = devData.apps[idx];
+    addUserMessage(app.nome);
+    await addBotMessage(`Show! 🚀 Aqui está o passo a passo para instalar o <strong>${app.nome}</strong>. Ao final, clique em <strong>Solicitar Teste Grátis</strong> e nossa equipe libera seu acesso no WhatsApp.`, 1000);
+    addChatTutorial(app, currentSys, devData.label);
+    await addBotMessage('Quer instalar outro aplicativo ou testar em outro dispositivo?', 1400);
+    addOptions([
+        {label:'🔁 Escolher outro app', onClick:()=>onDevChosen(currentDev)},
+        {label:'📱 Mudar plataforma', onClick:()=>onSysChosen(currentSys)},
+        {label:'🔄 Trocar sistema', onClick:()=>startChat()}
+    ]);
+}
+
+function resetChat(){ startChat(); }
+
+// ============= SOLICITAR CONTEÚDO =============
+let solCategoria = 'Filme';
+
+function selecionarCategoria(cat){
+    solCategoria = cat;
+    document.getElementById('sol-categoria').value = cat;
+    document.getElementById('btn-filme').classList.toggle('active', cat === 'Filme');
+    document.getElementById('btn-serie').classList.toggle('active', cat === 'Série');
+}
+
+function enviarSolicitacao(){
+    const nome      = document.getElementById('sol-nome').value.trim();
+    const telefone  = document.getElementById('sol-telefone').value.trim();
+    const plataforma= document.getElementById('sol-plataforma').value;
+    const conteudo  = document.getElementById('sol-conteudo').value.trim();
+
+    if(!nome){alert('Por favor, informe seu nome.'); return;}
+    if(!telefone){alert('Por favor, informe seu telefone/WhatsApp.'); return;}
+    if(!plataforma){alert('Por favor, selecione a plataforma.'); return;}
+    if(!conteudo){alert('Por favor, descreva o conteúdo que deseja.'); return;}
+
+    const msg =
+`📥 *Solicitação de Conteúdo*
+
+👤 *Cliente*: ${nome}
+📞 *Telefone*: ${telefone}
+📁 *Plataforma*: ${plataforma}
+🎬 *Categoria*: ${solCategoria}
+📺 *Conteúdo*: ${conteudo}`;
+
+    const url = `https://wa.me/5541997043607?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+// ============= INIT =============
+document.addEventListener('DOMContentLoaded',function(){
+    renderPlanos();
+});
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
