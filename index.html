@@ -420,7 +420,7 @@ section{width:100%;padding:60px 16px;position:relative}
 }
 
 /* ==================================================
-   APLICATIVOS
+    APLICATIVOS
 ================================================== */
 .apps-grid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
@@ -990,6 +990,8 @@ footer .brand-line{
 @media(max-width:600px){
     .solicitar-form-wrap{padding:24px 16px}
     .sol-categoria-toggle{flex-direction:column;gap:10px}
+    #comparativo [style*="grid-template-columns:repeat(2"]{grid-template-columns:1fr !important}
+    #comparativo [style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr) !important}
 }
 </style>
 
@@ -1054,62 +1056,144 @@ footer .brand-line{
         <div class="sistema-card rush">
             <img src="assets/logo_rushplay.jpeg" alt="RushPlay">
             <h3>RushPlay</h3>
+            <div style="background:rgba(255,42,42,.15);border:1.5px solid rgba(255,42,42,.4);padding:8px 16px;border-radius:10px;margin:12px auto;display:inline-block">
+                <span style="color:var(--vermelho-claro);font-weight:800;font-size:1rem">🔴 1 Acesso</span>
+            </div>
             <p>Plataforma rápida e moderna com catálogo gigante de filmes, séries e canais ao vivo. Interface intuitiva e atualização constante.</p>
         </div>
         <div class="sistema-card wp">
             <img src="assets/logo_wplay.jpeg" alt="wplay">
-            <h3>wplay TV</h3>
+            <h3>WPlay</h3>
+            <div style="background:rgba(26,208,122,.15);border:1.5px solid rgba(26,208,122,.4);padding:8px 16px;border-radius:10px;margin:12px auto;display:inline-block">
+                <span style="color:var(--verde-claro);font-weight:800;font-size:1rem">🟢 2 Acessos</span>
+            </div>
             <p>Streaming premium com foco em estabilidade total e qualidade 4K. Funciona em qualquer dispositivo, em qualquer lugar.</p>
         </div>
     </div>
 </div>
 </section>
 
-<!-- ============= CATEGORIAS ============= -->
-<section id="categorias">
+<!-- ============= COMPARATIVO ============= -->
+<section id="comparativo">
 <div class="container">
-    <h2 class="titulo">Categorias de <span class="grad">Conteúdo</span></h2>
-    <p class="subtexto">Um dos maiores catálogos do Brasil, organizado para a sua família.</p>
+    <h2 class="titulo">Compare e <span class="grad">Economize</span></h2>
+    <p class="subtexto">Nossos sistemas vs outras plataformas. Tudo em um só lugar, por muito menos.</p>
 
-    <div class="cards-categorias">
-        <div class="card-categoria r">
-            <h3>📺 Canais</h3>
-            <div class="quantidade">2.384 canais ao vivo</div>
-            <ul>
-                <li>✓ Abertos e regionais</li>
-                <li>✓ Canais internacionais</li>
-                <li>✓ Esportes e PPV</li>
-                <li>✓ Filmes e séries 24h</li>
-                <li>✓ Infantil e documentários</li>
-                <li class="lock">🔓 Liberado conteúdo adulto</li>
-            </ul>
+    <!-- Comparação dos 2 sistemas com outras plataformas -->
+    <div style="max-width:900px;margin:40px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:24px">
+        <!-- RushPlay -->
+        <div style="background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));border:2px solid rgba(255,42,42,.4);border-radius:16px;padding:24px;text-align:center">
+            <img src="assets/logo_rushplay.jpeg" alt="RushPlay" style="height:50px;margin-bottom:12px;border-radius:8px">
+            <div style="font-size:1.2rem;font-weight:800;color:var(--vermelho-claro);margin-bottom:4px">RushPlay</div>
+            <div style="font-size:.85rem;color:var(--texto-sec);margin-bottom:16px">1 Acesso</div>
+            <div style="font-size:2.2rem;font-weight:800;color:#fff;margin-bottom:4px">R$ 19,99</div>
+            <div style="font-size:.85rem;color:var(--texto-sec);margin-bottom:16px">/mês</div>
+            <div style="background:rgba(255,42,42,.1);border:1px solid rgba(255,42,42,.3);border-radius:10px;padding:12px;margin-top:12px">
+                <div style="font-size:.85rem;color:var(--vermelho-claro);font-weight:700;margin-bottom:8px">Inclui tudo:</div>
+                <div style="font-size:.8rem;color:var(--texto-sec);line-height:1.6">
+                    ✓ 2.384+ Canais ao vivo<br>
+                    ✓ 27.703+ Filmes<br>
+                    ✓ 5.431+ Séries<br>
+                    ✓ Netflix, Prime, Disney+, HBO<br>
+                    ✓ Esportes, PPV, 4K
+                </div>
+            </div>
         </div>
 
-        <div class="card-categoria o">
-            <h3>🎬 Séries</h3>
-            <div class="quantidade">5.431 séries completas</div>
-            <ul>
-                <li>✓ Séries nacionais e internacionais</li>
-                <li>✓ Novelas, doramas e turcas</li>
-                <li>✓ Animes (dublado e legendado)</li>
-                <li>✓ Animações e clássicos</li>
-                <li>✓ Netflix, Prime, HBO, Disney+</li>
-                <li class="lock">🔓 Liberado conteúdo adulto</li>
-            </ul>
+        <!-- WPlay -->
+        <div style="background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));border:2px solid rgba(26,208,122,.4);border-radius:16px;padding:24px;text-align:center">
+            <img src="assets/logo_wplay.jpeg" alt="WPlay" style="height:50px;margin-bottom:12px;border-radius:8px">
+            <div style="font-size:1.2rem;font-weight:800;color:var(--verde-claro);margin-bottom:4px">WPlay</div>
+            <div style="font-size:.85rem;color:var(--texto-sec);margin-bottom:16px">2 Acessos</div>
+            <div style="font-size:2.2rem;font-weight:800;color:#fff;margin-bottom:4px">R$ 29,99</div>
+            <div style="font-size:.85rem;color:var(--texto-sec);margin-bottom:16px">/mês</div>
+            <div style="background:rgba(26,208,122,.1);border:1px solid rgba(26,208,122,.3);border-radius:10px;padding:12px;margin-top:12px">
+                <div style="font-size:.85rem;color:var(--verde-claro);font-weight:700;margin-bottom:8px">Inclui tudo:</div>
+                <div style="font-size:.8rem;color:var(--texto-sec);line-height:1.6">
+                    ✓ 2.384+ Canais ao vivo<br>
+                    ✓ 27.703+ Filmes<br>
+                    ✓ 5.431+ Séries<br>
+                    ✓ Netflix, Prime, Disney+, HBO<br>
+                    ✓ Esportes, PPV, 4K
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div class="card-categoria g">
-            <h3>🎥 Filmes</h3>
-            <div class="quantidade">27.703 filmes disponíveis</div>
-            <ul>
-                <li>✓ Lançamentos atualizados</li>
-                <li>✓ Ação, comédia e drama</li>
-                <li>✓ Terror, suspense e romance</li>
-                <li>✓ Clássicos e filmes 4K</li>
-                <li>✓ Marvel, DC e universos</li>
-                <li class="lock">🔓 Liberado conteúdo adulto</li>
-            </ul>
+    <!-- Comparação com outras plataformas -->
+    <div style="max-width:700px;margin:50px auto 0">
+        <h3 style="color:#fff;font-size:1.2rem;font-weight:800;margin-bottom:20px;text-align:center">Outras plataformas cobram por separado:</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <div style="background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;text-align:center">
+                <div style="font-size:1rem;font-weight:700;color:var(--texto-sec);margin-bottom:4px">Netflix</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--texto-terciario)">R$ 55,90</div>
+                <div style="font-size:.75rem;color:var(--texto-terciario)">/mês</div>
+            </div>
+            <div style="background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;text-align:center">
+                <div style="font-size:1rem;font-weight:700;color:var(--texto-sec);margin-bottom:4px">Prime Video</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--texto-terciario)">R$ 19,90</div>
+                <div style="font-size:.75rem;color:var(--texto-terciario)">/mês</div>
+            </div>
+            <div style="background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;text-align:center">
+                <div style="font-size:1rem;font-weight:700;color:var(--texto-sec);margin-bottom:4px">Disney+</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--texto-terciario)">R$ 33,90</div>
+                <div style="font-size:.75rem;color:var(--texto-terciario)">/mês</div>
+            </div>
+            <div style="background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;text-align:center">
+                <div style="font-size:1rem;font-weight:700;color:var(--texto-sec);margin-bottom:4px">HBO Max</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--texto-terciario)">R$ 34,90</div>
+                <div style="font-size:.75rem;color:var(--texto-terciario)">/mês</div>
+            </div>
+            <div style="background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;text-align:center">
+                <div style="font-size:1rem;font-weight:700;color:var(--texto-sec);margin-bottom:4px">Globoplay</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--texto-terciario)">R$ 24,90</div>
+                <div style="font-size:.75rem;color:var(--texto-terciario)">/mês</div>
+            </div>
+            <div style="background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;text-align:center">
+                <div style="font-size:1rem;font-weight:700;color:var(--texto-sec);margin-bottom:4px">Total</div>
+                <div style="font-size:1.3rem;font-weight:800;color:var(--vermelho-claro)">R$ 169,50</div>
+                <div style="font-size:.75rem;color:var(--texto-terciario)">/mês</div>
+            </div>
         </div>
+    </div>
+
+    <!-- Anúncios -->
+    <div style="max-width:700px;margin:40px auto 0">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <div style="background:rgba(255,42,42,.08);border:1.5px solid rgba(255,42,42,.3);border-radius:12px;padding:20px;text-align:center">
+                <div style="font-size:2rem;margin-bottom:8px">📺</div>
+                <div style="font-size:1rem;font-weight:700;color:var(--vermelho-claro);margin-bottom:8px">Outras plataformas</div>
+                <div style="font-size:.9rem;color:var(--texto-sec);line-height:1.5">
+                    Anúncios e interrupções<br>
+                    <span style="font-size:.8rem;color:var(--texto-terciario)">Dependendo do plano escolhido</span>
+                </div>
+            </div>
+            <div style="background:rgba(26,208,122,.08);border:1.5px solid rgba(26,208,122,.3);border-radius:12px;padding:20px;text-align:center">
+                <div style="font-size:2rem;margin-bottom:8px">✨</div>
+                <div style="font-size:1rem;font-weight:700;color:var(--verde-claro);margin-bottom:8px">Nosso serviço</div>
+                <div style="font-size:.9rem;color:var(--texto-sec);line-height:1.5">
+                    <strong style="color:#fff">Sem anúncios</strong><br>
+                    Assista sem pausas ou interrupções
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Economia -->
+    <div style="max-width:600px;margin:40px auto 0;text-align:center">
+        <div style="background:linear-gradient(135deg,rgba(26,208,122,.15),rgba(43,255,138,.15));border:2px solid rgba(26,208,122,.4);border-radius:16px;padding:24px">
+            <div style="font-size:1.1rem;font-weight:700;color:var(--verde-claro);margin-bottom:8px">💰 Economia garantida</div>
+            <div style="font-size:.95rem;color:var(--texto-sec);line-height:1.6">
+                Tenha <strong style="color:#fff">tudo isso em um único app</strong> por apenas <strong style="color:var(--verde-claro)">R$ 19,99/mês</strong><br>
+                e economize mais de <strong style="color:var(--verde-claro)">R$ 140 por mês</strong>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:30px;text-align:center">
+        <button onclick="switchTab('renovar','planos','top')" class="btn-cta-teste" style="margin-top:0;border:none;cursor:pointer;font-family:inherit">
+            🛒 VER PLANOS
+        </button>
     </div>
 </div>
 </section>
@@ -1229,45 +1313,27 @@ footer .brand-line{
     <div class="comissao-badge">🎁 SORTEIO MENSAL DE PRÊMIOS</div>
     <h2 class="titulo">Programa de <span class="grad">Indicação Avilar</span></h2>
     <p class="subtexto" style="color:#fff;margin-top:14px">
-        Cadastre-se gratuitamente, receba seu <strong style="color:var(--verde-claro)">ID único de 6 dígitos</strong>
-        e um <strong style="color:var(--vermelho-claro)">link de indicação personalizado</strong>.
-        A cada amigo indicado que fizer pelo menos o <strong style="color:var(--laranja)">teste grátis</strong>,
-        você ganha mais um número da sorte para o <strong style="color:var(--verde-claro)">sorteio mensal</strong>.
+        Cadastre-se grátis e receba seu <strong style="color:var(--verde-claro)">ID único</strong> + <strong style="color:var(--vermelho-claro)">link de indicação</strong>.
     </p>
 
-    <div class="comissao-destaque">
-        <h3>Como funciona</h3>
-        <p>
-            ✅ Cadastro rápido e 100% gratuito<br>
-            ✅ Receba seu ID único de 6 dígitos<br>
-            ✅ Compartilhe seu link personalizado com amigos<br>
-            ✅ A cada amigo que fizer o <strong>teste grátis</strong> → +1 número da sorte<br>
-            ✅ Quanto mais indica, mais números acumula
-        </p>
-    </div>
-
-    <!-- Card de premiação -->
+    <!-- Card único com as regras -->
     <div style="background:linear-gradient(135deg,rgba(255,42,42,.10),rgba(26,208,122,.10));border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px;margin:24px 0;text-align:left">
-        <h3 style="color:#fff;font-size:1.2rem;font-weight:800;margin-bottom:12px;text-align:center">
-            🎰 Sorteio mensal + 1 mês grátis
+        <h3 style="color:#fff;font-size:1.15rem;font-weight:800;margin-bottom:14px;text-align:center">
+            Como funciona
         </h3>
-        <p style="color:var(--texto-sec);font-size:.95rem;line-height:1.7;margin:0">
-            🗓️ <strong style="color:#fff">Todo mês</strong> acontece um sorteio entre todos os números acumulados pelos indicadores.<br><br>
-            🎟️ Cada amigo indicado que fizer o <strong style="color:var(--laranja)">teste grátis</strong> te dá <strong>+1 número da sorte</strong> para concorrer no sorteio do mês.<br><br>
-            🎉 Se esse mesmo amigo <strong style="color:var(--verde-claro)">fechar a assinatura</strong>, o número gerado por ele se transforma automaticamente em <strong style="color:var(--verde-claro)">1 mês grátis</strong> para você — e por isso <em>sai do sorteio</em>, já que o prêmio do número já foi pago.<br><br>
-            👉 No sorteio mensal concorrem apenas os números dos amigos que <strong>fizeram o teste grátis</strong> e <strong>ainda não fecharam assinatura</strong>.
-        </p>
-
-        <!-- Exemplo prático -->
-        <div style="margin-top:18px;background:rgba(0,0,0,.45);border:1px dashed rgba(255,255,255,.15);border-radius:10px;padding:16px">
-            <p style="color:#fff;font-weight:800;font-size:.95rem;margin:0 0 8px">💡 Exemplo prático</p>
-            <p style="color:var(--texto-sec);font-size:.9rem;line-height:1.7;margin:0">
-                Você indicou <strong style="color:#fff">3 amigos</strong> e todos fizeram o teste grátis<br>
-                → você acumulou <strong style="color:var(--laranja)">3 números da sorte</strong>.<br><br>
-                <strong style="color:var(--verde-claro)">1</strong> desses amigos fechou a assinatura<br>
-                → o sistema pega esse número e transforma em <strong style="color:var(--verde-claro)">1 mês grátis</strong> para você (esse número sai do sorteio).<br><br>
-                Os outros <strong style="color:var(--laranja)">2 números</strong> dos amigos que só fizeram o teste <strong>continuam concorrendo</strong> no sorteio do mês.
+        <div style="color:var(--texto-sec);font-size:.95rem;line-height:1.8">
+            <p style="margin:0 0 10px">
+                1. Faça seu cadastro abaixo — é <strong style="color:#fff">gratuito</strong>.<br>
+                2. Receba seu <strong style="color:var(--verde-claro)">ID de 6 dígitos</strong> e seu <strong style="color:var(--vermelho-claro)">link personalizado</strong>.<br>
+                3. Compartilhe o link com amigos.
             </p>
+            <div style="background:rgba(0,0,0,.35);border-radius:10px;padding:14px 16px;margin-top:12px">
+                <p style="color:#fff;font-weight:800;font-size:.92rem;margin:0 0 8px">🎁 Recompensas</p>
+                <p style="margin:0;line-height:1.8">
+                    🎟️ Amigo faz o <strong style="color:var(--laranja)">teste grátis</strong> → você ganha <strong style="color:var(--laranja)">+1 número da sorte</strong> para o sorteio mensal.<br>
+                    🎉 Amigo <strong style="color:var(--verde-claro)">fecha a assinatura</strong> → o número vira <strong style="color:var(--verde-claro)">1 mês grátis</strong> pra você (e sai do sorteio).
+                </p>
+            </div>
         </div>
     </div>
 
@@ -1303,15 +1369,7 @@ footer .brand-line{
 
     <!-- ============ PAINEL: formulário de cadastro ============ -->
     <div class="comissao-form" id="painelFormulario">
-        <h3 style="background:var(--grad-marca);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;text-align:center;font-size:1.5rem;font-weight:800">Cadastre-se Agora</h3>
-
-        <div style="background:rgba(255,122,24,.08);border-left:3px solid var(--laranja);padding:14px;margin-bottom:24px;border-radius:8px">
-            <p style="color:#fff;font-size:.9rem;line-height:1.6;margin:0">
-                💡 <strong>Como funciona:</strong><br>
-                Após o cadastro, você recebe um <strong>ID único de 6 dígitos</strong> e um <strong>link de indicação</strong>.
-                Os dados ficam salvos neste navegador — não é preciso se cadastrar novamente.
-            </p>
-        </div>
+        <h3 style="background:var(--grad-marca);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:18px;text-align:center;font-size:1.4rem;font-weight:800">Cadastre-se Agora</h3>
 
         <form id="formComissao" onsubmit="cadastrarIndicacao(event)">
             <div class="form-group">
@@ -1633,7 +1691,14 @@ function switchTab(tab, scrollTarget, scrollMode){
     // Start chatbot on first open of installation tab
     if(tab === 'instalacao'){
         const cb = document.getElementById('chat-body');
-        if(cb && cb.children.length === 0) startChat();
+        if(cb && cb.children.length === 0) {
+            const savedState = loadChatState();
+            if(savedState && savedState.sys) {
+                restoreChatState();
+            } else {
+                startChat();
+            }
+        }
     }
     // Scroll behavior — wait one frame so the newly shown tab has layout
     requestAnimationFrame(()=>{
@@ -1957,6 +2022,35 @@ const tutoriais = {
 
 let currentSys = null;
 let currentDev = null;
+let currentAppIdx = null;
+
+const CHAT_STATE_KEY = 'avilar_chat_state_v1';
+
+function saveChatState(){
+    const state = {
+        sys: currentSys,
+        dev: currentDev,
+        appIdx: currentAppIdx
+    };
+    try {
+        localStorage.setItem(CHAT_STATE_KEY, JSON.stringify(state));
+    } catch(e) {}
+}
+
+function loadChatState(){
+    try {
+        const state = JSON.parse(localStorage.getItem(CHAT_STATE_KEY));
+        return state;
+    } catch(e) {
+        return null;
+    }
+}
+
+function clearChatState(){
+    try {
+        localStorage.removeItem(CHAT_STATE_KEY);
+    } catch(e) {}
+}
 
 // ====== CHATBOT ======
 const chatBody = () => document.getElementById('chat-body');
@@ -2064,6 +2158,8 @@ async function startChat(){
     cb.innerHTML = '';
     currentSys = null;
     currentDev = null;
+    currentAppIdx = null;
+    clearChatState();
     await addBotMessage('👋 Olá! Eu sou o <strong>Avilar Assistente</strong>. Vou te ajudar a instalar seu aplicativo.', 700);
     await addBotMessage('Primeiro, qual <strong>sistema</strong> você quer fazer o teste?', 900);
     addOptions([
@@ -2074,6 +2170,9 @@ async function startChat(){
 
 async function onSysChosen(sys){
     currentSys = sys;
+    currentDev = null;
+    currentAppIdx = null;
+    saveChatState();
     addUserMessage(tutoriais[sys].nome);
     await addBotMessage(`Ótima escolha! 🎯 Agora me conta: em qual <strong>plataforma</strong> você vai instalar o <strong>${tutoriais[sys].nome}</strong>?`, 900);
     const devs = tutoriais[sys].dispositivos;
@@ -2087,6 +2186,8 @@ async function onSysChosen(sys){
 
 async function onDevChosen(dev){
     currentDev = dev;
+    currentAppIdx = null;
+    saveChatState();
     const devData = tutoriais[currentSys].dispositivos[dev];
     addUserMessage(devData.label);
     await addBotMessage(`Perfeito! 📲 Agora selecione qual <strong>aplicativo</strong> você quer instalar:`, 800);
@@ -2100,6 +2201,8 @@ async function onDevChosen(dev){
 }
 
 async function onAppChosen(idx){
+    currentAppIdx = idx;
+    saveChatState();
     const devData = tutoriais[currentSys].dispositivos[currentDev];
     const app = devData.apps[idx];
     addUserMessage(app.nome);
@@ -2113,7 +2216,72 @@ async function onAppChosen(idx){
     ]);
 }
 
-function resetChat(){ startChat(); }
+function resetChat(){
+    clearChatState();
+    startChat();
+}
+
+async function restoreChatState(){
+    const state = loadChatState();
+    if(!state || !state.sys) {
+        startChat();
+        return;
+    }
+    
+    const cb = chatBody();
+    if(!cb) return;
+    cb.innerHTML = '';
+    
+    currentSys = state.sys;
+    currentDev = state.dev;
+    currentAppIdx = state.appIdx;
+    
+    // Rebuild conversation based on saved state
+    await addBotMessage('👋 Olá! Eu sou o <strong>Avilar Assistente</strong>. Vou te ajudar a instalar seu aplicativo.', 400);
+    
+    if(!currentDev) {
+        // User chose system but not device yet
+        await addBotMessage(`Ótima escolha! 🎯 Agora me conta: em qual <strong>plataforma</strong> você vai instalar o <strong>${tutoriais[currentSys].nome}</strong>?`, 600);
+        const devs = tutoriais[currentSys].dispositivos;
+        const opts = Object.keys(devs).map(key=>({
+            label: devs[key].label,
+            cls: currentSys,
+            onClick: ()=>onDevChosen(key)
+        }));
+        addOptions(opts);
+    } else if(currentAppIdx === null) {
+        // User chose device but not app yet
+        addUserMessage(tutoriais[currentSys].nome);
+        await addBotMessage(`Ótima escolha! 🎯 Agora me conta: em qual <strong>plataforma</strong> você vai instalar o <strong>${tutoriais[currentSys].nome}</strong>?`, 400);
+        addUserMessage(tutoriais[currentSys].dispositivos[currentDev].label);
+        await addBotMessage(`Perfeito! 📲 Agora selecione qual <strong>aplicativo</strong> você quer instalar:`, 600);
+        const devData = tutoriais[currentSys].dispositivos[currentDev];
+        const opts = devData.apps.map((app,i)=>({
+            label: app.nome + ' <span style="color:var(--texto-terciario);font-size:.78rem;font-weight:600;margin-left:6px">('+app.tipo+')</span>',
+            img: app.img,
+            cls: currentSys,
+            onClick: ()=>onAppChosen(i)
+        }));
+        addOptions(opts);
+    } else {
+        // User chose app, show tutorial
+        const devData = tutoriais[currentSys].dispositivos[currentDev];
+        const app = devData.apps[currentAppIdx];
+        addUserMessage(tutoriais[currentSys].nome);
+        await addBotMessage(`Ótima escolha! 🎯 Agora me conta: em qual <strong>plataforma</strong> você vai instalar o <strong>${tutoriais[currentSys].nome}</strong>?`, 300);
+        addUserMessage(devData.label);
+        await addBotMessage(`Perfeito! 📲 Agora selecione qual <strong>aplicativo</strong> você quer instalar:`, 300);
+        addUserMessage(app.nome);
+        await addBotMessage(`Show! 🚀 Aqui está o passo a passo para instalar o <strong>${app.nome}</strong>. Ao final, clique em <strong>Solicitar Teste Grátis</strong> e nossa equipe libera seu acesso no WhatsApp.`, 500);
+        addChatTutorial(app, currentSys, devData.label);
+        await addBotMessage('Quer instalar outro aplicativo ou testar em outro dispositivo?', 700);
+        addOptions([
+            {label:'🔁 Escolher outro app', onClick:()=>onDevChosen(currentDev)},
+            {label:'📱 Mudar plataforma', onClick:()=>onSysChosen(currentSys)},
+            {label:'🔄 Trocar sistema', onClick:()=>startChat()}
+        ]);
+    }
+}
 
 // ============= SOLICITAR CONTEÚDO =============
 let solCategoria = 'Filme';
