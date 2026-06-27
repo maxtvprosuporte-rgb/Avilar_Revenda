@@ -338,24 +338,44 @@ section{width:100%;padding:60px 16px;position:relative}
 .sistema-card p{color:var(--texto-sec);font-size:.95rem}
 
 /* ==================================================
-   PLANOS
+    PLANOS — DUAL BRAND
 ================================================== */
-.planos-grid{
+.planos-dual{
     max-width:1400px;margin:40px auto 0;
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
-    gap:24px;padding:0 8px;
+    display:grid;grid-template-columns:repeat(2,1fr);gap:28px;
+    padding:0 8px;
 }
+.brand-col{display:flex;flex-direction:column}
+.brand-col-header{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    padding:18px 16px;border-radius:16px 16px 0 0;text-align:center;
+}
+.brand-col-header.rush{
+    background:linear-gradient(135deg,rgba(255,42,42,.18),rgba(255,122,24,.10));
+    border:2px solid rgba(255,42,42,.35);border-bottom:none;
+}
+.brand-col-header.wp{
+    background:linear-gradient(135deg,rgba(26,208,122,.10),rgba(43,255,138,.18));
+    border:2px solid rgba(26,208,122,.35);border-bottom:none;
+}
+.brand-col-header img{height:52px;width:auto;border-radius:10px;object-fit:contain}
+.brand-col-header .brand-info{text-align:left}
+.brand-col-header .brand-name{font-size:1.3rem;font-weight:800}
+.brand-col-header.rush .brand-name{color:var(--vermelho-claro)}
+.brand-col-header.wp .brand-name{color:var(--verde-claro)}
+.brand-col-header .brand-sub{font-size:.82rem;color:var(--texto-sec);font-weight:600}
+.planos-grid{display:flex;flex-direction:column;gap:18px}
 .plano-item{
     background:linear-gradient(180deg,#0f0f10,#050505);
     border:2px solid rgba(255,255,255,.08);
-    border-radius:20px;padding:0;text-align:center;
+    border-radius:16px;padding:0;text-align:center;
     transition:all .4s cubic-bezier(.25,.46,.45,.94);
     display:flex;flex-direction:column;overflow:hidden;position:relative;
 }
-.plano-item.d1{border-color:rgba(255,42,42,.4)}
-.plano-item.d2{border-color:rgba(26,208,122,.4)}
-.plano-item.d1:hover{transform:translateY(-8px);border-color:var(--vermelho);box-shadow:0 14px 45px rgba(255,42,42,.4)}
-.plano-item.d2:hover{transform:translateY(-8px);border-color:var(--verde-claro);box-shadow:0 14px 45px rgba(26,208,122,.4)}
+.plano-item.d1{border-color:rgba(255,42,42,.35)}
+.plano-item.d2{border-color:rgba(26,208,122,.35)}
+.plano-item.d1:hover{transform:translateY(-6px);border-color:var(--vermelho);box-shadow:0 12px 40px rgba(255,42,42,.35)}
+.plano-item.d2:hover{transform:translateY(-6px);border-color:var(--verde-claro);box-shadow:0 12px 40px rgba(26,208,122,.35)}
 .plano-badge{
     color:#000;padding:12px 18px;font-weight:800;font-size:.85rem;
     text-align:center;letter-spacing:.5px;text-transform:uppercase;
@@ -368,9 +388,7 @@ section{width:100%;padding:60px 16px;position:relative}
 .plano-item.d2 .plano-duracao{color:var(--verde-claro)}
 .plano-preco{font-size:2.4rem;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-1px}
 .plano-preco-mensal{font-size:.92rem;color:var(--texto-terciario);margin-bottom:14px}
-.plano-preco-avista{
-    border-radius:12px;padding:14px 14px;margin:14px 0;
-}
+.plano-preco-avista{border-radius:12px;padding:14px 14px;margin:14px 0}
 .plano-item.d1 .plano-preco-avista{background:rgba(255,42,42,.08);border:2px solid var(--vermelho)}
 .plano-item.d2 .plano-preco-avista{background:rgba(26,208,122,.08);border:2px solid var(--verde)}
 .plano-preco-avista .label{font-size:.82rem;display:block;margin-bottom:6px;font-weight:700}
@@ -397,6 +415,9 @@ section{width:100%;padding:60px 16px;position:relative}
 .plano-item.d2 .btn-assinar{background:linear-gradient(135deg,var(--verde-escuro),var(--verde-claro));box-shadow:0 6px 18px rgba(26,208,122,.4)}
 .plano-item.d1 .btn-assinar:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,42,42,.6)}
 .plano-item.d2 .btn-assinar:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(26,208,122,.6)}
+@media(max-width:768px){
+    .planos-dual{grid-template-columns:1fr;gap:32px}
+}
 
 /* ==================================================
    APLICATIVOS
@@ -1181,19 +1202,11 @@ footer .brand-line{
     </p>
 
     <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:28px auto 0;max-width:720px">
-        <div style="background:rgba(255,42,42,.1);border:1.5px solid rgba(255,42,42,.4);padding:10px 18px;border-radius:12px;color:var(--vermelho-claro);font-weight:700;font-size:.9rem">📱 1 Dispositivo</div>
-        <div style="background:rgba(26,208,122,.1);border:1.5px solid rgba(26,208,122,.4);padding:10px 18px;border-radius:12px;color:var(--verde-claro);font-weight:700;font-size:.9rem">📱📱 2 Dispositivos</div>
-        <div style="background:rgba(255,122,24,.1);border:1.5px solid rgba(255,122,24,.4);padding:10px 18px;border-radius:12px;color:var(--laranja);font-weight:700;font-size:.9rem">💰 PIX com desconto</div>
+        <div style="background:rgba(255,42,42,.1);border:1.5px solid rgba(255,42,42,.4);padding:10px 18px;border-radius:12px;color:var(--vermelho-claro);font-weight:700;font-size:.9rem">🔴 RushPlay — 1 Acesso</div>
+        <div style="background:rgba(26,208,122,.1);border:1.5px solid rgba(26,208,122,.4);padding:10px 18px;border-radius:12px;color:var(--verde-claro);font-weight:700;font-size:.9rem">🟢 WPlay — 2 Acessos</div>
     </div>
 
-    <div style="margin:22px auto 0;max-width:720px;background:rgba(255,122,24,.08);border:1.5px solid rgba(255,122,24,.45);border-left:4px solid var(--laranja);border-radius:12px;padding:14px 18px;text-align:left;display:flex;align-items:center;gap:12px">
-        <span style="font-size:1.6rem">💳</span>
-        <p style="margin:0;color:#fff;font-size:.95rem;line-height:1.5">
-            Para garantir o <strong style="color:var(--laranja)">desconto</strong>, o pagamento precisa ser <strong style="color:var(--laranja)">à vista</strong> (PIX).
-        </p>
-    </div>
-
-    <div class="planos-grid" id="planos-container" style="margin-top:30px"></div>
+    <div class="planos-dual" id="planos-container" style="margin-top:30px"></div>
 
     <div style="margin-top:50px;padding:30px 20px;background:linear-gradient(180deg,var(--preto-sec),var(--preto-card));border:2px solid rgba(255,255,255,.08);border-radius:18px;max-width:700px;margin-left:auto;margin-right:auto">
         <h3 style="background:var(--grad-marca);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:1.4rem;font-weight:800;margin-bottom:10px">Precisa de ajuda para renovar?</h3>
@@ -1434,59 +1447,79 @@ footer .brand-line{
 
 <script>
 // ============= PLANOS =============
-const todosOsPlanos = [
-    {duracao:"30 Dias",dias:30,dispositivos:1,preco:29.99,precoAvista:null,economia:null,link:"https://ggcheckout.app/checkout/v2/Pis4HsvYCsHZC00Ewfy7"},
-    {duracao:"30 Dias",dias:30,dispositivos:2,preco:49.99,precoAvista:null,economia:null,link:"https://ggcheckout.app/checkout/v2/v7DUPxVfvvMxBYTx0BKM"},
-    {duracao:"90 Dias",dias:90,dispositivos:1,preco:89.97,precoAvista:85.47,economia:"5% OFF",link:"https://ggcheckout.app/checkout/v2/4sSJinT0no9N6JRoPewd"},
-    {duracao:"90 Dias",dias:90,dispositivos:2,preco:149.97,precoAvista:139.47,economia:"7% OFF",link:"https://ggcheckout.app/checkout/v2/9RDOqNeO95bnkgxELf6G"},
-    {duracao:"180 Dias",dias:180,dispositivos:1,preco:179.94,precoAvista:165.54,economia:"8% OFF",link:"https://ggcheckout.app/checkout/v2/iUVsV2w3ru7Y1NM5rcyc"},
-    {duracao:"180 Dias",dias:180,dispositivos:2,preco:299.94,precoAvista:269.95,economia:"10% OFF",link:"https://ggcheckout.app/checkout/v2/Ar76hWe0TSyENUlighUI"},
-    {duracao:"270 Dias",dias:270,dispositivos:1,preco:269.91,precoAvista:240.22,economia:"11% OFF",link:"https://ggcheckout.app/checkout/v2/5s3XekSreE3BSjaaSdNE"},
-    {duracao:"270 Dias",dias:270,dispositivos:2,preco:449.91,precoAvista:391.42,economia:"13% OFF",link:"https://ggcheckout.app/checkout/v2/Lo91WEsvoxeOAf9ZRW59"},
-    {duracao:"360 Dias",dias:360,dispositivos:1,preco:359.88,precoAvista:305.90,economia:"15% OFF",link:"https://ggcheckout.app/checkout/v2/q6SXzFz4AVOE9gTbme7z"},
-    {duracao:"360 Dias",dias:360,dispositivos:2,preco:599.88,precoAvista:503.90,economia:"16% OFF",link:"https://ggcheckout.app/checkout/v2/TRlqpA2IuE89Bltbdaxh"}
+const planosRushPlay = [
+    {duracao:"1 mês",dias:30,preco:19.99,meses:1,label:"💳 1 mês",link:"https://ggcheckout.app/checkout/v2/v7CZTlJ7WEQlTcxqo5YA"},
+    {duracao:"3 meses",dias:90,preco:54.90,meses:3,label:"📦 3 meses",link:"https://ggcheckout.app/checkout/v2/OAVYXdzmlF2uyzmj5WRd"},
+    {duracao:"3+1 meses",dias:120,preco:69.90,meses:4,label:"🎁 3+1 meses (4 meses)",link:"https://ggcheckout.app/checkout/v2/MI2uqM0nHsUxrEhRGMfa"}
+];
+
+const planosWPlay = [
+    {duracao:"1 mês",dias:30,preco:29.99,meses:1,label:"💳 1 mês",link:"https://ggcheckout.app/checkout/v2/Pis4HsvYCsHZC00Ewfy7"},
+    {duracao:"3 meses",dias:90,preco:79.90,meses:3,label:"📦 3 meses",link:"https://ggcheckout.app/checkout/v2/FJ9ZXonrTLykRO9qfKMz"},
+    {duracao:"3+1 meses",dias:120,preco:99.90,meses:4,label:"🎁 3+1 meses (4 meses)",link:"https://ggcheckout.app/checkout/v2/9Ya42y1erSx8IbyX8qSM"}
 ];
 
 function formatPreco(v){return v.toFixed(2).replace('.',',');}
 function calcMensal(p,d){return p/(d/30);}
-function mesesLabel(d){
-    const m=Math.round(d/30);
-    return m===1?'1 mês':m+' meses';
+
+function buildPlanoCard(p, cls, acessos){
+    const mensal = calcMensal(p.preco, p.dias);
+    const el = document.createElement('div');
+    el.className = 'plano-item ' + cls;
+    let h = `
+        <div class="plano-badge">${p.label}</div>
+        <div class="plano-header">
+            <div class="plano-duracao">${p.duracao}</div>
+            <div class="plano-preco">R$ ${formatPreco(p.preco)}</div>
+            <div class="plano-preco-mensal">R$ ${formatPreco(mensal)}/mês</div>
+        </div>
+        <ul class="plano-beneficios">
+            <li>${acessos} acesso${acessos>1?'s':''} simultâneo${acessos>1?'s':''}</li>
+            <li>Qualidade HD e 4K</li>
+            <li>Suporte técnico incluído</li>
+            <li>Sem fidelidade</li>
+        </ul>
+        <a href="${p.link}" class="btn-assinar" target="_blank" rel="noopener noreferrer">🛒 Assinar Agora</a>`;
+    el.innerHTML = h;
+    return el;
 }
 
 function renderPlanos(){
-    const c=document.getElementById('planos-container');
-    todosOsPlanos.forEach(p=>{
-        const mensal=calcMensal(p.preco,p.dias);
-        const economiaValor=p.precoAvista?p.preco-p.precoAvista:0;
-        const cls=p.dispositivos===1?'d1':'d2';
-        const el=document.createElement('div');
-        el.className='plano-item '+cls;
-        let h=`
-            <div class="plano-badge">${p.dispositivos===1?'📱 1 Dispositivo':'📱📱 2 Dispositivos'}</div>
-            <div class="plano-header">
-                <div class="plano-duracao">${p.duracao} <span style="font-size:.85rem;color:var(--texto-terciario);font-weight:600;letter-spacing:0">(${mesesLabel(p.dias)})</span></div>
-                <div class="plano-preco">R$ ${formatPreco(p.preco)}</div>
-                <div class="plano-preco-mensal">R$ ${formatPreco(mensal)}/mês</div>`;
-        if(p.precoAvista){
-            h+=`<div class="plano-preco-avista">
-                    <span class="label">💰 À vista no PIX</span>
-                    <div class="valor">R$ ${formatPreco(p.precoAvista)}</div>
-                </div>
-                <div class="plano-economia">Economize R$ ${formatPreco(economiaValor)} • ${p.economia}</div>`;
-        }
-        h+=`</div>
-            <ul class="plano-beneficios">
-                <li>Acesso RushPlay + wplay</li>
-                <li>${p.dispositivos} dispositivo${p.dispositivos>1?'s':''} simultâneo${p.dispositivos>1?'s':''}</li>
-                <li>Qualidade HD e 4K</li>
-                <li>Suporte técnico incluído</li>
-                <li>Sem fidelidade</li>
-            </ul>
-            <a href="${p.link}" class="btn-assinar" target="_blank" rel="noopener noreferrer">🛒 Assinar Agora</a>`;
-        el.innerHTML=h;
-        c.appendChild(el);
-    });
+    const c = document.getElementById('planos-container');
+    // RushPlay column
+    const colRush = document.createElement('div');
+    colRush.className = 'brand-col rush-col';
+    colRush.innerHTML = `
+        <div class="brand-col-header rush">
+            <img src="assets/logo_rushplay.jpeg" alt="RushPlay">
+            <div class="brand-info">
+                <div class="brand-name">RushPlay</div>
+                <div class="brand-sub">🔴 1 Acesso</div>
+            </div>
+        </div>`;
+    const gridRush = document.createElement('div');
+    gridRush.className = 'planos-grid';
+    planosRushPlay.forEach(p => gridRush.appendChild(buildPlanoCard(p, 'd1', 1)));
+    colRush.appendChild(gridRush);
+
+    // WPlay column
+    const colWp = document.createElement('div');
+    colWp.className = 'brand-col wp-col';
+    colWp.innerHTML = `
+        <div class="brand-col-header wp">
+            <img src="assets/logo_wplay.jpeg" alt="WPlay">
+            <div class="brand-info">
+                <div class="brand-name">WPlay</div>
+                <div class="brand-sub">🟢 2 Acessos</div>
+            </div>
+        </div>`;
+    const gridWp = document.createElement('div');
+    gridWp.className = 'planos-grid';
+    planosWPlay.forEach(p => gridWp.appendChild(buildPlanoCard(p, 'd2', 2)));
+    colWp.appendChild(gridWp);
+
+    c.appendChild(colRush);
+    c.appendChild(colWp);
 }
 
 // ============= FAQ =============
@@ -2121,6 +2154,7 @@ document.addEventListener('DOMContentLoaded',function(){
     renderPlanos();
 });
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
