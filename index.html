@@ -987,6 +987,34 @@ footer .brand-line{
     display:inline-flex;align-items:center;justify-content:center;gap:12px;
 }
 .btn-solicitar-wa:hover{transform:translateY(-3px);box-shadow:0 10px 38px rgba(37,211,102,.65)}
+
+/* ==================================================
+    SUB-TABS (Adicionar / Reportar)
+================================================== */
+.sol-sub-tabs{
+    display:flex;justify-content:center;gap:12px;
+    max-width:680px;margin:30px auto 0;flex-wrap:wrap;
+}
+.sol-sub-btn{
+    flex:1;min-width:180px;
+    padding:14px 20px;
+    background:linear-gradient(180deg,#161616,#0a0a0a);
+    border:2px solid rgba(255,255,255,.12);
+    color:var(--texto-sec);
+    border-radius:14px;
+    font-weight:800;font-size:1rem;font-family:inherit;
+    cursor:pointer;transition:all .3s ease;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.sol-sub-btn:hover{border-color:var(--laranja);color:#fff;transform:translateY(-2px)}
+.sol-sub-btn.active{
+    background:var(--grad-marca);
+    color:#000;border-color:transparent;
+    box-shadow:0 6px 22px rgba(255,122,24,.4);
+}
+@media(max-width:600px){
+    .sol-sub-tabs{flex-direction:column;gap:10px}
+}
 @media(max-width:600px){
     .solicitar-form-wrap{padding:24px 16px}
     .sol-categoria-toggle{flex-direction:column;gap:10px}
@@ -1008,7 +1036,7 @@ footer .brand-line{
     <button class="tab-btn" data-tab="renovar" onclick="switchTab('renovar')">Renovar</button>
     <button class="tab-btn" data-tab="instalacao" onclick="switchTab('instalacao')">Instalação</button>
     <button class="tab-btn" data-tab="indicacao" onclick="switchTab('indicacao')">Indicação</button>
-    <button class="tab-btn" data-tab="solicitacao" onclick="switchTab('solicitacao')">Solicitar Conteúdo</button>
+    <button class="tab-btn" data-tab="solicitacao" onclick="switchTab('solicitacao')">Central de Conteúdo</button>
 </nav>
 
 <!-- ============= TAB: INÍCIO ============= -->
@@ -1437,49 +1465,90 @@ footer .brand-line{
 <div class="tab-content" id="tab-solicitacao">
 <section style="padding-top:40px;padding-bottom:60px">
 <div class="container">
-    <h2 class="titulo">Solicitar <span class="grad">Conteúdo</span></h2>
-    <p class="subtexto">Não encontrou um filme ou série? Solicite aqui e nossa equipe verifica a adição ou ajuste no catálogo.</p>
+    <h2 class="titulo">Central de <span class="grad">Conteúdo</span></h2>
+    <p class="subtexto">Solicite a adição de novos conteúdos ou reporte problemas em filmes e séries do catálogo.</p>
 
-    <div class="solicitar-form-wrap">
+    <!-- Sub-tabs: Adicionar / Reportar -->
+    <div class="sol-sub-tabs">
+        <button type="button" class="sol-sub-btn active" id="btn-sub-adicionar" onclick="switchSolTab('adicionar')">➕ Adicionar Conteúdo</button>
+        <button type="button" class="sol-sub-btn" id="btn-sub-reportar" onclick="switchSolTab('reportar')">🐞 Reportar Problema</button>
+    </div>
 
+    <!-- ===== FORM: ADICIONAR ===== -->
+    <div class="solicitar-form-wrap" id="sol-form-adicionar">
         <div class="solicitar-info-box">
             💡 <strong>Como funciona:</strong> Preencha os dados abaixo e clique em <strong>Enviar pelo WhatsApp</strong>. Nossa equipe receberá sua solicitação e retornará em breve.
         </div>
 
         <div class="form-group">
-            <label for="sol-nome">Nome do Cliente *</label>
-            <input type="text" id="sol-nome" placeholder="Digite seu nome completo">
-        </div>
-
-        <div class="form-group">
-            <label for="sol-telefone">Telefone / WhatsApp *</label>
-            <input type="tel" id="sol-telefone" placeholder="(41) 99999-9999">
-        </div>
-
-        <div class="form-group">
-            <label for="sol-plataforma">Plataforma *</label>
-            <select id="sol-plataforma">
-                <option value="">Selecione a plataforma</option>
+            <label for="sol-add-servidor">Servidor *</label>
+            <select id="sol-add-servidor">
+                <option value="">Selecione o servidor</option>
                 <option value="WPlay">WPlay</option>
                 <option value="RushPlay">RushPlay</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label>Categoria *</label>
+            <label>Tipo de Conteúdo *</label>
             <div class="sol-categoria-toggle">
-                <button type="button" class="sol-cat-btn active" id="btn-filme" onclick="selecionarCategoria('Filme')">🎬 Filme</button>
-                <button type="button" class="sol-cat-btn" id="btn-serie" onclick="selecionarCategoria('Série')">📺 Série</button>
+                <button type="button" class="sol-cat-btn active" id="btn-add-filme" onclick="selecionarCategoriaAdd('Filme')">🎬 Filme</button>
+                <button type="button" class="sol-cat-btn" id="btn-add-serie" onclick="selecionarCategoriaAdd('Série')">📺 Série</button>
             </div>
-            <input type="hidden" id="sol-categoria" value="Filme">
         </div>
 
         <div class="form-group">
-            <label for="sol-conteudo">Descreva o conteúdo desejado *</label>
-            <textarea id="sol-conteudo" rows="5" placeholder="Ex: Filme 'O Gladiador 2' (2024) em português, ou Série 'The Last of Us' Temporada 2..."></textarea>
+            <label for="sol-add-nome">Nome do Conteúdo *</label>
+            <input type="text" id="sol-add-nome" placeholder="Ex: O Gladiador 2, The Last of Us...">
         </div>
 
-        <button class="btn-solicitar-wa" onclick="enviarSolicitacao()">
+        <button class="btn-solicitar-wa" onclick="enviarAdicionar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enviar pelo WhatsApp
+        </button>
+    </div>
+
+    <!-- ===== FORM: REPORTAR ===== -->
+    <div class="solicitar-form-wrap" id="sol-form-reportar" style="display:none">
+        <div class="solicitar-info-box" style="border-left-color:var(--vermelho);background:rgba(255,42,42,.08)">
+            🐞 <strong>Reporte um problema:</strong> Informe os dados abaixo para que nossa equipe possa identificar e corrigir o erro no catálogo.
+        </div>
+
+        <div class="form-group">
+            <label for="sol-rep-servidor">Servidor *</label>
+            <select id="sol-rep-servidor" onchange="atualizarAppsReportar()">
+                <option value="">Selecione o servidor</option>
+                <option value="WPlay">WPlay</option>
+                <option value="RushPlay">RushPlay</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sol-rep-app">Aplicativo *</label>
+            <select id="sol-rep-app">
+                <option value="">Selecione primeiro o servidor</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Tipo de Conteúdo *</label>
+            <div class="sol-categoria-toggle">
+                <button type="button" class="sol-cat-btn active" id="btn-rep-filme" onclick="selecionarCategoriaRep('Filme')">🎬 Filme</button>
+                <button type="button" class="sol-cat-btn" id="btn-rep-serie" onclick="selecionarCategoriaRep('Série')">📺 Série</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="sol-rep-nome">Nome do Conteúdo *</label>
+            <input type="text" id="sol-rep-nome" placeholder="Ex: O Gladiador 2, The Last of Us...">
+        </div>
+
+        <div class="form-group">
+            <label for="sol-rep-problema">Descreva o Problema *</label>
+            <textarea id="sol-rep-problema" rows="4" placeholder="Ex: Áudio fora de sincronia, legenda não aparece, vídeo travando, conteúdo indisponível..."></textarea>
+        </div>
+
+        <button class="btn-solicitar-wa" onclick="enviarReportar()">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Enviar pelo WhatsApp
         </button>
@@ -1754,7 +1823,8 @@ const tutoriais = {
                         '📥 <strong>Download:</strong> Clique no botão abaixo, o app irá baixar automaticamente.',
                         '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
                         '<span class="warn">⚠️ Conceda permissão para instalar de <strong>Fontes Desconhecidas</strong>.</span>',
-                        '✅ Após a instalação concluída, abra o aplicativo.'
+                        '✅ Após a instalação concluída, abra o aplicativo.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">rush</span>'
                     ]},
                     {nome:'ntDown + RushPlay', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'https://play.google.com/store/apps/details?id=link.ntdev.ntdw&pcampaignid=web_share', steps:[
                         '📥 Baixe o app <strong>ntDown</strong> na loja de aplicativos.',
@@ -1775,7 +1845,8 @@ const tutoriais = {
                         '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">17695</span>',
                         '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o app XCloud.</span>',
                         '🛠️ Após o download, instale o XCloud no dispositivo.',
-                        '✅ Abra o aplicativo após a instalação.'
+                        '✅ Abra o aplicativo após a instalação.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">rush</span>'
                     ]}
                 ]
             },
@@ -1785,7 +1856,8 @@ const tutoriais = {
                     {nome:'XCloud Mobile', tipo:'App Store', img:'aplicativo_xcloud.png', dl:'https://apps.apple.com/br/app/xcloud-mobile/id6471106231', steps:[
                         '📥 <strong>Download:</strong> Clique no botão para abrir na App Store.',
                         '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
-                        '✅ Após a instalação concluída, abra o aplicativo.'
+                        '✅ Após a instalação concluída, abra o aplicativo.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">rush</span>'
                     ]}
                 ]
             },
@@ -1821,7 +1893,8 @@ const tutoriais = {
                         '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">17695</span>',
                         '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o XCloud.</span>',
                         '🛠️ Após o download, instale o XCloud no dispositivo.',
-                        '✅ Abra o aplicativo após a instalação.'
+                        '✅ Abra o aplicativo após a instalação.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">rush</span>'
                     ]}
                 ]
             },
@@ -1832,7 +1905,8 @@ const tutoriais = {
                         '📥 Acesse a loja de aplicativos da sua SmartTV.',
                         '🔎 Procure por <strong>XCloud</strong> e faça o download.',
                         '🛠️ Instale o aplicativo após o download.',
-                        '✅ Abra o aplicativo após a instalação.'
+                        '✅ Abra o aplicativo após a instalação.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">rush</span>'
                     ]}
                 ]
             }
@@ -1860,7 +1934,8 @@ const tutoriais = {
                         '📥 <strong>Download:</strong> Clique no botão abaixo, o app irá baixar automaticamente.',
                         '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
                         '<span class="warn">⚠️ Conceda permissão para instalar de <strong>Fontes Desconhecidas</strong>.</span>',
-                        '✅ Após a instalação concluída, abra o aplicativo.'
+                        '✅ Após a instalação concluída, abra o aplicativo.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">warez</span>'
                     ]},
                     {nome:'Nexus TV', tipo:'Link Direto', img:'aplicativo_nexuxtv.jpg', dl:'https://tinyurl.com/26twrf9c', steps:[
                         '📥 <strong>Download:</strong> Clique no botão abaixo, o app irá baixar automaticamente.',
@@ -1893,7 +1968,8 @@ const tutoriais = {
                         '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">17695</span>',
                         '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o app XCloud.</span>',
                         '🛠️ Após o download, instale o XCloud no dispositivo.',
-                        '✅ Abra o aplicativo após a instalação.'
+                        '✅ Abra o aplicativo após a instalação.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">warez</span>'
                     ]},
                     {nome:'ntDown + Nexus TV', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'https://play.google.com/store/apps/details?id=com.esaba.downloader&hl=pt_BR', steps:[
                         '📥 Baixe o app <strong>ntDown</strong> na loja de aplicativos.',
@@ -1922,7 +1998,8 @@ const tutoriais = {
                     {nome:'XCloud Mobile', tipo:'App Store', img:'aplicativo_xcloud.png', dl:'https://apps.apple.com/br/app/xcloud-mobile/id6471106231', steps:[
                         '📥 <strong>Download:</strong> Clique no botão para abrir na App Store.',
                         '🛠️ <strong>Instalação:</strong> Instale o aplicativo após o download.',
-                        '✅ Após a instalação concluída, abra o aplicativo.'
+                        '✅ Após a instalação concluída, abra o aplicativo.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">warez</span>'
                     ]}
                 ]
             },
@@ -1968,7 +2045,8 @@ const tutoriais = {
                         '🔎 Abra o ntDown e na barra de pesquisa digite: <span class="code">17695</span>',
                         '<span class="warn">⚠️ Conceda permissão ao ntDown para baixar o XCloud.</span>',
                         '🛠️ Após o download, instale o XCloud no dispositivo.',
-                        '✅ Abra o aplicativo após a instalação.'
+                        '✅ Abra o aplicativo após a instalação.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">warez</span>'
                     ]},
                     {nome:'ntDown + Nexus TV', tipo:'Via ntDown', img:'aplicativo_ntdown.png', dl:'', steps:[
                         '📥 Acesse a loja de aplicativos da TV Box e baixe o app <strong>ntDown</strong>.',
@@ -1993,7 +2071,8 @@ const tutoriais = {
                         '📥 Acesse a loja de aplicativos da sua SmartTV.',
                         '🔎 Procure por <strong>XCloud</strong> e faça o download.',
                         '🛠️ Instale o aplicativo após o download.',
-                        '✅ Abra o aplicativo após a instalação.'
+                        '✅ Abra o aplicativo após a instalação.',
+                        '🔑 Quando solicitado o <strong>Código de Provedor</strong>, digite: <span class="code">warez</span>'
                     ]},
                     {nome:'WPlay', tipo:'Loja da SmartTV', img:'aplicativo_wplay.jpeg', dl:'', steps:[
                         '📥 Acesse a loja de aplicativos da sua SmartTV.',
@@ -2284,34 +2363,101 @@ async function restoreChatState(){
 }
 
 // ============= SOLICITAR CONTEÚDO =============
-let solCategoria = 'Filme';
+let solCategoriaAdd = 'Filme';
+let solCategoriaRep = 'Filme';
 
-function selecionarCategoria(cat){
-    solCategoria = cat;
-    document.getElementById('sol-categoria').value = cat;
-    document.getElementById('btn-filme').classList.toggle('active', cat === 'Filme');
-    document.getElementById('btn-serie').classList.toggle('active', cat === 'Série');
+function switchSolTab(tab){
+    const addForm = document.getElementById('sol-form-adicionar');
+    const repForm = document.getElementById('sol-form-reportar');
+    const btnAdd  = document.getElementById('btn-sub-adicionar');
+    const btnRep  = document.getElementById('btn-sub-reportar');
+    if(tab === 'adicionar'){
+        addForm.style.display = '';
+        repForm.style.display = 'none';
+        btnAdd.classList.add('active');
+        btnRep.classList.remove('active');
+    } else {
+        addForm.style.display = 'none';
+        repForm.style.display = '';
+        btnRep.classList.add('active');
+        btnAdd.classList.remove('active');
+    }
 }
 
-function enviarSolicitacao(){
-    const nome      = document.getElementById('sol-nome').value.trim();
-    const telefone  = document.getElementById('sol-telefone').value.trim();
-    const plataforma= document.getElementById('sol-plataforma').value;
-    const conteudo  = document.getElementById('sol-conteudo').value.trim();
+function selecionarCategoriaAdd(cat){
+    solCategoriaAdd = cat;
+    document.getElementById('btn-add-filme').classList.toggle('active', cat === 'Filme');
+    document.getElementById('btn-add-serie').classList.toggle('active', cat === 'Série');
+}
 
-    if(!nome){alert('Por favor, informe seu nome.'); return;}
-    if(!telefone){alert('Por favor, informe seu telefone/WhatsApp.'); return;}
-    if(!plataforma){alert('Por favor, selecione a plataforma.'); return;}
-    if(!conteudo){alert('Por favor, descreva o conteúdo que deseja.'); return;}
+function selecionarCategoriaRep(cat){
+    solCategoriaRep = cat;
+    document.getElementById('btn-rep-filme').classList.toggle('active', cat === 'Filme');
+    document.getElementById('btn-rep-serie').classList.toggle('active', cat === 'Série');
+}
+
+function atualizarAppsReportar(){
+    const servidor = document.getElementById('sol-rep-servidor').value;
+    const select   = document.getElementById('sol-rep-app');
+    select.innerHTML = '<option value="">Selecione o aplicativo</option>';
+    if(!servidor || typeof tutoriais === 'undefined') return;
+    const key = servidor === 'WPlay' ? 'wp' : 'rush';
+    const data = tutoriais[key];
+    if(!data) return;
+    const seen = new Set();
+    const devs = data.dispositivos;
+    for(const d in devs){
+        const apps = devs[d].apps || [];
+        for(const app of apps){
+            const nome = app.nome;
+            if(!seen.has(nome)){
+                seen.add(nome);
+                const opt = document.createElement('option');
+                opt.value = nome;
+                opt.textContent = nome;
+                select.appendChild(opt);
+            }
+        }
+    }
+}
+
+function enviarAdicionar(){
+    const servidor = document.getElementById('sol-add-servidor').value;
+    const nome     = document.getElementById('sol-add-nome').value.trim();
+
+    if(!servidor){alert('Por favor, selecione o servidor.'); return;}
+    if(!nome){alert('Por favor, informe o nome do conteúdo.'); return;}
 
     const msg =
-`📥 *Solicitação de Conteúdo*
+`📥 *Adicionar Conteúdo*
 
-👤 *Cliente*: ${nome}
-📞 *Telefone*: ${telefone}
-📁 *Plataforma*: ${plataforma}
-🎬 *Categoria*: ${solCategoria}
-📺 *Conteúdo*: ${conteudo}`;
+📡 *Servidor*: ${servidor}
+🎬 *Tipo*: ${solCategoriaAdd}
+📺 *Nome do Conteúdo*: ${nome}`;
+
+    const url = `https://wa.me/5541997043607?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+function enviarReportar(){
+    const servidor  = document.getElementById('sol-rep-servidor').value;
+    const app       = document.getElementById('sol-rep-app').value;
+    const nome      = document.getElementById('sol-rep-nome').value.trim();
+    const problema  = document.getElementById('sol-rep-problema').value.trim();
+
+    if(!servidor){alert('Por favor, selecione o servidor.'); return;}
+    if(!app){alert('Por favor, selecione o aplicativo.'); return;}
+    if(!nome){alert('Por favor, informe o nome do conteúdo.'); return;}
+    if(!problema){alert('Por favor, descreva o problema.'); return;}
+
+    const msg =
+`🐞 *Reportar Problema*
+
+📡 *Servidor*: ${servidor}
+📱 *Aplicativo*: ${app}
+🎬 *Tipo*: ${solCategoriaRep}
+📺 *Nome do Conteúdo*: ${nome}
+⚠️ *Problema*: ${problema}`;
 
     const url = `https://wa.me/5541997043607?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -2324,5 +2470,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
