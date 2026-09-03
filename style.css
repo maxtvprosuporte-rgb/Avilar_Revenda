@@ -115,6 +115,7 @@ section{width:100%;padding:60px 16px;position:relative}
    HERO — texto principal chamativo
 ================================================== */
 .hero{
+    position:relative;
     padding:64px 16px 40px;
     background:transparent;
     text-align:center;
@@ -523,4 +524,104 @@ footer .brand-line .icon-svg{width:.85em;height:.85em;vertical-align:-2px}
 }
 @media(max-width:640px){
     .tmdb-track{ display:none; }
+}
+
+/* ==================================================
+   TÚNEL 3D EM PERSPECTIVA — efeito hiperespaço no hero
+================================================== */
+.tunnel3d{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    perspective:520px;
+    perspective-origin:50% 46%;
+    pointer-events:none;
+}
+.tunnel-scene{
+    position:absolute;
+    inset:0;
+    transform-style:preserve-3d;
+}
+
+/* --- anéis do túnel, recuando em profundidade --- */
+.tunnel-ring{
+    --ring-color:var(--vermelho-claro);
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:min(78vmin,640px);
+    aspect-ratio:16/9;
+    border-radius:22px;
+    border:2px solid var(--ring-color);
+    box-shadow:
+        0 0 22px var(--ring-color),
+        inset 0 0 22px var(--ring-color);
+    opacity:0;
+    transform:translate(-50%,-50%) translateZ(-2600px);
+    animation:tunnelMove 6.5s linear infinite;
+    animation-delay:calc(var(--i) * -0.46s);
+    will-change:transform,opacity;
+}
+.tunnel-ring:nth-child(3n+1){ --ring-color:var(--vermelho-claro); }
+.tunnel-ring:nth-child(3n+2){ --ring-color:var(--branco-neon); }
+.tunnel-ring:nth-child(3n+3){ --ring-color:var(--verde-claro); }
+
+@keyframes tunnelMove{
+    0%{
+        transform:translate(-50%,-50%) translateZ(-2600px) rotate(0deg);
+        opacity:0;
+    }
+    12%{ opacity:.85; }
+    82%{ opacity:.5; }
+    100%{
+        transform:translate(-50%,-50%) translateZ(520px) rotate(7deg);
+        opacity:0;
+    }
+}
+
+/* --- partículas/estrelas que disparam do centro para fora, tipo hiperespaço --- */
+.tunnel-star{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:var(--ssize,3px);
+    height:var(--ssize,3px);
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 0 8px 1px rgba(255,255,255,.85);
+    opacity:0;
+    transform:translate(-50%,-50%) translate3d(0,0,-2400px);
+    animation:starMove var(--sdur,5.5s) linear infinite;
+    animation-delay:var(--sdelay,0s);
+    will-change:transform,opacity;
+}
+@keyframes starMove{
+    0%{
+        transform:translate(-50%,-50%) translate3d(calc(var(--sx) * .15),calc(var(--sy) * .15),-2400px);
+        opacity:0;
+    }
+    15%{ opacity:1; }
+    100%{
+        transform:translate(-50%,-50%) translate3d(var(--sx),var(--sy),480px);
+        opacity:0;
+    }
+}
+
+/* --- vinheta: escurece as bordas e acende o ponto de fuga central --- */
+.tunnel-vignette{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(ellipse at 50% 46%, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 22%),
+        radial-gradient(ellipse at 50% 46%, transparent 40%, var(--preto) 92%);
+    z-index:1;
+}
+
+@media(max-width:640px){
+    .tunnel-star{ display:none; }
+    .tunnel-ring{ width:88vmin; }
+}
+@media(prefers-reduced-motion:reduce){
+    .tunnel-ring,.tunnel-star{ animation-play-state:paused; }
 }
