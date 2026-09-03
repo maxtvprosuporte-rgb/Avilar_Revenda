@@ -8,8 +8,8 @@ function toggleFAQ(btn){
 /* ===== Colunas de pôsteres (TMDB) com animação ao rolar a página ===== */
 
 const TMDB_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZDNkMGM5YmZlYTdmNjAxOTI0YjgxMGMwNzQ3MTIwMiIsIm5iZiI6MTc3MTk0NDAwNy4yNDgsInN1YiI6IjY5OWRiODQ3MjQwMWRiY2I1OGQ3NDkwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tbKJw-MIm0tBV03XFAWKyuewOeyZs4LOt3E17xMtb7I';
-const TMDB_IMG = 'https://image.tmdb.org/t/p/w342';
-const POSTERS_POR_COLUNA = 12; // quantos itens buscar de cada lista (filmes/séries)
+const TMDB_IMG = 'https://image.tmdb.org/t/p/w185';
+const POSTERS_POR_COLUNA = 10;
 
 async function tmdbFetch(path){
     const res = await fetch(`https://api.themoviedb.org/3/${path}`, {
@@ -24,7 +24,6 @@ async function tmdbFetch(path){
 
 function renderPosterColumn(track, items){
     const validos = items.filter(i => i.poster_path).slice(0, POSTERS_POR_COLUNA);
-    // duplica a lista para permitir loop contínuo e seamless ao rolar
     const dobrado = [...validos, ...validos];
     track.innerHTML = dobrado.map(item => `
         <img src="${TMDB_IMG}${item.poster_path}"
@@ -39,14 +38,14 @@ function initTmdbScrollParallax(){
     if(!colFilmes || !colSeries) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduceMotion) return; // respeita usuários que pedem menos animação
+    if(reduceMotion) return;
 
-    const metade = colFilmes.scrollHeight / 2; // altura de uma "volta" (lista não duplicada)
+    const metade = colFilmes.scrollHeight / 2;
+    if(!metade) return;
     let ticking = false;
 
     function update(){
-        const y = window.scrollY * 0.35; // velocidade do efeito
-        // módulo garante loop infinito e suave, sem "acabar" as imagens
+        const y = window.scrollY * 0.35;
         const offsetFilmes = -(y % metade);
         const offsetSeries = (y % metade) - metade;
         colFilmes.style.transform = `translateY(${offsetFilmes}px)`;

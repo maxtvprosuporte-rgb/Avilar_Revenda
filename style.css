@@ -119,7 +119,9 @@ section{width:100%;padding:60px 16px;position:relative}
     background:transparent;
     text-align:center;
     animation:fadeIn 1s ease;
+    overflow:hidden;
 }
+.hero .container{position:relative;z-index:2}
 .hero-badge{
     display:inline-flex;align-items:center;gap:8px;
     background:rgba(255,255,255,.05);
@@ -495,3 +497,30 @@ footer .brand-line .dot-g{color:var(--verde-claro)}
 .faq-item.active .faq-question .icon-svg{transform:rotate(45deg)}
 .whatsapp-icon .icon-svg{width:30px;height:30px;fill:#fff;stroke:none}
 footer .brand-line .icon-svg{width:.85em;height:.85em;vertical-align:-2px}
+
+/* ==================================================
+   COLUNAS DE PÔSTERES (TMDB) — filmes à esquerda, séries à direita
+================================================== */
+.tmdb-track{
+    position:absolute;
+    top:0;
+    width:130px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    z-index:1;
+    pointer-events:none;
+    will-change:transform;
+}
+#tmdbMovies{ left:0; }
+#tmdbSeries{ right:0; }
+.tmdb-track img{
+    width:100%;
+    border-radius:10px;
+    display:block;
+    opacity:.35;
+    filter:saturate(.85);
+}
+@media(max-width:640px){
+    .tmdb-track{ display:none; }
+}
