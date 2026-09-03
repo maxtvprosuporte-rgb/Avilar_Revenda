@@ -512,15 +512,19 @@ footer .brand-line .icon-svg{width:.85em;height:.85em;vertical-align:-2px}
     z-index:1;
     pointer-events:none;
     will-change:transform;
+    transform-style:preserve-3d;
+    transition:opacity .4s ease;
 }
-#tmdbMovies{ left:0; }
-#tmdbSeries{ right:0; }
+#tmdbMovies{ left:0; transform-origin:left center; }
+#tmdbSeries{ right:0; transform-origin:right center; }
 .tmdb-track img{
     width:100%;
     border-radius:10px;
     display:block;
-    opacity:.35;
-    filter:saturate(.85);
+    opacity:.55;
+    filter:saturate(.9);
+    box-shadow:0 6px 20px rgba(0,0,0,.55);
+    border:1px solid rgba(255,255,255,.08);
 }
 @media(max-width:640px){
     .tmdb-track{ display:none; }
@@ -624,4 +628,21 @@ footer .brand-line .icon-svg{width:.85em;height:.85em;vertical-align:-2px}
 }
 @media(prefers-reduced-motion:reduce){
     .tunnel-ring,.tunnel-star{ animation-play-state:paused; }
+}
+
+/* ==================================================
+   REVEAL AO ROLAR — seções entram como painéis de galeria
+================================================== */
+.reveal{
+    opacity:0;
+    transform:translateY(46px) scale(.96);
+    transition:opacity .7s cubic-bezier(.16,.8,.24,1),
+               transform .7s cubic-bezier(.16,.8,.24,1);
+}
+.reveal.in-view{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+@media(prefers-reduced-motion:reduce){
+    .reveal{ opacity:1!important; transform:none!important; transition:none!important; }
 }

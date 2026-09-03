@@ -44,12 +44,28 @@ function initTmdbScrollParallax(){
     if(!metade) return;
     let ticking = false;
 
+    /* Efeito "corredor de galeria": as colunas de pôsteres ganham leve
+       inclinação em perspectiva, como se fossem paredes de um corredor
+       vistas em fuga, enquanto deslizam verticalmente ao rolar. */
+    const TILT_MAX = 10;
+
     function update(){
         const y = window.scrollY * 0.35;
         const offsetFilmes = -(y % metade);
         const offsetSeries = (y % metade) - metade;
-        colFilmes.style.transform = `translateY(${offsetFilmes}px)`;
-        colSeries.style.transform = `translateY(${offsetSeries}px)`;
+
+        const progresso = Math.min(window.scrollY / 500, 1);
+        const tilt = 6 + progresso * TILT_MAX;
+
+        colFilmes.style.transform =
+            `translateY(${offsetFilmes}px) perspective(900px) rotateY(-${tilt}deg)`;
+        colSeries.style.transform =
+            `translateY(${offsetSeries}px) perspective(900px) rotateY(${tilt}deg)`;
+
+        const opacidade = 1 - progresso * 0.5;
+        colFilmes.style.opacity = opacidade;
+        colSeries.style.opacity = opacidade;
+
         ticking = false;
     }
 
@@ -81,4 +97,53 @@ async function carregarColunasTmdb(){
     }
 }
 
+/* ===== Revelação em galeria: seções e cards entram suavemente
+   conforme o usuário rola a página, como painéis expostos ===== */
+function initScrollReveal(){
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion) return;
+
+    const gruposEmGrade = [
+        '.destaques-grid > *',
+        '.sistemas-grid > *',
+        '.diferenciais-grid > *',
+        '.comparativo-grid > *',
+        '.apps-grid > *',
+        '.avaliacoes-grid > *',
+        '.faq-container > *'
+    ];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    gruposEmGrade.forEach(seletor => {
+        document.querySelectorAll(seletor).forEach((el, i) => {
+            el.classList.add('reveal');
+            el.style.transitionDelay = `${Math.min(i, 5) * 90}ms`;
+            observer.observe(el);
+        });
+    });
+
+    const cabecalhos = document.querySelectorAll(
+        '#sistemas .titulo, #sistemas .subtexto, ' +
+        '#diferenciais .titulo, #diferenciais .subtexto, ' +
+        '#comparativo .titulo, #comparativo .subtexto, ' +
+        '#aplicativos .titulo, #aplicativos .subtexto, ' +
+        '#avaliacoes .titulo, #avaliacoes .subtexto, ' +
+        '#faq .titulo, #faq .subtexto, ' +
+        '.cta-teste .titulo, .cta-teste .subtexto, .cta-teste .btn-cta-teste'
+    );
+    cabecalhos.forEach(el => {
+        el.classList.add('reveal');
+        observer.observe(el);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', carregarColunasTmdb);
+document.addEventListener('DOMContentLoaded', initScrollReveal);
