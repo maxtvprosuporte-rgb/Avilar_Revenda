@@ -564,38 +564,9 @@ footer .brand-line .dot-g{color:var(--verde-claro)}
 footer .brand-line .icon-svg{width:.85em;height:.85em;vertical-align:-2px}
 
 /* ==================================================
-   COLUNAS DE PÔSTERES (TMDB) — filmes à esquerda, séries à direita
+   CAPAS DE FILMES/SÉRIES (TMDB) — removidas por enquanto,
+   voltam em uma próxima etapa
 ================================================== */
-.tmdb-track{
-    position:absolute;
-    top:0;
-    width:130px;
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    z-index:1;
-    pointer-events:none;
-    will-change:transform;
-    transform-style:preserve-3d;
-    transition:opacity .4s ease;
-}
-#tmdbMovies{ left:0; transform-origin:left center; }
-#tmdbSeries{ right:0; transform-origin:right center; }
-.tmdb-track img{
-    width:100%;
-    border-radius:10px;
-    display:block;
-    opacity:.55;
-    filter:saturate(.9);
-    box-shadow:0 6px 20px rgba(0,0,0,.55);
-    border:1px solid rgba(255,255,255,.08);
-}
-@media(max-width:640px){
-    .tmdb-track{ width:78px; gap:10px; }
-}
-@media(max-width:420px){
-    .tmdb-track{ width:60px; gap:8px; }
-}
 
 /* ==================================================
    TÚNEL 3D EM PERSPECTIVA — efeito hiperespaço no hero
@@ -698,18 +669,22 @@ footer .brand-line .icon-svg{width:.85em;height:.85em;vertical-align:-2px}
 }
 
 /* ==================================================
-   REVEAL AO ROLAR — seções entram como painéis de galeria
+   REVEAL AO ROLAR — mesmo efeito do hero (crescer + desfocar)
+   aplicado a todas as seções do site
 ================================================== */
 .reveal{
     opacity:0;
-    transform:translateY(46px) scale(.96);
-    transition:opacity .7s cubic-bezier(.16,.8,.24,1),
-               transform .7s cubic-bezier(.16,.8,.24,1);
+    transform:translateY(36px) scale(.8);
+    filter:blur(9px);
+    transition:opacity .8s cubic-bezier(.16,.8,.24,1),
+               transform .8s cubic-bezier(.16,.8,.24,1),
+               filter .8s cubic-bezier(.16,.8,.24,1);
 }
 .reveal.in-view{
     opacity:1;
     transform:translateY(0) scale(1);
+    filter:blur(0);
 }
 @media(prefers-reduced-motion:reduce){
-    .reveal{ opacity:1!important; transform:none!important; transition:none!important; }
+    .reveal{ opacity:1!important; transform:none!important; filter:none!important; transition:none!important; }
 }
