@@ -293,7 +293,38 @@
     .systems-row{grid-template-columns:1fr;}
   }
 
-  /* ---------- Diferenciais ---------- */
+  /* ---------- Aplicativos Parceiros ---------- */
+  .partners-grid{
+    margin-top:16px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  .partner-tile{
+    display:flex;flex-direction:column;align-items:center;gap:14px;
+    padding:28px 16px;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:6px;
+    transition:transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .partner-tile:hover{
+    transform:translateY(-6px);
+    border-color:var(--line-strong);
+    box-shadow:0 16px 34px -14px rgba(232,163,61,0.35);
+  }
+  .partner-tile img{
+    width:56px;height:56px;
+    border-radius:12px;
+    object-fit:cover;
+  }
+  .partner-tile span{
+    font-family:var(--sans);font-size:13px;font-weight:600;
+    color:var(--text-muted);text-align:center;
+  }
+  @media (max-width:760px){
+    .partners-grid{grid-template-columns:repeat(2,1fr);}
+  }
   .diff-list{margin:8px auto 0;max-width:760px;border-top:1px solid var(--line);}
   .diff-item{display:grid;grid-template-columns:1fr;gap:8px;padding:32px 0;border-bottom:1px solid var(--line);text-align:center;}
   .diff-item h3{font-family:var(--sans);text-transform:none;font-size:20px;font-weight:700;letter-spacing:0;}
