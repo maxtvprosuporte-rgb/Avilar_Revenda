@@ -60,6 +60,29 @@
   </div>
 </section>
 
+<!-- EM ALTA HOJE (TMDB) -->
+<section class="wrap" id="em-alta">
+  <h2 class="reveal">Em alta hoje.</h2>
+  <p class="reveal" style="text-align:center;max-width:52ch;margin:0 auto 8px;">O que está bombando agora nas telas — atualizado direto da fonte.</p>
+
+  <div class="coverflow reveal" id="coverflow">
+    <div class="cf-row">
+      <button class="cf-arrow cf-prev" id="cfPrev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="cf-stage" id="cfStage">
+        <div class="cf-loading" id="cfLoading">Carregando os destaques de hoje…</div>
+      </div>
+      <button class="cf-arrow cf-next" id="cfNext" aria-label="Próximo">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    <div class="cf-dots" id="cfDots"></div>
+  </div>
+
+  <p class="tmdb-attribution">Dados e imagens fornecidos por <a href="https://www.themoviedb.org" target="_blank" rel="noopener">TMDB</a>. Este produto usa a API do TMDB, mas não é endossado ou certificado por eles.</p>
+</section>
+
 <!-- DESTAQUES -->
 <section class="wrap">
   <h2 class="reveal">Tudo pensado pra você<br>assistir sem dor de cabeça.</h2>
@@ -91,21 +114,66 @@
     </div>
 
     <div class="systems-row stagger">
+
       <div class="system-col unitv">
         <div class="system-logo-wrap"><img src="images/unitv.png" alt="UniTV" style="height:52px;"></div>
         <div class="system-access">2 acessos simultâneos</div>
-        <p>A opção mais enxuta, com espaço pra dividir com quem mora com você, sem abrir mão da qualidade.</p>
+
+        <ul class="system-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Canais ao vivo, filmes e séries</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Qualidade até 4K</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Android, computador, Smart TV e dispositivos Smart TV</li>
+        </ul>
+
+        <div class="system-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+          <span>Exclusivo para Android, incluindo Smart TVs e dispositivos Smart TV com Android.</span>
+        </div>
+
+        <div class="system-trial">Teste grátis <strong>3 dias</strong></div>
       </div>
+
       <div class="system-col wplay">
         <div class="system-logo-wrap"><img src="images/wplay.jpeg" alt="WPlay"></div>
         <div class="system-access">2 acessos simultâneos</div>
-        <p>Pra dividir com quem mora com você — cada pessoa assiste algo diferente, ao mesmo tempo.</p>
+
+        <ul class="system-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Canais ao vivo, filmes e séries</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Qualidade até 4K</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Android, iOS, computador, Smart TV e dispositivos Smart TV</li>
+        </ul>
+
+        <div class="system-partners">
+          <span class="partners-label">Aplicativos parceiros</span>
+          <div class="partner-chips">
+            <span>XCloud</span><span>Krator+</span><span>Nexus TV</span><span>KPlay</span>
+            <span>4K IPTV</span><span>Pro IPTV</span><span>Star IPTV</span><span>Brasil IPTV</span>
+          </div>
+        </div>
+
+        <div class="system-trial">Teste grátis <strong>4 horas</strong></div>
       </div>
+
       <div class="system-col rush">
         <div class="system-logo-wrap"><img src="images/rushplay.jpeg" alt="RushPlay" style="height:44px;"></div>
         <div class="system-access">1 acesso</div>
-        <p>Indicado pra quem assiste sozinho e quer uma experiência direta, sem dividir tela.</p>
+
+        <ul class="system-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Canais ao vivo, filmes e séries</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Qualidade até 4K</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Android, iOS, computador, Smart TV e dispositivos Smart TV</li>
+        </ul>
+
+        <div class="system-partners">
+          <span class="partners-label">Aplicativo parceiro</span>
+          <div class="partner-chips">
+            <span>XCloud</span>
+          </div>
+        </div>
+
+        <div class="system-trial">Teste grátis <strong>3 horas</strong></div>
       </div>
+
     </div>
   </div>
 </section>
