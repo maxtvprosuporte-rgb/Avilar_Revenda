@@ -12,6 +12,13 @@
     let currentIndex = 0;
 
     function render(){
+      const isMobile = window.innerWidth <= 640;
+      const spacingX = isMobile ? 78 : 140;
+      const rotate = isMobile ? -26 : -34;
+      const depth = isMobile ? 60 : 100;
+      const scaleStep = isMobile ? 0.16 : 0.15;
+      const opacityStep = isMobile ? 0.32 : 0.26;
+
       items.forEach((el, i)=>{
         const offset = i - currentIndex;
         const abs = Math.abs(offset);
@@ -22,17 +29,23 @@
           return;
         }
         el.style.pointerEvents = 'auto';
-        const translateX = offset * 140;
-        const rotateY = offset * -34;
-        const translateZ = -abs * 100;
-        const scale = 1 - abs * 0.15;
-        const opacity = 1 - abs * 0.26;
+        const translateX = offset * spacingX;
+        const rotateY = offset * rotate;
+        const translateZ = -abs * depth;
+        const scale = 1 - abs * scaleStep;
+        const opacity = 1 - abs * opacityStep;
         el.style.transform = `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
         el.style.zIndex = 100 - abs;
         el.style.opacity = String(Math.max(opacity, 0));
       });
       dots.forEach((d, i)=> d.classList.toggle('is-active', i === currentIndex));
     }
+
+    let resizeTimer;
+    window.addEventListener('resize', ()=>{
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(render, 150);
+    });
 
     function go(delta){
       currentIndex = Math.max(0, Math.min(items.length - 1, currentIndex + delta));

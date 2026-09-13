@@ -17,6 +17,7 @@
 
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  html,body{overflow-x:hidden;max-width:100%;}
   body{
     background:var(--bg);
     color:var(--text);
@@ -401,6 +402,7 @@
     max-width:960px;
     height:360px;
     perspective:1600px;
+    overflow:hidden;
   }
   .cf-loading{
     position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
@@ -472,9 +474,13 @@
   .tmdb-attribution a{color:var(--text-muted);border-bottom:1px solid var(--line-strong);}
 
   @media (max-width:640px){
-    .cf-stage{height:280px;}
-    .cf-item{width:145px;height:217px;margin-left:-72px;margin-top:-108px;}
-    .cf-item .cf-title{font-size:15px;}
+    .cf-stage{height:250px;}
+    .cf-item{width:120px;height:180px;margin-left:-60px;margin-top:-90px;}
+    .cf-item .cf-title{font-size:14px;}
+    .cf-item .cf-caption{padding:20px 10px 10px;}
+    .cf-item .cf-meta{font-size:10px;}
+    .cf-row{gap:6px;}
+    .cf-arrow{width:34px;height:34px;}
   }
 
   .diff-list{margin:8px auto 0;max-width:760px;border-top:1px solid var(--line);}
