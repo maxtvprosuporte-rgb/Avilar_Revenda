@@ -568,9 +568,14 @@
 
   footer{
     padding:36px 0;border-top:1px solid var(--line);font-size:13px;color:var(--text-muted);
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--sans);
+    display:flex;flex-direction:column;gap:10px;font-family:var(--sans);
+  }
+  footer .footer-top{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;
   }
   footer img{height:22px;width:auto;opacity:0.8;}
+  .footer-credit{font-size:11px;color:var(--text-muted);opacity:0.55;}
+  .footer-credit a{color:var(--text-muted);}
 
   @media (max-width:600px){
     section{padding:72px 0;}
