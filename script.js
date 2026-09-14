@@ -13,11 +13,11 @@
 
     function render(){
       const isMobile = window.innerWidth <= 640;
-      const spacingX = isMobile ? 78 : 140;
-      const rotate = isMobile ? -26 : -34;
-      const depth = isMobile ? 60 : 100;
+      const spacingX = isMobile ? 108 : 175;
+      const rotate = isMobile ? -28 : -34;
+      const depth = isMobile ? 80 : 130;
       const scaleStep = isMobile ? 0.16 : 0.15;
-      const opacityStep = isMobile ? 0.32 : 0.26;
+      const opacityStep = isMobile ? 0.30 : 0.26;
 
       items.forEach((el, i)=>{
         const offset = i - currentIndex;
