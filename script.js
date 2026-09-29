@@ -136,18 +136,44 @@
       render();
     }
 
+    let allResults = [];
+    const filterBtns = document.querySelectorAll('.cf-filter');
+
+    function applyFilter(kind){
+      const filtered = kind === 'all'
+        ? allResults
+        : allResults.filter(r => r.media_type === kind);
+      const slice = filtered.slice(0, 16);
+      if(!slice.length){
+        stage.innerHTML = '<div class="cf-loading">Nada encontrado nessa categoria hoje.</div>';
+        dotsWrap.innerHTML = '';
+        items = [];
+        dots = [];
+        return;
+      }
+      renderSlides(slice.map(buildSlide));
+    }
+
+    filterBtns.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        filterBtns.forEach(b=>b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        applyFilter(btn.dataset.filter);
+      });
+    });
+
     fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${TMDB_KEY}&language=pt-BR`)
       .then(res=>{
         if(!res.ok) throw new Error('TMDB request failed');
         return res.json();
       })
       .then(data=>{
-        const results = (data.results || []).filter(r => r.poster_path).slice(0, 16);
-        if(!results.length){
+        allResults = (data.results || []).filter(r => r.poster_path && (r.media_type === 'movie' || r.media_type === 'tv'));
+        if(!allResults.length){
           stage.innerHTML = '<div class="cf-loading">Não foi possível carregar os destaques agora.</div>';
           return;
         }
-        renderSlides(results.map(buildSlide));
+        applyFilter('all');
       })
       .catch(()=>{
         stage.innerHTML = '<div class="cf-loading">Não foi possível carregar os destaques agora.</div>';
