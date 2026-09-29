@@ -154,12 +154,6 @@
       });
   })();
 
-  document.querySelectorAll('.marquee-lights').forEach(strip=>{
-    strip.querySelectorAll('span').forEach((s,i)=>{
-      s.style.animationDelay = (i * 0.08) + 's';
-    });
-  });
-
   const revealObserver = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
