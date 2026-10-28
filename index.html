@@ -3,373 +3,533 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avilar — Mais entretenimento. Mais opções. Um só lugar.</title>
+<title>Avilar — Canais, séries e filmes em um só lugar</title>
+<meta name="description" content="Canais ao vivo, séries e filmes em um só lugar. Escolha o sistema que combina com você e comece com teste grátis.">
+<meta name="theme-color" content="#04070F">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
+<header class="site-header">
   <div class="nav">
-    <a class="nav-logo-text" href="#">Avilar</a>
-    <nav class="nav-links">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Avilar</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Navegação principal">
       <a href="#sistemas">Sistemas</a>
-      <a href="#comparar">Compare</a>
+      <a href="#comparar">Comparativo</a>
       <a href="#teste">Teste grátis</a>
       <a href="#faq">Dúvidas</a>
     </nav>
-    <a href="#teste" class="btn btn-ghost" style="padding:9px 20px;font-size:14px;">Teste grátis</a>
+
+    <a href="#teste" class="btn btn-primary btn-sm">Teste grátis</a>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero wrap">
-  <div class="live-badge"><span class="dot"></span>TRANSMISSÃO AO VIVO 24H</div>
-  <h1>Canais, Séries e Filmes!<br>Assista mais. Pague menos.</h1>
-  <p class="sub">Canais, séries e filmes com praticidade e qualidade — escolha o sistema que combina com o seu jeito de assistir.</p>
+<main id="top">
 
-  <div class="content-types">
-    <div class="content-type canais">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="5" width="18" height="12" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
-      Canais
-    </div>
-    <div class="content-type series">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 6h16v12H4z"/><path d="M4 10l4-4M12 10l4-4M20 10l-4-4"/></svg>
-      Séries
-    </div>
-    <div class="content-type filmes">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/><circle cx="12" cy="6.5" r="1"/><circle cx="17" cy="9.5" r="1"/><circle cx="17" cy="14.5" r="1"/><circle cx="12" cy="17.5" r="1"/><circle cx="7" cy="14.5" r="1"/><circle cx="7" cy="9.5" r="1"/></svg>
-      Filmes
-    </div>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid wrap">
+      <div class="hero-copy">
+        <p class="live"><span class="live-dot"></span>Transmissão ao vivo, 24 horas</p>
 
-  <div class="stats">
-    <div class="stat"><div class="num">+10.000</div><div class="label">Clientes</div></div>
-    <div class="stat"><div class="num">+3.000</div><div class="label">Canais</div></div>
-    <div class="stat"><div class="num">+10.000</div><div class="label">Séries</div></div>
-    <div class="stat"><div class="num">+35.000</div><div class="label">Filmes</div></div>
-  </div>
-</section>
+        <h1>Canais, séries e filmes.<br>Assista mais, pague menos.</h1>
 
-<!-- EM ALTA HOJE (TMDB) -->
-<section class="wrap" id="em-alta">
-  <h2 class="reveal">Em alta hoje.</h2>
-  <p class="reveal" style="text-align:center;max-width:52ch;margin:0 auto 8px;">O que está bombando agora nas telas — atualizado direto da fonte.</p>
+        <p class="hero-sub">Tudo o que você assiste reunido em uma assinatura só — com qualidade até 4K e suporte de verdade quando você precisar.</p>
 
-  <div class="cf-filters reveal" id="cfFilters">
-    <button class="cf-filter is-active" data-filter="all">Todos</button>
-    <button class="cf-filter" data-filter="movie">Filmes</button>
-    <button class="cf-filter" data-filter="tv">Séries</button>
-  </div>
-
-  <div class="coverflow reveal" id="coverflow">
-    <div class="cf-row">
-      <button class="cf-arrow cf-prev" id="cfPrev" aria-label="Anterior">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <div class="cf-stage" id="cfStage">
-        <div class="cf-loading" id="cfLoading">Carregando os destaques de hoje…</div>
-      </div>
-      <button class="cf-arrow cf-next" id="cfNext" aria-label="Próximo">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
-    <div class="cf-dots" id="cfDots"></div>
-  </div>
-
-
-</section>
-
-<!-- DESTAQUES -->
-<section class="wrap">
-  <h2 class="reveal">Tudo pensado pra você<br>assistir sem dor de cabeça.</h2>
-  <div class="highlights stagger">
-    <div class="highlight">
-      <div class="mark">01</div>
-      <h3>Estabilidade no dia a dia</h3>
-      <p>Menos travamentos, menos recarregar página — pra você sentar e assistir sem se preocupar com a plataforma.</p>
-    </div>
-    <div class="highlight">
-      <div class="mark">02</div>
-      <h3>Qualidade Premium 4K</h3>
-      <p>Filmes e séries em 4K nos títulos que suportam essa qualidade, direto na sua tela.</p>
-    </div>
-    <div class="highlight">
-      <div class="mark">03</div>
-      <h3>Suporte que responde de verdade</h3>
-      <p>Time preparado pra te ajudar durante a configuração e o uso, sempre que precisar.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SISTEMAS -->
-<section class="alt" id="sistemas">
-  <div class="wrap">
-    <div class="systems-head reveal">
-      <h2 style="margin:0 auto 16px;">Três sistemas.<br>Você escolhe.</h2>
-      <p>Cada um pensado pra um jeito diferente de assistir — de quem divide a tela em casa até quem quer algo simples e direto.</p>
-    </div>
-
-    <div class="systems-row stagger">
-
-      <div class="system-col unitv">
-        <div class="system-logo-wrap"><img src="images/unitv.png" alt="UniTV" style="height:52px;"></div>
-        <div class="system-access">2 acessos simultâneos</div>
-
-        <ul class="system-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Canais ao vivo, filmes e séries</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Qualidade até 4K</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Android, computador, Smart TV e dispositivos Smart TV</li>
-        </ul>
-
-        <div class="system-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-          <span>Exclusivo para Android, incluindo Smart TVs e dispositivos Smart TV com Android.</span>
+        <div class="hero-cta">
+          <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Quero%20come%C3%A7ar%20meu%20teste%20gr%C3%A1tis%20na%20Avilar." class="btn btn-primary">Começar teste grátis</a>
+          <a href="#sistemas" class="btn btn-line">Conhecer os sistemas</a>
         </div>
 
-        <div class="system-trial">Teste grátis <strong>3 dias</strong></div>
+        <p class="hero-note">Tire suas dúvidas pelo WhatsApp antes de decidir.</p>
       </div>
 
-      <div class="system-col wplay">
-        <div class="system-logo-wrap"><img src="images/wplay.jpeg" alt="WPlay"></div>
-        <div class="system-access">2 acessos simultâneos</div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-stack">
+          <div class="art-frame art-back"></div>
+          <div class="art-frame art-mid"></div>
+          <div class="art-main">
+            <div class="art-top">
+              <span class="art-live"><span class="art-dot"></span>ao vivo</span>
+              <span class="art-tag">4K</span>
+            </div>
 
-        <ul class="system-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Canais ao vivo, filmes e séries</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Qualidade até 4K</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Android, iOS, computador, Smart TV e dispositivos Smart TV</li>
-        </ul>
+            <div class="art-stage">
+              <span class="art-play">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12z"/></svg>
+              </span>
+            </div>
 
-        <div class="system-partners">
-          <span class="partners-label">Aplicativos parceiros</span>
-          <div class="partner-chips">
-            <span>XCloud</span><span>Krator+</span><span>Nexus TV</span><span>KPlay</span>
-            <span>4K IPTV</span><span>Pro IPTV</span><span>Star IPTV</span><span>Brasil IPTV</span>
+            <div class="art-bottom">
+              <span class="art-line art-line-lg"></span>
+              <span class="art-line art-line-sm"></span>
+              <span class="art-progress"><i></i></span>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="system-trial">Teste grátis <strong>4 horas</strong></div>
+    <div class="wrap">
+      <div class="statbar">
+        <div class="stat-item"><span class="stat-num">+10.000</span><span class="stat-label">Clientes</span></div>
+        <div class="stat-item"><span class="stat-num">+3.000</span><span class="stat-label">Canais</span></div>
+        <div class="stat-item"><span class="stat-num">+10.000</span><span class="stat-label">Séries</span></div>
+        <div class="stat-item"><span class="stat-num">+35.000</span><span class="stat-label">Filmes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EM ALTA HOJE -->
+  <section id="em-alta" class="section">
+    <div class="wrap">
+      <div class="head head-center">
+        <h2>Em alta hoje</h2>
+        <p>O que está bombando agora nas telas, atualizado diariamente.</p>
+      </div>
+    </div>
+
+    <div class="wrap-wide">
+      <div class="cf-filters" id="cfFilters">
+        <button class="cf-filter is-active" data-filter="all">Todos</button>
+        <button class="cf-filter" data-filter="movie">Filmes</button>
+        <button class="cf-filter" data-filter="tv">Séries</button>
       </div>
 
-      <div class="system-col rush">
-        <div class="system-logo-wrap"><img src="images/rushplay.jpeg" alt="RushPlay" style="height:44px;"></div>
-        <div class="system-access">1 acesso</div>
-
-        <ul class="system-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Canais ao vivo, filmes e séries</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Qualidade até 4K</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>Android, iOS, computador, Smart TV e dispositivos Smart TV</li>
-        </ul>
-
-        <div class="system-partners">
-          <span class="partners-label">Aplicativo parceiro</span>
-          <div class="partner-chips">
-            <span>XCloud</span>
+      <div class="coverflow">
+        <div class="cf-row">
+          <button class="cf-arrow cf-prev" id="cfPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="cf-stage" id="cfStage">
+            <div class="cf-loading" id="cfLoading">Carregando os destaques de hoje…</div>
           </div>
+          <button class="cf-arrow cf-next" id="cfNext" aria-label="Próximo">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+        <div class="cf-dots" id="cfDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTAQUES -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head head-split">
+        <h2>Tudo pensado para você assistir sem dor de cabeça</h2>
+        <p>Estabilidade, imagem e suporte — o básico que costuma faltar, resolvido.</p>
+      </div>
+
+      <div class="pillars stagger">
+        <article class="pillar">
+          <span class="pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l2.5-6 4 12 2.5-6h5"/></svg>
+          </span>
+          <h3>Estabilidade no dia a dia</h3>
+          <p>Menos travamentos e menos recarregar página — para você sentar e assistir sem se preocupar com a plataforma.</p>
+        </article>
+
+        <article class="pillar">
+          <span class="pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="5" width="19" height="12.5" rx="2"/><path d="M8 21h8M12 17.5V21"/></svg>
+          </span>
+          <h3>Qualidade até 4K</h3>
+          <p>Filmes e séries em 4K nos títulos que suportam essa qualidade, direto na sua tela.</p>
+        </article>
+
+        <article class="pillar">
+          <span class="pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12a8.5 8.5 0 0 1-8.5 8.5H4l1.8-3A8.5 8.5 0 1 1 21 12z"/></svg>
+          </span>
+          <h3>Suporte que responde</h3>
+          <p>Time preparado para ajudar na configuração e no uso, sempre que você precisar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SISTEMAS -->
+  <section class="section band" id="sistemas">
+    <div class="wrap">
+      <div class="head head-split">
+        <h2>Dois sistemas.<br>Você escolhe.</h2>
+        <p>Cada um pensado para um jeito diferente de assistir — de quem divide a tela em casa até quem quer algo simples e direto.</p>
+      </div>
+
+      <div class="systems stagger">
+
+        <article class="system system-wplay">
+          <div class="system-top">
+            <div class="brand-logo">
+              <img src="images/wplay.jpeg" alt="WPlay"
+                   onerror="this.parentElement.classList.add('no-logo'); this.remove();">
+              <span class="brand-word">WPlay</span>
+            </div>
+            <span class="system-badge">Mais escolhido</span>
+          </div>
+
+          <p class="system-access"><strong>2</strong> telas ao mesmo tempo</p>
+
+          <ul class="system-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Canais ao vivo, filmes e séries</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Qualidade até 4K</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Android, iOS, computador e Smart TV</li>
+          </ul>
+
+          <div class="system-block">
+            <span class="block-label">Aplicativos parceiros inclusos</span>
+            <div class="chips">
+              <span>Krator+</span><span>Nexus TV</span><span>KPlay</span><span>4K IPTV</span>
+              <span>Pro IPTV</span><span>Star IPTV</span><span>Brasil IPTV</span>
+            </div>
+          </div>
+
+          <div class="system-foot">
+            <p class="trial-line">Teste grátis de <strong>4 horas</strong></p>
+            <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20WPlay." class="btn btn-line btn-block">Quero o WPlay</a>
+          </div>
+        </article>
+
+        <article class="system system-unitv">
+          <div class="system-top">
+            <div class="brand-logo">
+              <img src="images/unitv.png" alt="UniTV"
+                   onerror="this.parentElement.classList.add('no-logo'); this.remove();">
+              <span class="brand-word">UniTV</span>
+            </div>
+          </div>
+
+          <p class="system-access"><strong>2</strong> telas ao mesmo tempo</p>
+
+          <ul class="system-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Canais ao vivo, filmes e séries</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Qualidade até 4K</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Android, computador e Smart TV</li>
+          </ul>
+
+          <div class="system-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+            <span>Exclusivo para Android, incluindo Smart TVs e dispositivos que transformam a TV em Smart.</span>
+          </div>
+
+          <div class="system-foot">
+            <p class="trial-line">Teste grátis de <strong>3 dias</strong></p>
+            <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20UniTV." class="btn btn-line btn-block">Quero a UniTV</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APLICATIVOS PARCEIROS -->
+  <section class="section" id="parceiros">
+    <div class="wrap">
+      <div class="head head-split">
+        <h2>Também ativamos aplicativos parceiros</h2>
+        <p>Além dos nossos sistemas próprios, realizamos a ativação de outros aplicativos de entretenimento parceiros.</p>
+      </div>
+
+      <div class="partner-strip stagger">
+        <div class="partner-chip">
+          <img src="images/partners/brasil-iptv.png" alt="Brasil IPTV" onerror="this.remove();">
+          <span class="p-mark" aria-hidden="true">B</span>
+          <span class="p-name">Brasil IPTV</span>
+        </div>
+        <div class="partner-chip">
+          <img src="images/partners/nexus.png" alt="Nexus" onerror="this.remove();">
+          <span class="p-mark" aria-hidden="true">N</span>
+          <span class="p-name">Nexus</span>
+        </div>
+        <div class="partner-chip">
+          <img src="images/partners/star-iptv.png" alt="Star IPTV" onerror="this.remove();">
+          <span class="p-mark" aria-hidden="true">S</span>
+          <span class="p-name">Star IPTV</span>
+        </div>
+        <div class="partner-chip">
+          <img src="images/partners/kplay.png" alt="KPlay" onerror="this.remove();">
+          <span class="p-mark" aria-hidden="true">K</span>
+          <span class="p-name">KPlay</span>
+        </div>
+        <div class="partner-chip">
+          <img src="images/partners/pro-iptv.png" alt="Pro IPTV" onerror="this.remove();">
+          <span class="p-mark" aria-hidden="true">P</span>
+          <span class="p-name">Pro IPTV</span>
+        </div>
+        <div class="partner-chip">
+          <img src="images/partners/krator.png" alt="Krator+" onerror="this.remove();">
+          <span class="p-mark" aria-hidden="true">K</span>
+          <span class="p-name">Krator+</span>
+        </div>
+        <div class="partner-chip">
+          <img src="images/partners/4k-iptv.png" alt="4K IPTV" onerror="this.remove();">
+          <span class="p-mark" aria-hidden="true">4</span>
+          <span class="p-name">4K IPTV</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head head-split">
+        <h2>Mais praticidade, mais liberdade, mais suporte</h2>
+        <p>O que muda quando tudo o que você assiste está no mesmo lugar.</p>
+      </div>
+
+      <div class="diff-grid stagger">
+        <div class="diff-item">
+          <h3>Sem anúncios</h3>
+          <p>Assista sem cortes nem anúncios no meio dos seus conteúdos.</p>
+        </div>
+        <div class="diff-item">
+          <h3>Catálogo completo</h3>
+          <p>Uma grande variedade de canais, séries e filmes para você sempre encontrar algo para assistir.</p>
+        </div>
+        <div class="diff-item">
+          <h3>Tudo em um só lugar</h3>
+          <p>Milhares de opções reunidas em uma única plataforma, sem precisar assinar vários serviços ao mesmo tempo.</p>
+        </div>
+        <div class="diff-item">
+          <h3>Atendimento próximo</h3>
+          <p>Time disponível para orientar na escolha do sistema certo e tirar dúvidas antes e depois da contratação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIVO -->
+  <section class="section band" id="comparar">
+    <div class="wrap">
+      <div class="head head-split">
+        <h2>Compare. Escolha. Economize.</h2>
+        <p>Quanto custa manter tudo separado — e quanto custa resolver de uma vez.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Separado</th>
+              <th scope="col" class="col-us">Avilar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Investimento</th>
+              <td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Uma assinatura para cada serviço</span></td>
+              <td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Um único investimento</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Serviços</th>
+              <td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Vários aplicativos separados</span></td>
+              <td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Tudo em um só lugar</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Praticidade</th>
+              <td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Vários logins e cobranças</span></td>
+              <td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Um só acesso para gerenciar</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Benefícios</th>
+              <td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Varia de serviço para serviço</span></td>
+              <td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Sem anúncios em todos os planos</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Economia</th>
+              <td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Você paga por cada assinatura</span></td>
+              <td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Você economiza pagando uma só</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="compare-highlight">Mais opções, menos complicação.</p>
+    </div>
+  </section>
+
+  <!-- DISPOSITIVOS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head head-split">
+        <h2>Na sua tela, do seu jeito</h2>
+        <p>A compatibilidade pode variar conforme o sistema e o modelo do dispositivo.</p>
+      </div>
+
+      <div class="apps stagger">
+        <div class="app-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="2" width="16" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Android</span>
+        </div>
+        <div class="app-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="2" width="16" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>iOS</span>
+        </div>
+        <div class="app-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>Computador</span>
+        </div>
+        <div class="app-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>Smart TV</span>
+        </div>
+        <div class="app-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="7" y="8" width="10" height="7" rx="1.5"/><line x1="9" y1="19" x2="15" y2="19"/></svg>
+          <span>Conector de Smart TV</span>
+        </div>
+      </div>
+
+      <p class="apps-note">Não sabe se funciona no seu aparelho? <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Meu%20dispositivo%20%C3%A9%20compat%C3%ADvel%3F">Pergunte no WhatsApp</a></p>
+    </div>
+  </section>
+
+  <!-- TESTE GRÁTIS -->
+  <section class="section band" id="teste">
+    <div class="wrap">
+      <div class="trial">
+        <div class="trial-copy">
+          <h2>Experimente antes de escolher</h2>
+          <p>Teste gratuitamente e descubra qual sistema combina mais com você — sem compromisso.</p>
+          <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Quero%20come%C3%A7ar%20meu%20teste%20gr%C3%A1tis%20na%20Avilar." class="btn btn-primary">Começar teste grátis</a>
         </div>
 
-        <div class="system-trial">Teste grátis <strong>3 horas</strong></div>
+        <div class="trial-card">
+          <span class="trial-card-title">Duração do teste</span>
+          <div class="trial-row">
+            <span class="trial-name">WPlay</span>
+            <span class="trial-dur">4 horas</span>
+          </div>
+          <div class="trial-row">
+            <span class="trial-name">UniTV</span>
+            <span class="trial-dur">3 dias</span>
+          </div>
+          <p class="trial-foot">O tempo de teste é definido pelo próprio sistema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVALIAÇÕES -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head head-split">
+        <h2>Quem conhece a Avilar conta a experiência</h2>
       </div>
 
-    </div>
-  </div>
-</section>
+      <div class="reviews stagger">
+        <figure class="review">
+          <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+          <blockquote>“Testei o WPlay num sábado à noite e não travou nenhuma vez, mesmo com duas telas ligadas ao mesmo tempo.”</blockquote>
+          <figcaption>Marcos T. — cliente WPlay</figcaption>
+        </figure>
 
-<!-- APLICATIVOS PARCEIROS -->
-<section class="alt" id="parceiros">
-  <div class="wrap">
-    <div class="section-intro reveal">
-      <h2>Também ativamos<br>aplicativos parceiros.</h2>
-      <p>Além dos nossos sistemas próprios, realizamos a ativação de outros aplicativos de entretenimento parceiros.</p>
-    </div>
-    <div class="partners-grid stagger">
-      <div class="partner-tile"><img src="images/partners/brasil-iptv.png" alt="Brasil IPTV"><span>Brasil IPTV</span></div>
-      <div class="partner-tile"><img src="images/partners/nexus.png" alt="Nexus"><span>Nexus</span></div>
-      <div class="partner-tile"><img src="images/partners/star-iptv.png" alt="Star IPTV"><span>Star IPTV</span></div>
-      <div class="partner-tile"><img src="images/partners/kplay.png" alt="KPlay"><span>KPlay</span></div>
-      <div class="partner-tile"><img src="images/partners/pro-iptv.png" alt="Pro IPTV"><span>Pro IPTV</span></div>
-      <div class="partner-tile"><img src="images/partners/xcloud.png" alt="XCloud"><span>XCloud</span></div>
-      <div class="partner-tile"><img src="images/partners/krator.png" alt="Krator+"><span>Krator+</span></div>
-      <div class="partner-tile"><img src="images/partners/4k-iptv.png" alt="4K IPTV"><span>4K IPTV</span></div>
-    </div>
-  </div>
-</section>
+        <figure class="review">
+          <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+          <blockquote>“O suporte respondeu no mesmo dia e me ajudou a instalar na Smart TV em cinco minutos.”</blockquote>
+          <figcaption>Renata C. — cliente UniTV</figcaption>
+        </figure>
 
-<!-- DIFERENCIAIS -->
-<section class="wrap">
-  <h2 class="reveal">Mais praticidade.<br>Mais liberdade.<br>Mais suporte.</h2>
-  <div class="diff-list stagger">
-    <div class="diff-item">
-      <h3>Sem anúncios</h3>
-      <p>Assista sem cortes nem anúncios no meio dos seus conteúdos.</p>
-    </div>
-    <div class="diff-item">
-      <h3>Catálogo completo</h3>
-      <p>Uma grande variedade de canais, séries e filmes pra você sempre encontrar algo pra assistir.</p>
-    </div>
-    <div class="diff-item">
-      <h3>Tudo em um só lugar</h3>
-      <p>Milhares de opções de filmes e séries reunidas numa única plataforma, sem precisar assinar vários serviços separados ao mesmo tempo.</p>
-    </div>
-    <div class="diff-item">
-      <h3>Atendimento próximo</h3>
-      <p>Time disponível pra te orientar na escolha do sistema certo e tirar dúvidas antes e depois da contratação.</p>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARE -->
-<section class="alt" id="comparar">
-  <div class="wrap">
-    <h2 class="reveal">Compare.<br>Escolha.<br>Economize.</h2>
-    <table class="compare-table reveal">
-      <thead>
-        <tr><th></th><th>Separado</th><th>Avilar</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Investimento</td><td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Uma assinatura para cada serviço</span></td><td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Um único investimento</span></td></tr>
-        <tr><td>Serviços</td><td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Vários aplicativos separados</span></td><td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Tudo em um só lugar</span></td></tr>
-        <tr><td>Praticidade</td><td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Vários logins e cobranças</span></td><td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Um só acesso pra gerenciar</span></td></tr>
-        <tr><td>Benefícios</td><td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Varia de serviço pra serviço</span></td><td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Sem anúncios em todos os planos</span></td></tr>
-        <tr><td>Economia</td><td class="no"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Você paga por cada assinatura</span></td><td class="yes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Você economiza pagando uma só</span></td></tr>
-      </tbody>
-    </table>
-    <p class="compare-highlight">Mais opções, menos complicação.</p>
-  </div>
-</section>
-
-<!-- APPS -->
-<section class="wrap">
-  <h2 class="reveal">Na sua tela.<br>Do seu jeito.</h2>
-  <div class="apps-list stagger">
-    <div class="app-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Android</div>
-    <div class="app-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> iOS</div>
-    <div class="app-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="2" y="4" width="20" height="13" rx="1"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Computador</div>
-    <div class="app-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="1"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Smart TV</div>
-    <div class="app-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="7" y="8" width="10" height="7" rx="1"/><line x1="9" y1="19" x2="15" y2="19"/></svg> Dispositivos que transformam em Smart TV</div>
-  </div>
-  <p class="apps-note">A compatibilidade pode variar conforme o sistema e o dispositivo. <a href="#faq">Saiba como instalar →</a></p>
-</section>
-
-<!-- TESTE GRÁTIS -->
-<section class="alt" id="teste">
-  <div class="wrap">
-    <h2 class="reveal">Experimente<br>antes de escolher.</h2>
-    <p class="reveal" style="max-width:50ch;margin:0 auto;text-align:center;">Teste gratuitamente e descubra qual sistema combina mais com você — sem compromisso.</p>
-
-    <table class="trial-table reveal" style="max-width:520px;margin-left:auto;margin-right:auto;">
-      <thead><tr><th>Sistema</th><th>Teste grátis</th></tr></thead>
-      <tbody>
-        <tr><td>WPlay</td><td class="dur">4 horas</td></tr>
-        <tr><td>RushPlay</td><td class="dur">3 horas</td></tr>
-        <tr><td>UniTV</td><td class="dur">3 dias</td></tr>
-      </tbody>
-    </table>
-
-    <div style="text-align:center;">
-      <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Quero%20come%C3%A7ar%20meu%20teste%20gr%C3%A1tis%20na%20Avilar." class="btn btn-primary">Começar teste grátis</a>
-    </div>
-  </div>
-</section>
-
-<!-- AVALIAÇÕES -->
-<section class="wrap">
-  <h2 class="reveal">Quem conhece a Avilar,<br>conta a experiência.</h2>
-  <div class="reviews stagger">
-    <div class="review">
-      <div class="quote-mark">"</div>
-      <div class="stars">★★★★★</div>
-      <blockquote>"Testei o WPlay num sábado à noite e não travou nem uma vez, mesmo com duas telas ligadas ao mesmo tempo."</blockquote>
-      <div class="who">Marcos T. — cliente WPlay</div>
-    </div>
-    <div class="review">
-      <div class="quote-mark">"</div>
-      <div class="stars">★★★★★</div>
-      <blockquote>"O suporte respondeu no mesmo dia e me ajudou a instalar na Smart TV em cinco minutos."</blockquote>
-      <div class="who">Renata C. — cliente UniTV</div>
-    </div>
-    <div class="review">
-      <div class="quote-mark">"</div>
-      <div class="stars">★★★★★</div>
-      <blockquote>"Cancelei três assinaturas separadas depois que comecei com a Avilar. Só isso já valeu."</blockquote>
-      <div class="who">Diego A. — cliente RushPlay</div>
-    </div>
-  </div>
-  <p style="margin-top:24px;font-size:13px;text-align:center;">* Depoimentos ilustrativos — substitua pelos comentários reais dos seus clientes antes de publicar.</p>
-</section>
-
-<!-- FAQ -->
-<section class="alt" id="faq">
-  <div class="wrap" style="max-width:760px;">
-    <h2 class="reveal">Ainda ficou<br>com alguma dúvida?</h2>
-    <div class="faq-list reveal">
-
-      <div class="faq-item">
-        <button class="faq-q">Como funciona a Avilar?<span class="plus">+</span></button>
-        <div class="faq-a"><p>A Avilar dá acesso a sistemas de entretenimento com canais, séries e filmes. Você escolhe o sistema (WPlay, RushPlay ou UniTV) de acordo com o que combina mais com você.</p></div>
+        <figure class="review">
+          <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+          <blockquote>“Cancelei três assinaturas separadas depois que comecei com a Avilar. Só isso já valeu.”</blockquote>
+          <figcaption>Diego A. — cliente Avilar</figcaption>
+        </figure>
       </div>
+    </div>
+  </section>
 
-      <div class="faq-item">
-        <button class="faq-q">Qual a diferença entre os sistemas?<span class="plus">+</span></button>
-        <div class="faq-a"><p>WPlay e UniTV têm 2 acessos simultâneos, ideais pra dividir com quem mora com você. RushPlay tem 1 acesso, pensado pra quem assiste sozinho e quer simplicidade.</p></div>
+  <!-- FAQ -->
+  <section class="section band" id="faq">
+    <div class="wrap">
+      <div class="faq-layout">
+        <div class="faq-head">
+          <h2>Ainda ficou com alguma dúvida?</h2>
+          <p>Se não encontrar a resposta aqui, chame no WhatsApp — respondemos rápido.</p>
+        </div>
+
+        <div class="faq-list reveal">
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Como funciona a Avilar?<span class="plus"></span></button>
+            <div class="faq-a"><p>A Avilar dá acesso a sistemas de entretenimento com canais, séries e filmes. Você escolhe o sistema — WPlay ou UniTV — de acordo com o que combina mais com você.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Qual a diferença entre os sistemas?<span class="plus"></span></button>
+            <div class="faq-a"><p>Os dois oferecem 2 acessos simultâneos e qualidade até 4K. A diferença está na duração do teste grátis, nos aplicativos parceiros inclusos no WPlay e no fato de a UniTV funcionar exclusivamente em Android e Smart TV.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Como funciona o teste grátis?<span class="plus"></span></button>
+            <div class="faq-a"><p>Você testa gratuitamente antes de contratar, dentro do tempo definido para cada sistema: 4 horas no WPlay e 3 dias na UniTV.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Quantos acessos simultâneos eu tenho?<span class="plus"></span></button>
+            <div class="faq-a"><p>Os dois sistemas permitem 2 acessos ao mesmo tempo — ou seja, duas telas assistindo conteúdo diferente simultaneamente.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Em quais dispositivos funciona?<span class="plus"></span></button>
+            <div class="faq-a"><p>Android, iOS, computador, Smart TV e dispositivos que transformam a TV em Smart. A compatibilidade pode variar conforme o sistema e o modelo do dispositivo.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Como faço para instalar o aplicativo?<span class="plus"></span></button>
+            <div class="faq-a"><p>Nossa equipe orienta passo a passo pelo WhatsApp assim que você escolher o sistema, com instruções específicas para o seu dispositivo.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Como funciona o suporte?<span class="plus"></span></button>
+            <div class="faq-a"><p>O suporte é feito diretamente pelo WhatsApp, com uma equipe preparada para ajudar na configuração e em qualquer dúvida durante o uso.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Como faço para contratar?<span class="plus"></span></button>
+            <div class="faq-a"><p>Basta chamar no WhatsApp — nossa equipe ajuda a escolher o sistema ideal e finaliza a contratação com você.</p></div>
+          </div>
+
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="faq-item">
-        <button class="faq-q">Como funciona o teste grátis?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Você pode testar gratuitamente antes de contratar, dentro do tempo definido para cada sistema: 4 horas no WPlay, 3 horas no RushPlay e 3 dias no UniTV.</p></div>
+  <!-- CTA FINAL -->
+  <section class="final">
+    <div class="wrap final-inner reveal">
+      <h2>Pronto para começar?</h2>
+      <p>Escolha a opção que mais combina com você e comece sua experiência hoje mesmo.</p>
+      <div class="final-cta">
+        <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Quero%20come%C3%A7ar%20agora%20na%20Avilar." class="btn btn-primary">Começar agora</a>
+        <span class="final-wa">Prefere falar antes? <a href="https://wa.me/5541997043607">(41) 99704-3607</a></span>
       </div>
+    </div>
+  </section>
 
-      <div class="faq-item">
-        <button class="faq-q">Quantos acessos simultâneos eu tenho?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Depende do sistema escolhido: WPlay e UniTV permitem 2 acessos ao mesmo tempo, enquanto RushPlay permite 1 acesso.</p></div>
-      </div>
+</main>
 
-      <div class="faq-item">
-        <button class="faq-q">Em quais dispositivos funciona?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Android, iOS, computador, Smart TV e dispositivos que transformam em Smart TV. A compatibilidade pode variar conforme o sistema e o modelo do dispositivo.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">Como faço para instalar o aplicativo?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Nossa equipe te orienta passo a passo pelo WhatsApp assim que você escolher o sistema, com instruções específicas pro seu dispositivo.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">Como funciona o suporte?<span class="plus">+</span></button>
-        <div class="faq-a"><p>O suporte é feito diretamente pelo WhatsApp, com uma equipe preparada pra te ajudar na configuração e em qualquer dúvida durante o uso.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">Como faço para contratar?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Basta chamar no WhatsApp — nossa equipe te ajuda a escolher o sistema ideal e finalizar a contratação.</p></div>
-      </div>
-
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name">Avilar</span>
+      <span>Entretenimento sem complicação.</span>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 Avilar. Todos os direitos reservados.</span>
+      <span>Dados e imagens de filmes e séries fornecidos por TMDB.</span>
     </div>
   </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="final wrap reveal">
-  <h2>Pronto para<br>começar?</h2>
-  <p>Escolha a opção que mais combina com você e comece sua experiência hoje mesmo.</p>
-  <div class="cta-row">
-    <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Quero%20come%C3%A7ar%20agora%20na%20Avilar." class="btn btn-primary">Começar agora</a>
-    <span class="whatsapp">Precisa de ajuda? <a href="https://wa.me/5541997043607">WhatsApp (41) 99704-3607</a></span>
-  </div>
-</section>
-
-<footer class="wrap">
-  <div class="footer-top">
-    <span>© 2026 Avilar. Todos os direitos reservados.</span>
-    <span>Entretenimento sem complicação.</span>
-  </div>
-  <span class="footer-credit">Dados e imagens de filmes/séries fornecidos por TMDB.</span>
 </footer>
-
-
 
 <script src="script.js"></script>
 </body>
