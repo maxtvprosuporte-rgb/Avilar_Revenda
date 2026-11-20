@@ -243,3 +243,23 @@
     if(open) open.style.maxHeight = open.scrollHeight + 'px';
   });
 })();
+
+
+/* ---------- WPlay Exclusivo (abre/fecha) ---------- */
+(function(){
+  const box = document.querySelector('.exclusive');
+  if(!box) return;
+  const btn = box.querySelector('.exclusive-toggle');
+  const body = box.querySelector('.exclusive-body');
+  if(!btn || !body) return;
+
+  btn.addEventListener('click', ()=>{
+    const open = box.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    body.style.maxHeight = open ? body.scrollHeight + 'px' : null;
+  });
+
+  window.addEventListener('resize', ()=>{
+    if(box.classList.contains('open')) body.style.maxHeight = body.scrollHeight + 'px';
+  });
+})();
