@@ -5,13 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avilar — Canais, séries e filmes em um só lugar</title>
 <meta name="description" content="Canais ao vivo, séries e filmes em um só lugar. Escolha o sistema que combina com você e comece com teste grátis.">
-<meta name="theme-color" content="#04070F">
+<meta name="theme-color" content="#06100C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="natal.css"> <!-- natal -->
 </head>
 <body>
+
+<!-- natal -->
+<div class="snow" id="snow" aria-hidden="true"></div>
+<div class="natal-bar" role="note">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 1h2v5.6l3.7-3.7 1.4 1.4L13 9.4V11h1.6l5.1-5.1 1.4 1.4-3.7 3.7H23v2h-5.6l3.7 3.7-1.4 1.4L14.6 13H13v1.6l5.1 5.1-1.4 1.4-3.7-3.7V23h-2v-5.6l-3.7 3.7-1.4-1.4L11 14.6V13H9.4l-5.1 5.1-1.4-1.4L6.6 13H1v-2h5.6L2.9 7.3l1.4-1.4L9.4 11H11V9.4L5.9 4.3l1.4-1.4L11 6.6z"/></svg>
+  <span>Boas festas! Que o seu Natal tenha muita coisa boa para assistir.</span>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 1h2v5.6l3.7-3.7 1.4 1.4L13 9.4V11h1.6l5.1-5.1 1.4 1.4-3.7 3.7H23v2h-5.6l3.7 3.7-1.4 1.4L14.6 13H13v1.6l5.1 5.1-1.4 1.4-3.7-3.7V23h-2v-5.6l-3.7 3.7-1.4-1.4L11 14.6V13H9.4l-5.1 5.1-1.4-1.4L6.6 13H1v-2h5.6L2.9 7.3l1.4-1.4L9.4 11H11V9.4L5.9 4.3l1.4-1.4L11 6.6z"/></svg>
+</div>
 
 <header class="site-header">
   <div class="nav">
@@ -24,6 +33,7 @@
       <a href="#sistemas">Sistemas</a>
       <a href="#comparar">Comparativo</a>
       <a href="#teste">Teste grátis</a>
+      <a href="#pagamento">Pagamento</a>
       <a href="#faq">Dúvidas</a>
     </nav>
 
@@ -35,6 +45,10 @@
 
   <!-- HERO -->
   <section class="hero">
+  <!-- natal -->
+  <span class="orn orn-1" aria-hidden="true"><svg viewBox="0 0 40 94"><line x1="20" y1="0" x2="20" y2="48" stroke="#C9B079" stroke-width="1.3"/><rect x="15" y="44" width="10" height="7" rx="2" fill="#E6BF72"/><circle cx="20" cy="68" r="17" fill="currentColor"/><path d="M4.5 66 Q20 76 35.5 66" stroke="rgba(255,255,255,0.55)" stroke-width="2.2" fill="none"/><ellipse cx="13.5" cy="60" rx="5" ry="3.2" fill="#fff" opacity="0.32" transform="rotate(-32 13.5 60)"/></svg></span>
+  <span class="orn orn-2" aria-hidden="true"><svg viewBox="0 0 40 114"><line x1="20" y1="0" x2="20" y2="68" stroke="#C9B079" stroke-width="1.3"/><rect x="15" y="64" width="10" height="7" rx="2" fill="#E6BF72"/><circle cx="20" cy="88" r="17" fill="currentColor"/><path d="M4.5 86 Q20 96 35.5 86" stroke="rgba(255,255,255,0.55)" stroke-width="2.2" fill="none"/><ellipse cx="13.5" cy="80" rx="5" ry="3.2" fill="#fff" opacity="0.32" transform="rotate(-32 13.5 80)"/></svg></span>
+  <span class="orn orn-3" aria-hidden="true"><svg viewBox="0 0 40 84"><line x1="20" y1="0" x2="20" y2="38" stroke="#C9B079" stroke-width="1.3"/><rect x="15" y="34" width="10" height="7" rx="2" fill="#E6BF72"/><circle cx="20" cy="58" r="17" fill="currentColor"/><path d="M4.5 56 Q20 66 35.5 56" stroke="rgba(255,255,255,0.55)" stroke-width="2.2" fill="none"/><ellipse cx="13.5" cy="50" rx="5" ry="3.2" fill="#fff" opacity="0.32" transform="rotate(-32 13.5 50)"/></svg></span>
     <div class="hero-grid wrap">
       <div class="hero-copy">
         <p class="live"><span class="live-dot"></span>Transmissão ao vivo, 24 horas</p>
@@ -184,6 +198,16 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Android, iOS, computador e Smart TV</li>
           </ul>
 
+          <div class="plans">
+            <span class="block-label">Planos e valores</span>
+            <ul class="plan-list">
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">30 dias</span></div><span class="plan-price"><small>R$</small>29,99</span></li>
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">90 dias</span><span class="plan-per">≈ R$ 26,66 por mês</span></div><span class="plan-price"><small>R$</small>79,99</span></li>
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">180 dias</span><span class="plan-per">≈ R$ 21,67 por mês</span></div><span class="plan-price"><small>R$</small>129,99</span></li>
+              <li class="plan-row is-best"><div class="plan-info"><span class="plan-days">365 dias<span class="plan-tag">Melhor custo</span></span><span class="plan-per">≈ R$ 13,33 por mês</span></div><span class="plan-price"><small>R$</small>159,99</span></li>
+            </ul>
+          </div>
+
           <div class="system-block">
             <span class="block-label">Aplicativos parceiros inclusos</span>
             <div class="chips">
@@ -212,12 +236,22 @@
           <ul class="system-features">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Canais ao vivo, filmes e séries</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Qualidade até 4K</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Android, computador e Smart TV</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg>Mais dedicada e recomendada para Android</li>
           </ul>
+
+          <div class="plans">
+            <span class="block-label">Planos e valores</span>
+            <ul class="plan-list">
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">30 dias</span></div><span class="plan-price"><small>R$</small>19,99</span></li>
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">90 dias</span><span class="plan-per">≈ R$ 16,66 por mês</span></div><span class="plan-price"><small>R$</small>49,99</span></li>
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">180 dias</span><span class="plan-per">≈ R$ 16,67 por mês</span></div><span class="plan-price"><small>R$</small>99,99</span></li>
+              <li class="plan-row is-best"><div class="plan-info"><span class="plan-days">365 dias<span class="plan-tag">Melhor custo</span></span><span class="plan-per">≈ R$ 12,50 por mês</span></div><span class="plan-price"><small>R$</small>149,99</span></li>
+            </ul>
+          </div>
 
           <div class="system-note">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-            <span>Exclusivo para Android, incluindo Smart TVs e dispositivos que transformam a TV em Smart.</span>
+            <span>Funciona melhor em Android, incluindo Smart TVs Android e dispositivos que transformam a TV em Smart. Em Samsung, LG, Roku TV e outros, ativamos aplicativos premium compatíveis.</span>
           </div>
 
           <div class="system-foot">
@@ -227,6 +261,25 @@
         </article>
 
       </div>
+
+      <p class="plans-foot">Os valores e períodos correspondem aos planos disponíveis no momento da contratação e podem ser atualizados mediante aviso.</p>
+
+      <details class="exclusive">
+        <summary>
+          <span class="exclusive-title">WPlay Exclusivo</span>
+          <span class="exclusive-sub">Condição especial para clientes migrados do RushPlay</span>
+          <svg class="exclusive-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exclusive-body">
+          <ul class="plan-list">
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">30 dias</span></div><span class="plan-price"><small>R$</small>19,99</span></li>
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">90 dias</span></div><span class="plan-price"><small>R$</small>54,99</span></li>
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">180 dias</span></div><span class="plan-price"><small>R$</small>109,99</span></li>
+              <li class="plan-row"><div class="plan-info"><span class="plan-days">365 dias</span></div><span class="plan-price"><small>R$</small>189,99</span></li>
+          </ul>
+          <p class="exclusive-note">2 acessos. Estes valores são destinados exclusivamente aos clientes que foram migrados do RushPlay para o WPlay e não estão disponíveis para novas contratações. O RushPlay não faz mais parte dos sistemas comercializados pela Avilar.</p>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -481,6 +534,33 @@
       </div>
 
       <p class="apps-note">Não sabe se funciona no seu aparelho? <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Meu%20dispositivo%20%C3%A9%20compat%C3%ADvel%3F">Pergunte no WhatsApp</a></p>
+
+      <div class="panel-grid">
+        <article class="panel reveal">
+          <h3>Samsung, LG, Roku TV e outros</h3>
+          <p>A UniTV é mais dedicada e recomendada para aparelhos Android. Nos demais sistemas, trabalhamos com a ativação de aplicativos premium compatíveis com cada dispositivo.</p>
+          <div class="chips chips-lg"><span>MaxPlayer</span><span>HD Player</span><span>Brasil IPTV</span><span>Player IO</span><span>Flax Player</span><span>Fest Player</span><span>See Player</span><span>RX Purple</span></div>
+          <p class="panel-note">A disponibilidade de cada aplicativo depende do modelo e do sistema operacional da TV ou do dispositivo. Antes de contratar ou renovar, <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Qual%20aplicativo%20%C3%A9%20compat%C3%ADvel%20com%20o%20meu%20aparelho%3F">confirme com o suporte</a> qual aplicativo funciona no seu.</p>
+        </article>
+
+        <article class="panel reveal">
+          <h3>UniTV: do teste ao resgate</h3>
+          <ol class="steps">
+            <li>
+              <span class="step-n">1</span>
+              <div><strong>Primeiro acesso</strong><p>Ao abrir o aplicativo pela primeira vez, o sistema libera automaticamente 3 dias de teste grátis. Depois do teste, é preciso adquirir ou renovar um plano para continuar.</p></div>
+            </li>
+            <li>
+              <span class="step-n">2</span>
+              <div><strong>Contrate o plano</strong><p>Ao contratar um pacote, você recebe um código de resgate com 16 dígitos.</p></div>
+            </li>
+            <li>
+              <span class="step-n">3</span>
+              <div><strong>Resgate o código</strong><p>Já tem conta? Basta inserir o código para liberar o pacote. Ainda não tem? Depois de resgatar, vincule um número de telefone e um e-mail à conta — isso permite vincular o segundo dispositivo.</p></div>
+            </li>
+          </ol>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -504,7 +584,73 @@
             <span class="trial-name">UniTV</span>
             <span class="trial-dur">3 dias</span>
           </div>
-          <p class="trial-foot">O tempo de teste é definido pelo próprio sistema.</p>
+          <p class="trial-foot">O tempo de teste é definido pelo próprio sistema. Na UniTV, os 3 dias são liberados automaticamente no primeiro acesso ao aplicativo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGAMENTO E RENOVAÇÃO -->
+  <section class="section" id="pagamento">
+    <div class="wrap">
+      <div class="head head-split">
+        <h2>Pagamento, renovação e Pix Automático</h2>
+        <p>Tudo claro antes de contratar: como o acesso é liberado, como renovar e quais são os prazos.</p>
+      </div>
+
+      <div class="info-cards stagger">
+        <article class="info-card">
+          <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <h3>Liberação após o pagamento</h3>
+          <p>O acesso é liberado somente depois da confirmação do pagamento. O sistema converte automaticamente o valor pago em dias de acesso, de acordo com o plano contratado.</p>
+        </article>
+
+        <article class="info-card">
+          <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg></span>
+          <h3>Pix Automático</h3>
+          <ul class="dot-list">
+            <li>O banco avisa você 3 dias antes da cobrança programada.</li>
+            <li>Sem saldo, o sistema pode tentar a cobrança novamente.</li>
+            <li>Se o pagamento não ocorrer em 5 dias, a autorização é cancelada e a renovação passa a ser manual.</li>
+            <li>Você cancela quando quiser, pelo app do banco ou com um de nossos atendentes.</li>
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/></svg></span>
+          <h3>Usuário, senha e segurança</h3>
+          <p>Usuário e senha são enviados ao contato cadastrado. Não compartilhe seus dados de acesso. Se suspeitar que outra pessoa usa sua conta, fale com o suporte — podemos alterar as credenciais para proteger o acesso.</p>
+        </article>
+      </div>
+
+      <div class="deadlines stagger">
+        <article class="deadline">
+          <span class="deadline-tag">Opção 1</span>
+          <h3>Prazo de 48 horas</h3>
+          <ul class="dot-list">
+            <li>Você tem até 48 horas após o vencimento para pagar.</li>
+            <li>Se o pagamento não for identificado nesse prazo, o sistema pode bloquear o acesso.</li>
+            <li>Não acrescenta um mês pendente ao valor da próxima renovação.</li>
+          </ul>
+        </article>
+
+        <article class="deadline">
+          <span class="deadline-tag">Opção 2</span>
+          <h3>Prazo de 30 dias</h3>
+          <ul class="dot-list">
+            <li>Você pode deixar o pagamento pendente por até 30 dias.</li>
+            <li>Passado esse prazo sem pagamento, o acesso é bloqueado.</li>
+            <li>Na regularização, o sistema pode somar o período pendente à nova renovação, o que corresponde a dois meses de cobrança.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="notice">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+        <div>
+          <p><strong>Política de reembolso.</strong> Depois da confirmação do pagamento e da liberação do acesso, não realizamos reembolsos: o sistema converte o valor pago em dias de uso, e você segue utilizando o serviço até a data de vencimento correspondente.</p>
+          <p><strong>Antes de renovar,</strong> confira se há pendências — o sistema verifica automaticamente e ajusta o valor considerando o período anterior não regularizado. Para mudar de sistema ou de plano, fale com o <a href="https://wa.me/5541997043607?text=Ol%C3%A1!%20Quero%20mudar%20de%20sistema%20ou%20plano.">suporte</a> antes de pagar.</p>
+          <p><strong>Aplicativos parceiros</strong> não têm cobrança adicional. Se algum pedir pagamento ou assinatura, não pague antes de consultar nosso suporte.</p>
         </div>
       </div>
     </div>
@@ -557,12 +703,12 @@
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Qual a diferença entre os sistemas?<span class="plus"></span></button>
-            <div class="faq-a"><p>Os dois oferecem 2 acessos simultâneos e qualidade até 4K. A diferença está na duração do teste grátis, nos aplicativos parceiros inclusos no WPlay e no fato de a UniTV funcionar exclusivamente em Android e Smart TV.</p></div>
+            <div class="faq-a"><p>Os dois oferecem 2 acessos simultâneos e qualidade até 4K. A diferença está na duração do teste grátis, nos aplicativos parceiros inclusos no WPlay e nos aparelhos: a UniTV é mais dedicada e recomendada para Android, enquanto o WPlay também atende iOS e computador.</p></div>
           </div>
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Como funciona o teste grátis?<span class="plus"></span></button>
-            <div class="faq-a"><p>Você testa gratuitamente antes de contratar, dentro do tempo definido para cada sistema: 4 horas no WPlay e 3 dias na UniTV.</p></div>
+            <div class="faq-a"><p>Você testa gratuitamente antes de contratar, dentro do tempo definido para cada sistema: 4 horas no WPlay e 3 dias na UniTV. Na UniTV, os 3 dias são liberados automaticamente no primeiro acesso ao aplicativo.</p></div>
           </div>
 
           <div class="faq-item">
@@ -572,7 +718,52 @@
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Em quais dispositivos funciona?<span class="plus"></span></button>
-            <div class="faq-a"><p>Android, iOS, computador, Smart TV e dispositivos que transformam a TV em Smart. A compatibilidade pode variar conforme o sistema e o modelo do dispositivo.</p></div>
+            <div class="faq-a"><p>Android, iOS, computador, Smart TV e dispositivos que transformam a TV em Smart. A compatibilidade varia conforme o sistema e o modelo do aparelho. Em Samsung, LG, Roku TV e outros, ativamos aplicativos premium compatíveis.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Funciona em Samsung, LG ou Roku TV?<span class="plus"></span></button>
+            <div class="faq-a"><p>A UniTV é mais dedicada ao Android. Nesses aparelhos, ativamos aplicativos premium compatíveis: MaxPlayer, HD Player, Brasil IPTV, Player IO, Flax Player, Fest Player, See Player e RX Purple. A disponibilidade depende do modelo e do sistema da TV — antes de contratar ou renovar, confirme com o suporte qual aplicativo serve para o seu aparelho.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Como funciona o código de resgate da UniTV?<span class="plus"></span></button>
+            <div class="faq-a"><p>Ao contratar um pacote, você recebe um código de resgate com 16 dígitos. Quem já tem conta só precisa inserir o código para liberar o pacote. Quem ainda não tem conta deve, depois de resgatar o código, vincular um número de telefone e um e-mail — isso permite vincular o segundo dispositivo.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Quando meu acesso é liberado depois do pagamento?<span class="plus"></span></button>
+            <div class="faq-a"><p>A liberação acontece somente após a confirmação do pagamento. Em seguida, o sistema converte automaticamente o valor pago em dias de acesso, conforme o plano contratado.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Como funciona o Pix Automático?<span class="plus"></span></button>
+            <div class="faq-a"><p>O banco avisa você 3 dias antes da cobrança programada. Se não houver saldo, o sistema pode tentar novamente. Se o pagamento não ocorrer em 5 dias, a autorização é cancelada e você precisa renovar manualmente. Você pode cancelar a autorização a qualquer momento pelo app do banco ou pedindo a um de nossos atendentes.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Qual a diferença entre o prazo de 48 horas e o de 30 dias?<span class="plus"></span></button>
+            <div class="faq-a"><p>No prazo de 48 horas, você tem até 48 horas após o vencimento para pagar, e isso não acrescenta um mês pendente na próxima renovação. No prazo de 30 dias, você pode deixar o pagamento pendente por até 30 dias, mas, na regularização, o sistema pode somar o período pendente à nova renovação, correspondendo a dois meses de cobrança.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Posso pedir reembolso?<span class="plus"></span></button>
+            <div class="faq-a"><p>Depois da confirmação do pagamento e da liberação do acesso, não realizamos reembolsos. Isso acontece porque o sistema converte o valor pago em dias de uso — você continua utilizando o serviço até a data de vencimento correspondente.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Preciso pagar algum aplicativo parceiro?<span class="plus"></span></button>
+            <div class="faq-a"><p>Não. Os aplicativos parceiros disponibilizados pela Avilar não têm cobrança adicional. Se algum aplicativo pedir pagamento, assinatura ou qualquer valor extra, não pague antes de consultar nosso suporte.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Como recebo usuário e senha? E como mantenho a conta segura?<span class="plus"></span></button>
+            <div class="faq-a"><p>Usuário e senha são enviados diretamente ao contato cadastrado no sistema. Evite compartilhar suas credenciais. Se suspeitar que alguém está usando sua conta, fale com o suporte imediatamente — nossa equipe pode alterar as credenciais para proteger o acesso.</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Posso trocar de sistema ou de plano?<span class="plus"></span></button>
+            <div class="faq-a"><p>Pode. Fale com o nosso suporte antes de pagar: a equipe verifica as opções disponíveis e orienta sobre o procedimento necessário.</p></div>
           </div>
 
           <div class="faq-item">
@@ -582,7 +773,7 @@
 
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Como funciona o suporte?<span class="plus"></span></button>
-            <div class="faq-a"><p>O suporte é feito diretamente pelo WhatsApp, com uma equipe preparada para ajudar na configuração e em qualquer dúvida durante o uso.</p></div>
+            <div class="faq-a"><p>O suporte é feito pelo WhatsApp, com uma equipe preparada para ajudar com instalação, acesso, credenciais, pagamentos e renovações. Para agilizar, explique o problema com detalhes e, se puder, envie capturas de tela ou vídeos.</p></div>
           </div>
 
           <div class="faq-item">
@@ -598,6 +789,7 @@
   <!-- CTA FINAL -->
   <section class="final">
     <div class="wrap final-inner reveal">
+      <svg class="final-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l2.9 6.6 7.1.7-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 8.8l7.1-.7z"/></svg> <!-- natal -->
       <h2>Pronto para começar?</h2>
       <p>Escolha a opção que mais combina com você e comece sua experiência hoje mesmo.</p>
       <div class="final-cta">
@@ -614,14 +806,21 @@
     <div class="footer-brand">
       <span class="brand-name">Avilar</span>
       <span>Entretenimento sem complicação.</span>
+      <span class="natal-wish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.2 4.9 5.3.6-4 3.6 1.2 5.2L12 12.6 7.3 15.3l1.2-5.2-4-3.6 5.3-.6z"/><path d="M11 16h2v6h-2z"/></svg>Boas festas da equipe Avilar</span> <!-- natal -->
     </div>
     <div class="footer-meta">
-      <span>© 2026 Avilar. Todos os direitos reservados.</span>
+      <span>© 2026 Avilar Revenda. Todos os direitos reservados.</span>
       <span>Dados e imagens de filmes e séries fornecidos por TMDB.</span>
     </div>
   </div>
 </footer>
 
+<!-- natal -->
+<button class="snow-toggle" id="snowToggle" type="button" aria-pressed="true" aria-label="Ligar ou desligar a neve">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M4.2 7l15.6 10M4.2 17L19.8 7"/><path d="M9.5 3.8L12 6l2.5-2.2M9.5 20.2L12 18l2.5 2.2"/></svg>
+</button>
+
 <script src="script.js"></script>
+<script src="natal.js"></script> <!-- natal -->
 </body>
 </html>

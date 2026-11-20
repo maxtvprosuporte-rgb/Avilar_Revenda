@@ -1,0 +1,172 @@
+/* =========================================================
+   TEMA DE NATAL — Avilar
+   Para desligar a decoração: remova o <link> deste arquivo, o
+   <script src="natal.js"> e os elementos marcados com <!-- natal -->.
+   (As cores vermelho/verde/dourado ficam no style.css.)
+   ========================================================= */
+
+/* ---------- faixa de boas festas (bengala de Natal) ---------- */
+.natal-bar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:9px 16px 8px;
+  font-size:13.5px;
+  font-weight:600;
+  letter-spacing:0.005em;
+  text-align:center;
+  color:#FFF1D6;
+  background:linear-gradient(90deg, #7F1726 0%, #A5232F 38%, #17583B 62%, #0F4A31 100%);
+  border-bottom:4px solid transparent;
+  border-image:repeating-linear-gradient(135deg, #C8283A 0 9px, #F7F3EA 9px 18px) 1;
+}
+.natal-bar svg{width:14px;height:14px;fill:#F2C766;flex-shrink:0;}
+@media (max-width:560px){
+  .natal-bar{font-size:12.5px;gap:8px;}
+  .natal-bar svg:last-child{display:none;}
+}
+
+/* ---------- guirlanda de luzes presa ao cabeçalho (estática) ---------- */
+.site-header::after{
+  content:'';
+  position:absolute;
+  left:0;right:0;
+  top:100%;
+  height:32px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='32' viewBox='0 0 96 32'%3E%3Cpath d='M0 2 Q48 24 96 2' fill='none' stroke='%232C4F3B' stroke-width='1.7'/%3E%3Crect x='17.4' y='8.4' width='3.6' height='3.4' rx='0.8' fill='%231B2F24'/%3E%3Ccircle cx='19.2' cy='15.4' r='7.4' fill='%23E04658' opacity='0.13'/%3E%3Cellipse cx='19.2' cy='15.2' rx='3.4' ry='4.1' fill='%23E04658'/%3E%3Cellipse cx='18.099999999999998' cy='13.9' rx='1' ry='1.5' fill='%23fff' opacity='0.55'/%3E%3Crect x='46.2' y='12.4' width='3.6' height='3.4' rx='0.8' fill='%231B2F24'/%3E%3Ccircle cx='48' cy='19.4' r='7.4' fill='%23F2C766' opacity='0.13'/%3E%3Cellipse cx='48' cy='19.2' rx='3.4' ry='4.1' fill='%23F2C766'/%3E%3Cellipse cx='46.9' cy='17.9' rx='1' ry='1.5' fill='%23fff' opacity='0.55'/%3E%3Crect x='75.0' y='8.4' width='3.6' height='3.4' rx='0.8' fill='%231B2F24'/%3E%3Ccircle cx='76.8' cy='15.4' r='7.4' fill='%233DBE7A' opacity='0.13'/%3E%3Cellipse cx='76.8' cy='15.2' rx='3.4' ry='4.1' fill='%233DBE7A'/%3E%3Cellipse cx='75.7' cy='13.9' rx='1' ry='1.5' fill='%23fff' opacity='0.55'/%3E%3C/svg%3E") repeat-x center top;
+  pointer-events:none;
+  z-index:2;
+}
+
+/* ---------- gorro de Papai Noel na marca ---------- */
+.brand{position:relative;}
+.brand::before{
+  content:'';
+  position:absolute;
+  left:-6px;top:-12px;
+  width:28px;height:22px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath d='M5 21C6 10 13 3 25 5C24 9 28 15 30 21Z' fill='%23D63A4C'/%3E%3Cpath d='M5 21C6 10 13 3 25 5C20 8 12 11 5 21Z' fill='%239E2233' opacity='0.5'/%3E%3Crect x='2' y='19' width='30' height='7' rx='3.5' fill='%23F7F3EA'/%3E%3Ccircle cx='26.5' cy='5' r='3.8' fill='%23F7F3EA'/%3E%3C/svg%3E") center/contain no-repeat;
+  transform:rotate(-14deg);
+  pointer-events:none;
+  z-index:2;
+}
+
+/* ---------- hero: luz vermelha + verde ---------- */
+.hero::before{
+  background:
+    radial-gradient(ellipse at 36% 45%, rgba(200,40,58,0.22), rgba(200,40,58,0.05) 46%, transparent 64%),
+    radial-gradient(ellipse at 70% 42%, rgba(61,190,122,0.15), rgba(61,190,122,0.04) 46%, transparent 62%);
+}
+
+/* ---------- bolas de Natal penduradas na guirlanda ---------- */
+.orn{
+  position:absolute;
+  top:6px;
+  z-index:3;
+  width:34px;
+  pointer-events:none;
+  transform-origin:50% 0;
+  animation:orn-sway 5.8s ease-in-out infinite alternate;
+}
+.orn svg{display:block;width:100%;height:auto;}
+.orn-1{left:calc(50% + 120px);color:#C8283A;}
+.orn-2{left:calc(50% + 290px);color:#E6BF72;animation-delay:-1.9s;}
+.orn-3{left:calc(50% + 450px);color:#2C9E64;animation-delay:-3.4s;}
+@keyframes orn-sway{
+  from{transform:rotate(-3.5deg);}
+  to{transform:rotate(3.5deg);}
+}
+@media (max-width:1100px){ .orn-3{display:none;} }
+@media (max-width:900px){ .orn{display:none;} }
+
+/* ---------- neve acumulada no topo das seções ---------- */
+.band::before,
+.final::after{
+  content:'';
+  position:absolute;
+  left:0;right:0;
+  top:-1px;
+  height:12px;
+  background:radial-gradient(circle at 12px 0, #EEF5F0 0 10px, transparent 10.6px) 0 0 / 24px 12px repeat-x;
+  opacity:0.9;
+  pointer-events:none;
+  z-index:2;
+}
+.final::after{z-index:0;}
+
+/* ---------- detalhes dourados ---------- */
+.final-star{
+  width:34px;height:34px;
+  margin:0 auto 18px;
+  fill:#F2C766;
+  filter:drop-shadow(0 0 10px rgba(242,199,102,0.55));
+}
+.natal-wish{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--blue-hi);
+  font-weight:600;
+}
+.natal-wish svg{width:15px;height:15px;fill:var(--blue-hi);}
+
+/* ---------- neve caindo (JS cria os flocos) ---------- */
+.snow{
+  position:fixed;
+  inset:0;
+  z-index:55;
+  pointer-events:none;
+  overflow:hidden;
+}
+.snow.off{display:none;}
+.snowflake{
+  position:absolute;
+  top:-14px;
+  left:var(--x);
+  width:var(--s);
+  height:var(--s);
+  border-radius:50%;
+  background:#fff;
+  opacity:var(--o);
+  will-change:transform;
+  animation:snowfall var(--d) linear var(--delay) infinite;
+}
+@keyframes snowfall{
+  from{transform:translate3d(0,-6vh,0);}
+  to{transform:translate3d(var(--drift),108vh,0);}
+}
+
+.snow-toggle{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:70;
+  width:42px;height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:1px solid var(--line-3);
+  background:rgba(10,24,18,0.88);
+  color:var(--blue-hi);
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  transition:border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+.snow-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;}
+.snow-toggle:hover{border-color:var(--blue-hi);}
+.snow-toggle[aria-pressed="false"]{color:var(--muted-dim);opacity:0.75;}
+.snow-toggle[aria-pressed="false"]::after{
+  content:'';
+  position:absolute;
+  width:24px;height:1.8px;
+  background:var(--muted-dim);
+  transform:rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .snow{display:none;}
+  .orn{animation:none;}
+  .snow-toggle{display:none;}
+}
