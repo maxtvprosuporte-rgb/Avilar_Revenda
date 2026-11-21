@@ -1815,3 +1815,24 @@ p{color:var(--muted);font-size:16px;line-height:1.62;}
 /* diferenciais */
 .diff-item{text-align:center;}
 .diff-item p{margin-inline:auto;}
+
+
+/* ---------- parceiros: 10 aplicativos (5 colunas no PC, 2 no celular) ---------- */
+.partner-strip{
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  max-width:1000px;
+}
+@media (max-width:640px){
+  .partner-strip{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+
+/* apps sem logo: monograma */
+.p-logo-mono .p-mark{
+  font-size:21px;
+  font-weight:800;
+  letter-spacing:-0.03em;
+  color:#fff;
+}
+.mono-a .p-mark{background:linear-gradient(145deg,#2B5BD7,#12276B);}
+.mono-b .p-mark{background:linear-gradient(145deg,#1FA39A,#0C4A55);}
+.mono-c .p-mark{background:linear-gradient(145deg,#8B3FD1,#3A1670);}
